@@ -1,0 +1,17 @@
+nav{
+  background-color: $themeColor2;
+  font-weight: lighter;
+  font-size: .75em;
+
+  li{
+    display: inline;
+    list-style: none;
+  }
+
+  a{
+    text-decoration: none;
+    color: $themeFontColor1;
+  }
+
+
+}
