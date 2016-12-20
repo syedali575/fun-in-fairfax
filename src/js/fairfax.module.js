@@ -15,6 +15,15 @@
       name: "home",
       url: "",
       templateUrl: "views/home.template.html"
+    })
+
+
+    .state({
+      name: "parks",
+      url: "/parks",
+      templateUrl: "views/parks.template.html",
+      controller: "",
+      controllerAs: ""
     });
   }
 
