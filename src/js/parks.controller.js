@@ -7,12 +7,8 @@
   ParksController.$inject = ["ParkService"];
 
   function ParksController(ParkService){
-    console.log("in ParksController");
+    // console.log("in ParksController");
 
-    var vm = this;
-    console.log(vm);
-
-    this.parks = [];
 
     this.getParks = function getParks(){
       console.log("In getPark Function");
@@ -24,7 +20,6 @@
         console.log("Unable to communicate", xhr);
       });
     };
-
 
   }
 
