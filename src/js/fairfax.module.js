@@ -24,7 +24,27 @@
       templateUrl: "views/parks.template.html",
       controller: "",
       controllerAs: ""
+    })
+
+    .state({
+      name: "libraries",
+      url: "/libraries",
+      templateUrl: "views/libraries.template.html",
+      controller: "",
+      controllerAs: ""
+    })
+
+    .state({
+      name: "rec-centers",
+      url: "/rec-centers",
+      templateUrl: "views/rec.template.html",
+      controller: "",
+      controllerAs: ""
     });
+
+
+
+
   }
 
 
