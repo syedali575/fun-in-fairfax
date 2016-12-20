@@ -403,7 +403,8 @@ template {
   display: none; }
 
 body h1 {
-  color: #358e8a; }
+  color: #15817d;
+  font-family: cursive; }
 
 header {
   background-color: #e0a85d;
@@ -419,7 +420,8 @@ nav {
   nav ul {
     padding-left: 0; }
   nav li {
-    display: inline;
+    display: inline-block;
+    margin: 1%;
     list-style: none; }
   nav a {
     text-decoration: none;
