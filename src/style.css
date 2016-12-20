@@ -1,4 +1,20 @@
 body h1 {
   color: #358e8a; }
 
+header {
+  background-color: #e0a85d;
+  text-align: center; }
+
+nav {
+  background-color: #000000;
+  font-weight: lighter;
+  font-size: .75em; }
+  nav li {
+    display: inline;
+    list-style: none;
+    margin-right: 5%; }
+  nav a {
+    text-decoration: none;
+    color: #fbfbfb; }
+
 /*# sourceMappingURL=style.css.map */
