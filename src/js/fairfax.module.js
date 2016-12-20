@@ -22,8 +22,8 @@
       name: "parks",
       url: "/parks",
       templateUrl: "views/parks.template.html",
-      controller: "",
-      controllerAs: ""
+      controller: "ParksController",
+      controllerAs: "park"
     })
 
     .state({

@@ -22,8 +22,8 @@
       name: "parks",
       url: "/parks",
       templateUrl: "views/parks.template.html",
-      controller: "",
-      controllerAs: ""
+      controller: "ParksController",
+      controllerAs: "park"
     })
 
     .state({
@@ -62,15 +62,50 @@
   'use strict';
 
   angular.module("fairfax")
-  .contoller("ParksController", ParksController);
+  .controller("ParksController", ParksController);
 
   ParksController.$inject = ["ParkService"];
 
   function ParksController(ParkService){
     console.log("in ParksController");
 
+    var vm = this;
+    console.log(vm);
+
     this.parks = [];
 
+    this.getParks = function getParks(){
+      console.log("In getPark Function");
+      ParkService.parkList()
+      ;
+    };
+
+
+  }
+
+}());
+
+(function() {
+  'use strict';
+
+  angular.module("fairfax")
+  .factory("ParkService", ParkService);
+
+  ParkService.$inject = ["$http"];
+
+  function ParkService($http){
+    return {
+      parkList: parkList
+    };
+
+
+
+    function parkList(){
+      return $http({
+        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search?text=library&distance=5000&center=38.854,-77.357",
+        method: "GET"
+      });
+    }
 
   }
 
