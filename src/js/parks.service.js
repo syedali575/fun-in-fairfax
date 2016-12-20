@@ -15,8 +15,8 @@
 
     function parkList(){
       return $http({
-        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search?text=library&distance=5000&center=38.854,-77.357",
-        method: "GET"
+        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search?feature=parks&format=json",
+        method: "GET",
       });
     }
 

@@ -17,7 +17,12 @@
     this.getParks = function getParks(){
       console.log("In getPark Function");
       ParkService.parkList()
-      ;
+      .then(function sucessHandeler(data){
+        console.log("Its working", data);
+      })
+      .catch(function failHandeler(xhr){
+        console.log("Unable to communicate", xhr);
+      });
     };
 
 
