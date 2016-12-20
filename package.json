@@ -1,0 +1,22 @@
+{
+  "name": "fun-in-fairfax",
+  "version": "1.0.0",
+  "description": "Web application to access fun resources in Fairfax County VA; such as parks, libraries, recreational centers, etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syedali575/fun-in-fairfax.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/syedali575/fun-in-fairfax/issues"
+  },
+  "homepage": "https://github.com/syedali575/fun-in-fairfax#readme",
+  "dependencies": {
+    "angular": "^1.6.0"
+  }
+}
