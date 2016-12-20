@@ -100,6 +100,7 @@ module.exports = function(grunt){
   grunt.loadNpmTasks("grunt-contrib-connect");
 
 
+    grunt.registerTask('test', ['connect']);
 
   grunt.registerTask("default", ["clean", "jshint", "sass", "copy", "concat"]);
 // End of module
