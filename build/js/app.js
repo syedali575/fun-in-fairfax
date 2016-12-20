@@ -40,6 +40,14 @@
       templateUrl: "views/rec.template.html",
       controller: "",
       controllerAs: ""
+    })
+
+    .state({
+      name: "events",
+      url: "/events",
+      templateUrl: "views/events.template.html",
+      controller: "",
+      controllerAs: ""
     });
 
 
