@@ -39,7 +39,7 @@ module.exports = function(grunt){
           {
             expand: true,
             cwd: "src/",
-            src: "index.html",
+            src: "**/*.html",
             dest: "build/"
           }
         ]
@@ -84,6 +84,20 @@ module.exports = function(grunt){
         }
       }
     },
+    watch:{
+      js: {
+        files: ["src/**/*.js"],
+        tasks: ["js-build"]
+      },
+      sass:{
+        files:["src/**/*.scss"],
+        tasks:["css-build"]
+      },
+      html:{
+        files:["src/**/*.html"],
+        tasks:["copy:html"]
+      }
+    },
 
 
 
@@ -98,9 +112,15 @@ module.exports = function(grunt){
   grunt.loadNpmTasks("grunt-contrib-clean");
   grunt.loadNpmTasks("grunt-contrib-concat");
   grunt.loadNpmTasks("grunt-contrib-connect");
+  grunt.loadNpmTasks("grunt-contrib-watch");
 
 
-    grunt.registerTask('test', ['connect']);
+
+  grunt.registerTask('test', ['connect']);
+
+  grunt.registerTask('js-build', ["concat:js", "jshint"]);
+  grunt.registerTask('css-build', ["sass"]);
+
 
   grunt.registerTask("default", ["clean", "jshint", "sass", "copy", "concat"]);
 // End of module

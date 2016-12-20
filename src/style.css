@@ -4,6 +4,8 @@ body h1 {
 header {
   background-color: #e0a85d;
   text-align: center; }
+  header h1 {
+    margin-top: 0; }
 
 nav {
   background-color: #000000;
@@ -11,8 +13,7 @@ nav {
   font-size: .75em; }
   nav li {
     display: inline;
-    list-style: none;
-    margin-right: 5%; }
+    list-style: none; }
   nav a {
     text-decoration: none;
     color: #fbfbfb; }
