@@ -61,17 +61,57 @@
 (function() {
   'use strict';
 
-  // angular.module("fairfax")
-  // .controller("LibrariesController", LibrariesController);
-  //
-  // LibrariesController.$inject = ["LibrariesService"];
+  angular.module("fairfax")
+  .controller("LibraryController", LibraryController);
+
+  LibraryController.$inject = ["LibraryService"];
+
+  function LibraryController(LibraryService){
+
+    var vm = this;
+    vm.message = "";
+    vm.libraryData = [];
+
+    this.getLibrary = function getLibrary(){
+
+      navigator.geolocation.getCurrentPosition(function locationHandeler(location){
+        console.log(location);
 
 
 
-
+      });
+    };
+  }
 
 }());
 
+(function() {
+  'use strict';
+
+  angular.module("fairfax")
+  .factory("LibraryService", LibraryService);
+
+  LibraryService.$inject = ["$http"];
+
+  function LibraryService($http){
+    return {
+      libraryList: libraryList
+    };
+
+    function libraryList(coordinates){
+      return $http({
+        url: "http://www.fairfaxcounty.gov/FFXGISAPI",
+        method: "GET",
+        params: {
+          feature: "libraries",
+          format: "json",
+          center: coordinates.latitude + "," + coordinates.longitude,
+          distance: "10000"
+        }
+      });
+    }
+  }
+}());
 
 (function() {
   'use strict';
@@ -82,7 +122,6 @@
   ParksController.$inject = ["ParkService"];
 
   function ParksController(ParkService){
-    // console.log("in ParksController");
 
     var vm = this;
     vm.message = "";
@@ -91,19 +130,20 @@
     this.getParks = function getParks(){
 
       navigator.geolocation.getCurrentPosition(function locationHandeler(location) {
-      console.log(location);
+        console.log(location);
 
+        ParkService.parkList(location.coords)
+        .then(function sucessHandeler(data){
+          console.log("Its working", data);
 
-      ParkService.parkList(location.coords)
-      .then(function sucessHandeler(data){
-        console.log("Its working", data);
-        vm.parkData = data.data.searchResults.results;
-      })
-      .catch(function failHandeler(xhr){
-        console.log("Unable to communicate", xhr);
-        vm.message = "We are unable to communicate, please try again";
+          vm.parkData = data.data.searchResults.results;
+        })
+        .catch(function failHandeler(xhr){
+          console.log("Unable to communicate", xhr);
 
-      });
+          vm.message = "We are unable to communicate, please try again";
+
+        });
 
       });
 
@@ -125,7 +165,6 @@
     };
 
 
-
     function parkList(coordinates){
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
@@ -136,10 +175,7 @@
           center: coordinates.latitude + "," + coordinates.longitude,
           distance: "10000"
         }
-
       });
     }
-
   }
-
 }());

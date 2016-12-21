@@ -1,9 +1,8 @@
 <h1>Parks</h1>
 
-<p ng-repeat="park in park.message">
-  <!-- message to the user -->
+  <p>Paragraph about parks in Fairfax County</p>
 
-</p>
+<p ng-if="vm.message"></p>
 
 <ul>
   <li ng-repeat="park in park.parkData">
@@ -11,5 +10,5 @@
   </li>
 </ul>
 
-
-<button ng-click="park.getParks()" type="button" name="button">Submit Test</button>
+<label for="parks">Press this button to search for parks in your vicinity</label>
+<button id="parks" type="button" class="btn btn-success" ng-click="park.getParks()">Find Parks</button>

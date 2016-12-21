@@ -12,7 +12,6 @@
     };
 
 
-
     function parkList(coordinates){
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
@@ -23,10 +22,7 @@
           center: coordinates.latitude + "," + coordinates.longitude,
           distance: "10000"
         }
-
       });
     }
-
   }
-
 }());
