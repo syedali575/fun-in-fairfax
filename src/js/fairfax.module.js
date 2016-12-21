@@ -43,11 +43,11 @@
     })
 
     .state({
-      name: "events",
-      url: "/events",
-      templateUrl: "views/events.template.html",
-      controller: "",
-      controllerAs: ""
+      name: "shopping-centers",
+      url: "/shopping-centers",
+      templateUrl: "views/shopping.template.html",
+      controller: "ShoppingCenter",
+      controllerAs: "shop"
     });
 
 
