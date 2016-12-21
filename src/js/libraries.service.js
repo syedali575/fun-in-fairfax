@@ -13,13 +13,13 @@
 
     function libraryList(coordinates){
       return $http({
-        url: "http://www.fairfaxcounty.gov/FFXGISAPI",
+        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
         method: "GET",
         params: {
           feature: "libraries",
           format: "json",
           center: coordinates.latitude + "," + coordinates.longitude,
-          distance: "10000"
+          distance: "100000"
         }
       });
     }

@@ -30,8 +30,8 @@
       name: "libraries",
       url: "/libraries",
       templateUrl: "views/libraries.template.html",
-      controller: "",
-      controllerAs: ""
+      controller: "LibraryController",
+      controllerAs: "library"
     })
 
     .state({

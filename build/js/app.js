@@ -30,8 +30,8 @@
       name: "libraries",
       url: "/libraries",
       templateUrl: "views/libraries.template.html",
-      controller: "",
-      controllerAs: ""
+      controller: "LibraryController",
+      controllerAs: "library"
     })
 
     .state({
@@ -77,8 +77,18 @@
       navigator.geolocation.getCurrentPosition(function locationHandeler(location){
         console.log(location);
 
+        LibraryService.libraryList(location.coords)
+        .then(function(data){
+          console.log("Getting Libraries", data);
 
+          vm.libraryData = data.data.searchResults.results;
+        })
+        .catch(function failHandeler(xhr){
+          console.log("Unable to communicate", xhr);
 
+          vm.message = "We are unable to retrieve library list at this momment";
+        });
+        
       });
     };
   }
@@ -100,13 +110,13 @@
 
     function libraryList(coordinates){
       return $http({
-        url: "http://www.fairfaxcounty.gov/FFXGISAPI",
+        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
         method: "GET",
         params: {
           feature: "libraries",
           format: "json",
           center: coordinates.latitude + "," + coordinates.longitude,
-          distance: "10000"
+          distance: "100000"
         }
       });
     }

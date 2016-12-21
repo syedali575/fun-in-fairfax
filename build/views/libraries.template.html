@@ -1,1 +1,14 @@
 <h1>Libraries</h1>
+
+<p>Paragraph about libraries in Fairfax County</p>
+
+
+
+<ul>
+  <li ng-repeat="library in library.libraryData">
+    {{library.doc.metadata.label}}
+  </li>
+</ul>
+
+<label for="library">Press this button to search for libraries in your vicinity</label>
+<button id="library" type="button" class="btn btn-success" ng-click="library.getLibrary()">Find Libraries</button>
