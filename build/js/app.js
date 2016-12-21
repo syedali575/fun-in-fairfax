@@ -1,6 +1,66 @@
 (function() {
   'use strict';
 
+  angular.module("fairfax")
+  .controller("CenterController", CenterController);
+
+  CenterController.$inject = ["CenterService"];
+
+  function CenterController(CenterService){
+
+    var vm = this;
+    vm.centerData = [];
+
+    this.getCenter = function getCenter(){
+
+      navigator.geolocation.getCurrentPosition(function locationHandeler(location){
+        console.log(location);
+
+        CenterService.getCenter(location.coords)
+        .then(function sucessHandeler(data){
+          console.log("Getting Centers", data);
+        })
+        .catch(function failHandeler(xhr){
+          console.log("Unable to communicate", xhr);
+        });
+
+
+      });
+    };
+  }
+}());
+
+(function() {
+  'use strict';
+
+  angular.module("fairfax")
+  .factory("CenterService", CenterService);
+
+  CenterService.$inject = ["$http"];
+
+  function CenterService($http){
+    return {
+      centerList: centerList
+    };
+
+    function centerList(coordinates){
+      return $http({
+        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
+        method: "GET",
+        params: {
+          features: "communitycenters",
+          format: "json",
+          center: coordinates.latitude + "," + coordinates.longitude,
+          distance: "100000"
+        }
+      });
+    }
+  }
+}());
+
+(function() {
+  'use strict';
+
   angular.module("fairfax", ["ui.router"])
     .config(routerConfig);
 
@@ -78,7 +138,7 @@
         console.log(location);
 
         LibraryService.libraryList(location.coords)
-        .then(function(data){
+        .then(function sucessHandeler(data){
           console.log("Getting Libraries", data);
 
           vm.libraryData = data.data.searchResults.results;
@@ -88,11 +148,10 @@
 
           vm.message = "We are unable to retrieve library list at this momment";
         });
-        
+
       });
     };
   }
-
 }());
 
 (function() {

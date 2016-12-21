@@ -18,7 +18,7 @@
         console.log(location);
 
         LibraryService.libraryList(location.coords)
-        .then(function(data){
+        .then(function sucessHandeler(data){
           console.log("Getting Libraries", data);
 
           vm.libraryData = data.data.searchResults.results;
@@ -28,9 +28,8 @@
 
           vm.message = "We are unable to retrieve library list at this momment";
         });
-        
+
       });
     };
   }
-
 }());
