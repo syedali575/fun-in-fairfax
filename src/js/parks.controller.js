@@ -15,6 +15,7 @@
       ParkService.parkList()
       .then(function sucessHandeler(data){
         console.log("Its working", data);
+        console.log(data.data.searchResults.results[0].doc.metadata.label);
       })
       .catch(function failHandeler(xhr){
         console.log("Unable to communicate", xhr);
