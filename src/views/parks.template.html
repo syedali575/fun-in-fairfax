@@ -1,4 +1,15 @@
 <h1>Parks</h1>
 
+<p ng-repeat="park in park.message">
+  <!-- message to the user -->
+
+</p>
+
+<ul>
+  <li ng-repeat="park in park.parkData">
+    {{park.doc.metadata.label}} PARK
+  </li>
+</ul>
+
 
 <button ng-click="park.getParks()" type="button" name="button">Submit Test</button>
