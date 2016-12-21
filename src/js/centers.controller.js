@@ -16,9 +16,12 @@
       navigator.geolocation.getCurrentPosition(function locationHandeler(location){
         console.log(location);
 
-        CenterService.getCenter(location.coords)
+        CenterService.centerList(location.coords)
         .then(function sucessHandeler(data){
           console.log("Getting Centers", data);
+
+          vm.centerData = data.data.searchResults.results;
+
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);

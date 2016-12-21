@@ -16,7 +16,7 @@
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
         method: "GET",
         params: {
-          features: "communitycenters",
+          feature: "communitycenters",
           format: "json",
           center: coordinates.latitude + "," + coordinates.longitude,
           distance: "100000"

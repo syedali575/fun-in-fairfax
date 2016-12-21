@@ -68,7 +68,7 @@ module.exports = function(grunt){
             cwd: "node_modules/angular-ui-router/release/",
             src: ["angular-ui-router.js"],
             dest: "build/js"
-          }  
+          }
         ]
 
       },
@@ -77,7 +77,7 @@ module.exports = function(grunt){
 
     concat: {
       js: {
-        src: ["src/js/**/*.js"],
+        src: ["src/js/fairfax.module.js", "src/js/**/*.js"],
         dest: "build/js/app.js"
       }
     },
