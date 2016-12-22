@@ -19,7 +19,7 @@
 
         ParkService.parkList(location.coords)
         .then(function sucessHandeler(data){
-          console.log("Its working", data);
+          console.log("In Controller", data);
 
           vm.parkData = data;
         })

@@ -129,7 +129,7 @@ module.exports = function(grunt){
           type: "text-summary"
         }
       },
-      parkService:{
+      fairfax:{
         options:{
           files: [
             "node_modules/angular/angular.js",
@@ -138,7 +138,8 @@ module.exports = function(grunt){
             "src/js/fairfax.module.js",
             "src/js/parks.controller.js",
             "src/js/parks.service.js",
-            "test/specs/parks.service.spec.js"
+            "test/specs/parks.service.spec.js",
+            "test/specs/parks.controller.spec.js"
           ]
         }
       }

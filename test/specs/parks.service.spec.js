@@ -51,9 +51,9 @@
       $httpBackend.flush();
     });
 
-    it('no args');
-    it('right args');
-    it('wrong args');
+    // it('no args');
+    // it('right args');
+    // it('wrong args');
 
 
   });

@@ -18,6 +18,12 @@
      */
     function parkList(coordinates){
       // TODO check coordinates
+      if (!coordinates.latitude || !coordinates.longitude) {
+        return
+// TODO: I need to figure out how to return promise here
+        ;
+      }
+
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
         method: "GET",
