@@ -137,7 +137,8 @@ module.exports = function(grunt){
             "node_modules/angular-mocks/angular-mocks.js",
             "src/js/fairfax.module.js",
             "src/js/parks.controller.js",
-            "src/js/parkService"
+            "src/js/parks.service.js",
+            "test/specs/parks.service.spec.js"
           ]
         }
       }
