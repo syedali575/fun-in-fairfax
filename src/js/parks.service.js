@@ -22,7 +22,11 @@
           center: coordinates.latitude + "," + coordinates.longitude,
           distance: "10000"
         }
+      })
+      .then(function successHandeler(response){
+        return response.data.searchResults.results;
       });
     }
+
   }
 }());

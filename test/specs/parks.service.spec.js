@@ -12,9 +12,6 @@
 
   beforeEach(module("fairfax"));
 
-  beforeEach(module(function($provide){
-    $provide.value("ParkService");
-  }));
 
   beforeEach(inject(function(_$rootScope_, _$httpBackend_, _ParkService_){
     ParkService = _ParkService_;
@@ -29,17 +26,29 @@
     });
 
     $httpBackend
-    .whenGET("views/parks.template.html")
-    .respond("park template");
+    .whenGET("views/home.template.html")
+    .respond("home template");
 
   }));
 
   it("should retrieve list of parks", function(doneCallback){
 
-    var result = ParkService.parkList(coordinates);
-    expect(data.data.searchResults.results).to.be.a("object");
+    var result = ParkService.parkList({latitude: 12.3456, longitude: 12.3456});
 
+    expect(result).to.be.an("object");
+    expect(result.then).to.be.a("function");
+    // TODO: expect catch
 
+    result
+      .then(function(data){
+        // TODO data assertions
+        expect(data).to.be.a("array");
+        doneCallback();
+      })
+      // TODO what if it fails? handle catch!
+      ;
+
+    $httpBackend.flush();
   });
 
 

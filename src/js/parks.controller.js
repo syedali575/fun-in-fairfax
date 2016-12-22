@@ -21,7 +21,7 @@
         .then(function sucessHandeler(data){
           console.log("Its working", data);
 
-          vm.parkData = data.data.searchResults.results;
+          vm.parkData = data;
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);

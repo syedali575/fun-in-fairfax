@@ -208,7 +208,7 @@
         .then(function sucessHandeler(data){
           console.log("Its working", data);
 
-          vm.parkData = data.data.searchResults.results;
+          vm.parkData = data;
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);
@@ -247,7 +247,11 @@
           center: coordinates.latitude + "," + coordinates.longitude,
           distance: "10000"
         }
+      })
+      .then(function successHandeler(response){
+        return response.data.searchResults.results;
       });
     }
+
   }
 }());
