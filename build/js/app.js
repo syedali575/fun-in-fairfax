@@ -236,8 +236,13 @@
       parkList: parkList
     };
 
-
+    /**
+     * [This function retrieve list of parks based on users geo position]
+     * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
+     * @return {Promise}             [description]
+     */
     function parkList(coordinates){
+      // TODO check coordinates
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
         method: "GET",
@@ -249,6 +254,7 @@
         }
       })
       .then(function successHandeler(response){
+        console.log("path",response.data);
         return response.data.searchResults.results;
       });
     }

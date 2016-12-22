@@ -121,7 +121,7 @@ module.exports = function(grunt){
         browsers: ["PhantomJS"],
         singleRun: true,
 
-        preprocessser: {
+        preprocessors: {
           "src/js/**/*.js": ["coverage"]
         },
         reporters: ["dots", "coverage"],
