@@ -102,12 +102,47 @@ module.exports = function(grunt){
       html:{
         files:["src/**/*.html"],
         tasks:["copy:html"]
+      },
+
+      test:{
+        files: ["test/specs/**/*.js"],
+        tasks: ["test"]
       }
     },
 
+    karma:{
+      options: {
+        frameworks: ["mocha", "chai"],
+        client: {
+          mocha: {
+            ui: "bdd"
+          }
+        },
+        browsers: ["PhantomJS"],
+        singleRun: true,
 
+        preprocessser: {
+          "src/js/**/*.js": ["coverage"]
+        },
+        reporters: ["dots", "coverage"],
+        coverageReporter: {
+          type: "text-summary"
+        }
+      },
+      parkService:{
+        options:{
+          files: [
+            "node_modules/angular/angular.js",
+            "node_modules/angular-ui-router/release/angular-ui-router.js",
+            "node_modules/angular-mocks/angular-mocks.js",
+            "src/js/fairfax.module.js",
+            "src/js/parks.controller.js",
+            "src/js/parkService"
+          ]
+        }
+      }
 
-
+    }
 
   // End of Config
   });
@@ -119,10 +154,11 @@ module.exports = function(grunt){
   grunt.loadNpmTasks("grunt-contrib-concat");
   grunt.loadNpmTasks("grunt-contrib-connect");
   grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.loadNpmTasks("grunt-karma");
 
 
 
-  grunt.registerTask('test', ['connect']);
+  grunt.registerTask('test', ['connect', "karma"]);
 
   grunt.registerTask('js-build', ["concat:js", "jshint"]);
   grunt.registerTask('css-build', ["sass"]);
