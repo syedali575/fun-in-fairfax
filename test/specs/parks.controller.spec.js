@@ -17,15 +17,13 @@
     beforeEach(inject(function($controller, $q){
 
       mockParkService.parkList = function(){
-        return $q.resolve( [
+        return $q.resolve(
           [{doc:{metadata:{label: "SKYLINE"}}}]
-        ]);
+        );
       };
-
-
-
       ParksController = $controller("ParksController");
     }));
+
 
     it("Should have correct scope variables", function(){
       expect(ParksController.parkData).to.be.an("array");
@@ -34,6 +32,11 @@
       expect(ParksController.message.length).to.equal(0);
     });
 
+    it("Should receive list of parks form service", function(){
+      var result = ParksController.getParks();
+      expect(result).to.be.undefined;
+
+    });
 
 
   });

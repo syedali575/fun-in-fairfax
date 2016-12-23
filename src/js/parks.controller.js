@@ -12,6 +12,10 @@
     vm.message = "";
     vm.parkData = [];
 
+    /**
+     * [getParks description]
+     * @return {[type]} [description]
+     */
     this.getParks = function getParks(){
 
       navigator.geolocation.getCurrentPosition(function locationHandeler(location) {
@@ -22,6 +26,7 @@
           console.log("In Controller", data);
 
           vm.parkData = data;
+          console.log(vm.parkData, "Data in controller for html");
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);

@@ -199,6 +199,10 @@
     vm.message = "";
     vm.parkData = [];
 
+    /**
+     * [getParks description]
+     * @return {[type]} [description]
+     */
     this.getParks = function getParks(){
 
       navigator.geolocation.getCurrentPosition(function locationHandeler(location) {
@@ -209,6 +213,7 @@
           console.log("In Controller", data);
 
           vm.parkData = data;
+          console.log(vm.parkData, "Data in controller for html");
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);
@@ -243,14 +248,9 @@
      */
     function parkList(coordinates){
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
-        console.log("I'm in if else statement in park list");
+        // console.log("I'm in if else statement in park list");
         return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
       }
-      // else {
-      //   return $q.resolve( "Resolving" );
-      // }
-
-
 
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
