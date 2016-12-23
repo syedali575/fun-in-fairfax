@@ -29,7 +29,7 @@
 
     }));
 
-    it("Should retrieve list of parks", function(doneCallback){
+    it("Should retrieve list of parks, if an object with latitude and longitude is provided as argument", function(doneCallback){
       var result = ParkService.parkList({latitude: 12.3456, longitude: 12.3456});
 
       expect(result).to.be.an("object");
@@ -62,32 +62,22 @@
       expect(result.catch).to.be.a("function");
 
       result
-      .then(function(data){
-        console.log(data);
-        doneCallback();
-      })
+        .then(function(data){
+          console.log("In .then of my no argument test",data);
+          doneCallback("This should not happen");
+        })
         .catch(function(error){
-          expect(error).to.be.a("string");
-          expect(error).to.equal("You must provide an object with latitude and longitude properties");
+          console.log("In my .catch of no argument test");
+          expect(error).to.be.an.instanceof(Error);
+          expect(error.message).to.equal("You must provide an object with latitude and longitude properties");
 
           doneCallback();
-
       });
 
-        
+      $rootScope.$digest();
     });
 
 
-
-
-    // it("Should give an error message if wrong argument is provided", function(){
-    //   var result = ParkService.parkList([1,2,3]);
-    //
-    //
-    //
-    //   result
-    //   .catch();
-    // });
 
 
     // it('right args');

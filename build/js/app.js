@@ -242,13 +242,13 @@
      * @return {Promise}             [description]
      */
     function parkList(coordinates){
-      // TODO check coordinates
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
+        console.log("I'm in if else statement in park list");
         return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
       }
-      else {
-        return $q.resolve( "Resolving" );
-      }
+      // else {
+      //   return $q.resolve( "Resolving" );
+      // }
 
 
 
