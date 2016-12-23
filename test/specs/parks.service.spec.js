@@ -63,11 +63,11 @@
 
       result
         .then(function(data){
-          console.log("In .then of my no argument test",data);
+          // console.log("In .then of my no argument test",data);
           doneCallback("This should not happen");
         })
         .catch(function(error){
-          console.log("In my .catch of no argument test");
+          // console.log("In my .catch of no argument test");
           expect(error).to.be.an.instanceof(Error);
           expect(error.message).to.equal("You must provide an object with latitude and longitude properties");
 
@@ -80,8 +80,32 @@
 
 
 
-    // it('right args');
-    // it('wrong args');
+    it("Should provide an error message if incorrect argument is provided", function(doneCallback){
+      var result = ParkService.parkList("apples");
+
+      expect(result).to.be.a("object");
+      expect(result.then).to.be.a("function");
+      expect(result.catch).to.be.a("function");
+
+      result
+      .then(function(data){
+        console.log("In my .then of wrong argument test3", data);
+        doneCallback();
+      })
+      .catch(function(error){
+        console.log("In my .catch of wrong argument test3", error);
+        expect(error).to.be.an.instanceof(Error);
+        expect(error.message).to.equal("You must provide an object with latitude and longitude properties");
+
+
+        doneCallback();
+      });
+
+      $rootScope.$digest();
+    });
+
+
+
 
 
   });
