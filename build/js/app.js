@@ -246,6 +246,11 @@
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
         return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
       }
+      else {
+        return $q.resolve( "Resolving" );
+      }
+
+
 
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",

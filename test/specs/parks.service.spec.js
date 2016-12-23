@@ -29,7 +29,7 @@
 
     }));
 
-    it("should retrieve list of parks", function(doneCallback){
+    it("Should retrieve list of parks", function(doneCallback){
       var result = ParkService.parkList({latitude: 12.3456, longitude: 12.3456});
 
       expect(result).to.be.an("object");
@@ -54,25 +54,42 @@
 
 
 
-    it("should provide an error message if no arguments are provided", function(){
+    it("Should provide an error message if no arguments are provided", function(doneCallback){
       var result = ParkService.parkList();
 
       expect(result).to.be.a("object");
+      expect(result.then).to.be.a("function");
+      expect(result.catch).to.be.a("function");
 
       result
-      .catch(function(error){
-        expect(error).to.be.a("string");
-        expect(error).to.equal("You must provide an object with latitude and longitude properties");
-      })
       .then(function(data){
-        expect(data).to.be.a("array");
-        expect(data[0].doc.metadata.label).to.equal("SKYLINE");
+        console.log(data);
+        doneCallback();
+      })
+        .catch(function(error){
+          expect(error).to.be.a("string");
+          expect(error).to.equal("You must provide an object with latitude and longitude properties");
+
+          doneCallback();
+
       });
 
-
+        
     });
 
-    // it('no args');
+
+
+
+    // it("Should give an error message if wrong argument is provided", function(){
+    //   var result = ParkService.parkList([1,2,3]);
+    //
+    //
+    //
+    //   result
+    //   .catch();
+    // });
+
+
     // it('right args');
     // it('wrong args');
 
