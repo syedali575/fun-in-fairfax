@@ -51,6 +51,27 @@
       $httpBackend.flush();
     });
 
+
+
+
+    it("should provide an error message if no arguments are provided", function(){
+      var result = ParkService.parkList();
+
+      expect(result).to.be.a("object");
+
+      result
+      .catch(function(error){
+        expect(error).to.be.a("string");
+        expect(error).to.equal("You must provide an object with latitude and longitude properties");
+      })
+      .then(function(data){
+        expect(data).to.be.a("array");
+        expect(data[0].doc.metadata.label).to.equal("SKYLINE");
+      });
+
+
+    });
+
     // it('no args');
     // it('right args');
     // it('wrong args');

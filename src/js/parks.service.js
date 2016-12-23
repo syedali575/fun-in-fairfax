@@ -4,9 +4,9 @@
   angular.module("fairfax")
   .factory("ParkService", ParkService);
 
-  ParkService.$inject = ["$http"];
+  ParkService.$inject = ["$http", "$q"];
 
-  function ParkService($http){
+  function ParkService($http, $q){
     return {
       parkList: parkList
     };
@@ -18,10 +18,8 @@
      */
     function parkList(coordinates){
       // TODO check coordinates
-      if (!coordinates.latitude || !coordinates.longitude) {
-        return
-// TODO: I need to figure out how to return promise here
-        ;
+      if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
+        return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
       }
 
       return $http({
