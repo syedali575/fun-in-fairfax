@@ -50,7 +50,7 @@
 
       $httpBackend.flush();
     });
-
+    
 
 
 
@@ -62,16 +62,16 @@
       expect(result.catch).to.be.a("function");
 
       result
-        .then(function(data){
-          // console.log("In .then of my no argument test2",data);
-          doneCallback("This should not happen");
-        })
-        .catch(function(error){
-          // console.log("In my .catch of no argument test2");
-          expect(error).to.be.an.instanceof(Error);
-          expect(error.message).to.equal("You must provide an object with latitude and longitude properties");
+      .then(function(data){
+        // console.log("In .then of my no argument test2",data);
+        doneCallback("This should not happen");
+      })
+      .catch(function(error){
+        // console.log("In my .catch of no argument test2");
+        expect(error).to.be.an.instanceof(Error);
+        expect(error.message).to.equal("You must provide an object with latitude and longitude properties");
 
-          doneCallback();
+        doneCallback();
       });
 
       $rootScope.$digest();
@@ -103,10 +103,6 @@
 
       $rootScope.$digest();
     });
-
-
-
-
 
   });
 }());

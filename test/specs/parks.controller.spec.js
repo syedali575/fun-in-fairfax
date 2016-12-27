@@ -32,11 +32,11 @@
       expect(ParksController.message.length).to.equal(0);
     });
 
-    it("Should receive list of parks form service", function(){
-      var result = ParksController.getParks();
-      expect(result).to.be.undefined;
-
-    });
+    // it("Should receive list of parks form service", function(){
+    //   var result = ParksController.getParks();
+    //   expect(result).to.be.undefined;
+    //
+    // });
 
 
   });
