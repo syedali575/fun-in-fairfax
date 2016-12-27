@@ -13,9 +13,9 @@
     vm.parkData = [];
 
     /**
-     * [getParks description]
-     * @return {[type]} [description]
-     */
+    * [getParks description]
+    * @return {[type]} [description]
+    */
     this.getParks = function getParks(){
 
       navigator.geolocation.getCurrentPosition(function locationHandeler(location) {

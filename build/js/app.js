@@ -46,7 +46,7 @@
       name: "shopping-centers",
       url: "/shopping-centers",
       templateUrl: "views/shopping.template.html",
-      controller: "ShoppingCenter",
+      controller: "ShopController",
       controllerAs: "shop"
     });
 
@@ -200,9 +200,9 @@
     vm.parkData = [];
 
     /**
-     * [getParks description]
-     * @return {[type]} [description]
-     */
+    * [getParks description]
+    * @return {[type]} [description]
+    */
     this.getParks = function getParks(){
 
       navigator.geolocation.getCurrentPosition(function locationHandeler(location) {
@@ -269,4 +269,87 @@
     }
 
   }
+}());
+
+(function() {
+  'use strict';
+
+  angular.module("fairfax")
+  .controller("ShopController", ShopController);
+
+  ShopController.$inject = ["ShopService"];
+
+  function ShopController(ShopService){
+
+    var vm = this;
+    vm.shopData = [];
+
+
+    /**
+    * Locates currrent longitude and Latitude and passes them as argument while
+    * excuting funtion to make ajax call to retrieve list of shop in vicinity.
+    * @return {Void} [description]
+    */
+    this.getShop = function getShop(){
+
+      navigator.geolocation.getCurrentPosition(function locationHandeler(location){
+        console.log(location);
+
+        ShopService.shopList(location.coords)
+        .then(function successHandeler(data){
+          console.log("In Shop Controller", data);
+          vm.shopData = data;
+        })
+        .catch(function failHandeler(xhr){
+          console.log("Unable to Communicate", xhr);
+        });
+
+      });
+    };
+  }
+
+}());
+
+(function() {
+  'use strict';
+
+  angular.module("fairfax")
+  .factory("ShopService", ShopService);
+
+
+  ShopService.$inject = ["$http", "$q"];
+
+  function ShopService($http, $q){
+    return {
+      shopList: shopList
+    };
+
+
+    /**
+     * [This function retrieves list of shopping centers in Fairfax County by location of user]
+     * @param  {Object} coordinates [object coordinates with two properties: latitude and longitude]
+     * @return {Promise}             [description]
+     */
+    function shopList(coordinates){
+      if (!coordinates  || !coordinates.latitude || !coordinates.longitude){
+        return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
+      }
+
+      return $http({
+        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
+        method: "GET",
+        params:{
+          feature: "shoppingcenters",
+          format: "json",
+          center: coordinates.latitude + "," + coordinates.longitude,
+          distance: "10000"
+        }
+      })
+      .then(function successHandeler(response){
+        console.log(response);
+        return response.data.searchResults.results;
+      });
+    }
+  }
+
 }());

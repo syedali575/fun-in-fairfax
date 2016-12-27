@@ -46,7 +46,7 @@
       name: "shopping-centers",
       url: "/shopping-centers",
       templateUrl: "views/shopping.template.html",
-      controller: "ShoppingCenter",
+      controller: "ShopController",
       controllerAs: "shop"
     });
 
