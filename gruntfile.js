@@ -140,6 +140,8 @@ module.exports = function(grunt){
             "src/js/parks.service.js",
             "test/specs/parks.service.spec.js",
             "test/specs/parks.controller.spec.js",
+            "src/js/libraries.controller.js",
+            "src/js/libraries.service.js",
             "test/specs/libraries.service.spec.js",
             "test/specs/libraries.controller.spec.js"
 
