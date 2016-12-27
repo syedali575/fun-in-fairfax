@@ -6,13 +6,13 @@ body{
   }
 
   h3 {
-    color: #f55656;
+    color: $themeColor3;
     font-family: cursive;
     margin-left: 5%;
   }
 
   img {
-    width: 100%;
+    width: $imageMobileWidth;
   }
 
 
