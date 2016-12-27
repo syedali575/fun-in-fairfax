@@ -50,7 +50,7 @@
 
       $httpBackend.flush();
     });
-    
+
 
 
 
@@ -63,7 +63,7 @@
 
       result
       .then(function(data){
-        // console.log("In .then of my no argument test2",data);
+        console.log("In .then of my no argument test2",data);
         doneCallback("This should not happen");
       })
       .catch(function(error){
