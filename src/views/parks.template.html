@@ -10,8 +10,8 @@
 
 <p ng-if="vm.message"></p>
 
-<ul>
-  <li ng-repeat="park in park.parkData">
+<ul class="categoryList">
+  <li ng-repeat="park in park.parkData" >
     {{park.doc.metadata.label}}
   </li>
 </ul>

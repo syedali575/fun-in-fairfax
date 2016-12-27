@@ -427,4 +427,9 @@ nav {
     text-decoration: none;
     color: #fbfbfb; }
 
+.categoryList li {
+  color: #15817d;
+  text-transform: lowercase;
+  font-size: 0.9em; }
+
 /*# sourceMappingURL=styles.css.map */
