@@ -432,8 +432,8 @@ header {
 
 nav {
   background-color: #000000;
-  font-weight: 250;
-  font-size: .90em; }
+  font-weight: 200;
+  font-size: .95em; }
   nav ul {
     padding-left: 0; }
   nav li {
@@ -456,7 +456,8 @@ nav {
     display: block;
     margin: 0 auto;
     margin-top: 2%;
-    margin-bottom: 2%; }
+    margin-bottom: 2%;
+    padding: 5px; }
 
 @media (min-width: 500px) {
   .categoryImage {
@@ -470,12 +471,14 @@ nav {
 
   li.alert.alert-success {
     display: block;
-    clear: both;
-    padding: 5px; }
+    clear: both; }
 
   button.btn.btn-primary {
     display: block;
-    clear: both; } }
+    clear: both; }
+
+  nav {
+    font-size: 1.1em; } }
 @media (min-width: 800px) {
   .categoryImage {
     width: 45%; } }
