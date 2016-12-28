@@ -411,6 +411,11 @@ body h3 {
   margin-left: 5%; }
 body img {
   width: 100%; }
+body button.btn.btn-primary {
+  display: block;
+  margin: 0 auto;
+  margin-top: 5%;
+  margin-bottom: 5%; }
 
 header {
   background-color: #e0a85d;
@@ -421,7 +426,7 @@ header {
 
 nav {
   background-color: #000000;
-  font-weight: lighter;
+  font-weight: 250;
   font-size: .90em; }
   nav ul {
     padding-left: 0; }
@@ -433,9 +438,18 @@ nav {
     text-decoration: none;
     color: #fbfbfb; }
 
-.categoryList li {
-  color: #15817d;
-  text-transform: lowercase;
-  font-size: 0.9em; }
+.categoryList {
+  padding-left: 0; }
+  .categoryList li {
+    color: #000000;
+    text-transform: lowercase;
+    font-size: 0.9em;
+    list-style: none;
+    width: 70%;
+    height: 2%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 2%;
+    margin-bottom: 2%; }
 
 /*# sourceMappingURL=styles.css.map */

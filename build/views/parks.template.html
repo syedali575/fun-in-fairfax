@@ -11,12 +11,12 @@
 <p ng-if="vm.message"></p>
 
 <ul class="categoryList">
-  <li ng-repeat="park in park.parkData" >
+  <li ng-repeat="park in park.parkData" class="alert alert-success" role="alert">
     {{park.doc.metadata.label}}
   </li>
 </ul>
 
-<button id="parks" type="button" ng-click="park.getParks()">Find Parks in your vicinity</button>
+<button type="button" ng-click="park.getParks()" type="button" class="btn btn-primary">Find Parks</button>
 
 
 

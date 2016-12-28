@@ -5,9 +5,9 @@
 <p>Paragraph about shopping centers in Fairfax County</p>
 
 <ul class="categoryList">
-  <li ng-repeat="shop in shop.shopData" >
+  <li ng-repeat="shop in shop.shopData" class="alert alert-success" role="alert">
       {{shop.doc.metadata.label}}
   </li>
 </ul>
 
-<button ng-click="shop.getShop()">Find Shopping Centers</button>
+<button ng-click="shop.getShop()" type="button" class="btn btn-primary">Find Shopping Centers</button>

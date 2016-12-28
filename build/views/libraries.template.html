@@ -7,10 +7,9 @@
 
 
 <ul class="categoryList">
-  <li ng-repeat="library in library.libraryData" >
+  <li ng-repeat="library in library.libraryData" class="alert alert-success" role="alert">
     {{library.doc.metadata.label}}
   </li>
 </ul>
 
-<label for="library">Press this button to search for libraries in your vicinity</label>
-<button id="library" type="button" ng-click="library.getLibrary()">Find Libraries</button>
+<button ng-click="library.getLibrary()" type="button" class="btn btn-primary">Find Libraries</button>

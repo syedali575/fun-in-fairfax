@@ -1,10 +1,19 @@
 .categoryList{
+  padding-left: 0;
 
 
   li{
-    color: $themeFontColor2;
+    color: $themeColor2;
     text-transform: lowercase;
     font-size: $themeFontSize1;
+    list-style: none;
+    width: $listMobileWidth;
+    height: 2%;
+    display: block;
+    margin: 0 auto;
+    margin-top: $listMobileMargin;
+    margin-bottom: $listMobileMargin;
+
 
 
   }

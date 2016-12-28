@@ -6,12 +6,11 @@
 <p>Paragraph about Recreational Ceters in Fairfax County</p>
 
 <ul class="categoryList">
-  <li ng-repeat="center in center.centerData" >
+  <li ng-repeat="center in center.centerData" class="alert alert-success" role="alert">
     {{center.doc.metadata.label}}
   </li>
 </ul>
 
 
 
-<label for="center">Press this button to search for parks in your vicinity</label>
-<button id="center" ng-click="center.getCenter()" type="button" name="button">Find Rec-Centers</button>
+<button id="center" ng-click="center.getCenter()" type="button" class="btn btn-primary">Find Rec-Centers</button>
