@@ -413,9 +413,11 @@ body img {
   width: 100%; }
 body button.btn.btn-primary {
   display: block;
-  margin: 0 auto;
+  margin-left: 5%;
   margin-top: 5%;
   margin-bottom: 5%; }
+body p {
+  margin: 5%; }
 
 header {
   background-color: #e0a85d;
@@ -451,5 +453,23 @@ nav {
     margin: 0 auto;
     margin-top: 2%;
     margin-bottom: 2%; }
+
+@media (min-width: 500px) {
+  .categoryImage {
+    float: left;
+    width: 40%;
+    margin-right: 2%;
+    margin-bottom: 3%; }
+
+  body p {
+    margin: 0%; }
+
+  li.alert.alert-success {
+    display: block;
+    clear: both; }
+
+  button.btn.btn-primary {
+    display: block;
+    clear: both; } }
 
 /*# sourceMappingURL=styles.css.map */

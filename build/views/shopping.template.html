@@ -1,8 +1,13 @@
 <h3>Shopping Centers</h3>
 
-<img src="../img/shopping2.jpg" alt="Shopping Center Image">
+<img class="categoryImage" src="../img/shopping2.jpg" alt="Shopping Center Image">
 
-<p>Paragraph about shopping centers in Fairfax County</p>
+
+<p>Fairfax County offers a beautiful collection of parks and out door activities
+  to its residents and visitors. Visitors can enjoy many activities such as hiking , bicycling,
+  picnic, camping, boating, fishing, train rides, kayaking, etc. Fairfax County facilities are well maintained
+  and hence very well utilized by its residents.
+</p>
 
 <ul class="categoryList">
   <li ng-repeat="shop in shop.shopData" class="alert alert-success" role="alert">
@@ -11,3 +16,10 @@
 </ul>
 
 <button ng-click="shop.getShop()" type="button" class="btn btn-primary">Find Shopping Centers</button>
+
+<p>Other useful links to plan your trip to Fairfax County parks.</p>
+  <ul>
+    <li><a href="https://darksky.net">Weather</a></li>
+    <li><a href="http://www.campinglife.com/feature-stories/101-camping-tips/">Camping 101</a></li>
+    <li><a href="https://www.takemefishing.org/how-to-fish/how-to-catch-fish/">Fishing</a></li>
+  </ul>

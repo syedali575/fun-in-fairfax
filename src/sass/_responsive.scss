@@ -1,0 +1,31 @@
+
+@media (min-width: 500px) {
+  .categoryImage  {
+    float: left;
+    width: 40%;
+    margin-right: 2%;
+    margin-bottom: 3%;
+  }
+
+  body p {
+    margin: 0%;
+  }
+
+  li.alert.alert-success {
+    display: block;
+    clear: both;
+  }
+
+  button.btn.btn-primary {
+    display:block;
+    clear: both;
+  }
+
+
+}
+
+// @media (min-width: 800px) {
+//     .categoryImage {
+//     width: 50%;
+//   }
+// }
