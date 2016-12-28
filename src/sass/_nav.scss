@@ -2,7 +2,7 @@ nav{
   background-color: $themeColor2;
   font-weight: 250;
   font-size: .90em;
-  
+
 
   ul{
     padding-left: 0;
@@ -12,6 +12,7 @@ nav{
     display: inline-block;
     margin: 1%;
     list-style: none;
+    // font-family: cursive;
 
   }
 
@@ -19,6 +20,8 @@ nav{
     text-decoration: none;
     color: $themeFontColor1;
   }
+
+
 
 
 }
