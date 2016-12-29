@@ -13,13 +13,15 @@ body{
     margin-left: $marginSetting1;
   }
 
+  .categoryList {
+    width: $imageMobileWidth;
+  }
+
   img {
     width: $imageMobileWidth;
   }
 
-  .home {
-    height: 30%;
-  }
+
 
   button.btn.btn-primary {
     display:block;
