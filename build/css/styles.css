@@ -496,6 +496,7 @@ nav {
     height: 110%;
     display: block; } }
 footer {
-  clear: both; }
+  clear: both;
+  margin-top: 2%; }
 
 /*# sourceMappingURL=styles.css.map */
