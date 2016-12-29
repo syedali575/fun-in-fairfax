@@ -413,6 +413,8 @@ body h3 {
   margin-left: 5%; }
 body img {
   width: 100%; }
+body .home {
+  height: 30%; }
 body button.btn.btn-primary {
   display: block;
   margin-left: 5%;
@@ -466,6 +468,10 @@ nav {
     margin-right: 2%;
     margin-bottom: 2%; }
 
+  .home {
+    width: 100%;
+    height: 120%; }
+
   body p {
     margin: 0% 2% 0% 2%; }
 
@@ -481,6 +487,15 @@ nav {
     font-size: 1.1em; } }
 @media (min-width: 800px) {
   .categoryImage {
-    width: 45%; } }
+    width: 45%; }
+
+  .home {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    height: 110%;
+    display: block; } }
+footer {
+  clear: both; }
 
 /*# sourceMappingURL=styles.css.map */

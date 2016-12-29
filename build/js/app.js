@@ -114,7 +114,7 @@
           feature: "communitycenters",
           format: "json",
           center: coordinates.latitude + "," + coordinates.longitude,
-          distance: "100000"
+          distance: "5000"
         }
       });
     }
@@ -178,7 +178,7 @@
           feature: "libraries",
           format: "json",
           center: coordinates.latitude + "," + coordinates.longitude,
-          distance: "100000"
+          distance: "5000"
         }
       });
     }
@@ -259,7 +259,7 @@
           feature: "parks",
           format: "json",
           center: coordinates.latitude + "," + coordinates.longitude,
-          distance: "10000"
+          distance: "5000"
         }
       })
       .then(function successHandeler(response){
@@ -342,7 +342,7 @@
           feature: "shoppingcenters",
           format: "json",
           center: coordinates.latitude + "," + coordinates.longitude,
-          distance: "10000"
+          distance: "5000"
         }
       })
       .then(function successHandeler(response){

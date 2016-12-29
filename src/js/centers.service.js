@@ -19,7 +19,7 @@
           feature: "communitycenters",
           format: "json",
           center: coordinates.latitude + "," + coordinates.longitude,
-          distance: "100000"
+          distance: "5000"
         }
       });
     }

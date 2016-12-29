@@ -1,10 +1,17 @@
 
 @media (min-width: 500px) {
+
   .categoryImage  {
     float: left;
     width: $imageMobileWidth2;
     margin-right: 2%;
     margin-bottom: 2%;
+  }
+
+  .home {
+    width: 100%;
+    height: 120%;
+
   }
 
   body p {
@@ -30,7 +37,21 @@
 }
 
 @media (min-width: 800px) {
+
     .categoryImage {
     width: $imageMobileWidth3;
   }
+
+
+  .home {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    height: 110%;
+    display: block;
+
+  }
+
+
+
 }
