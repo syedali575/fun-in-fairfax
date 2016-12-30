@@ -259,7 +259,7 @@
           feature: "parks",
           format: "json",
           center: coordinates.latitude + "," + coordinates.longitude,
-          distance: "5000"
+          distance: "2000"
         }
       })
       .then(function successHandeler(response){

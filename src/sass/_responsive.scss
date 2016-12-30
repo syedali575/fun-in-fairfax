@@ -39,8 +39,26 @@
     width: $imageMobileWidth3;
   }
 
+
+  .parkImage {
+    width: $imageMobileWidth4;
+  }
+
+    .home {
+      width: 90%;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+
+
   body p {
     margin: 0% 1% 0% 1%;
   }
+
+  body h1 {
+    padding-top: 2%;
+    padding-bottom: 2%;
+  }
+
 
 }
