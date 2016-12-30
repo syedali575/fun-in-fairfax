@@ -413,6 +413,13 @@ html {
   html main {
     flex-grow: 1;
     overflow: auto; }
+  html header, html footer {
+    padding-bottom: 0; }
+  html ul {
+    margin-bottom: 0; }
+  html .tail {
+    display: block;
+    background-color: #e0a85d; }
 
 body h1 {
   color: #15817d;

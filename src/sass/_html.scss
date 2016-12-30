@@ -13,5 +13,20 @@ html {
     flex-grow: 1;
     overflow: auto;
   }
-  
+
+  header, footer{
+    padding-bottom: 0;
+  }
+
+  ul  {
+    margin-bottom: 0;
+  }
+
+  .tail {
+    display: block;
+    background-color: $themeColor1;
+
+  }
+
+
 }
