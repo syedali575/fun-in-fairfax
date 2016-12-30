@@ -402,6 +402,18 @@ template {
 [hidden] {
   display: none; }
 
+html {
+  height: 100%; }
+  html body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 0; }
+  html main {
+    flex-grow: 1;
+    overflow: auto; }
+
 body h1 {
   color: #15817d;
   font-family: cursive;
@@ -471,6 +483,9 @@ nav {
   body p {
     margin: 0% 2% 0% 2%; }
 
+  .homePage p {
+    margin: 3%; }
+
   li.alert.alert-success {
     display: block;
     clear: both; }
@@ -489,9 +504,12 @@ nav {
     width: 40%; }
 
   .home {
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%; }
+    width: 66%;
+    margin-left: 17%;
+    margin-right: 17%; }
+
+  .homePage p {
+    margin: 1.5% 17% 1.5% 17%; }
 
   body p {
     margin: 0% 1% 0% 1%; }
