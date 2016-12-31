@@ -14,6 +14,10 @@
 </section>
 
 
+<p ng-show="center.message">{{center.message}}</p>
+
+
+
 <ul class="categoryList">
   <li ng-repeat="center in center.centerData" class="alert alert-success" role="alert">
     {{center.doc.metadata.label}}

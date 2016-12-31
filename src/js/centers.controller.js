@@ -9,6 +9,7 @@
   function CenterController(CenterService){
 
     var vm = this;
+    vm.message = undefined;
     vm.centerData = [];
 
     this.getCenter = function getCenter(){
@@ -25,6 +26,9 @@
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);
+
+          vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
+
         });
 
 

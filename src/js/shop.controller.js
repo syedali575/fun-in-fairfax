@@ -9,6 +9,7 @@
   function ShopController(ShopService){
 
     var vm = this;
+    vm.message = undefined;
     vm.shopData = [];
 
 
@@ -29,6 +30,9 @@
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to Communicate", xhr);
+
+          vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
+
         });
 
       });

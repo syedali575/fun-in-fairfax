@@ -9,7 +9,7 @@
   function LibraryController(LibraryService){
 
     var vm = this;
-    vm.message = "";
+    vm.message = undefined;
     vm.libraryData = [];
 
     this.getLibrary = function getLibrary(){
@@ -26,7 +26,8 @@
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);
 
-          vm.message = "We are unable to retrieve library list at this momment";
+          vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
+
         });
 
       });

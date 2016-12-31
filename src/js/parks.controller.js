@@ -9,8 +9,9 @@
   function ParksController(ParkService){
 
     var vm = this;
-    vm.message = "";
+    vm.message = undefined;
     vm.parkData = [];
+
 
     /**
     * [getParks description]
@@ -31,8 +32,7 @@
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);
 
-          vm.message = "We are unable to communicate, please try again";
-
+          vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
         });
 
       });

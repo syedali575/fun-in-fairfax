@@ -69,6 +69,7 @@
   function CenterController(CenterService){
 
     var vm = this;
+    vm.message = undefined;
     vm.centerData = [];
 
     this.getCenter = function getCenter(){
@@ -85,6 +86,9 @@
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);
+
+          vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
+
         });
 
 
@@ -132,7 +136,7 @@
   function LibraryController(LibraryService){
 
     var vm = this;
-    vm.message = "";
+    vm.message = undefined;
     vm.libraryData = [];
 
     this.getLibrary = function getLibrary(){
@@ -149,7 +153,8 @@
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);
 
-          vm.message = "We are unable to retrieve library list at this momment";
+          vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
+
         });
 
       });
@@ -196,8 +201,9 @@
   function ParksController(ParkService){
 
     var vm = this;
-    vm.message = "";
+    vm.message = undefined;
     vm.parkData = [];
+
 
     /**
     * [getParks description]
@@ -218,8 +224,7 @@
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);
 
-          vm.message = "We are unable to communicate, please try again";
-
+          vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
         });
 
       });
@@ -248,7 +253,6 @@
      */
     function parkList(coordinates){
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
-        // console.log("I'm in if else statement in park list");
         return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
       }
 
@@ -282,6 +286,7 @@
   function ShopController(ShopService){
 
     var vm = this;
+    vm.message = undefined;
     vm.shopData = [];
 
 
@@ -302,6 +307,9 @@
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to Communicate", xhr);
+
+          vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
+
         });
 
       });
