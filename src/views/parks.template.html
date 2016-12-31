@@ -18,7 +18,7 @@
 
 
 
-<p ng-show="vm.message"></p>
+<p ng-show="vm.message">{{park.message}}</p>
 
 <ul class="categoryList">
   <li ng-repeat="park in park.parkData" class="alert alert-success" role="alert">
@@ -35,7 +35,7 @@
 
   <p>Other useful links to plan your trip to Fairfax County Parks.</p>
     <ul>
-      <li><a href="https://darksky.net">Weather</a></li>
-      <li><a href="https://www.google.com/maps">Direction/Maps</a></li>
-      <li><a href="http://www.fairfaxcounty.gov/parks/">More about Parks</a></li>
+      <li><a href="https://darksky.net" target="_blank">Weather</a></li>
+      <li><a href="https://www.google.com/maps" target="_blank">Direction/Maps</a></li>
+      <li><a href="http://www.fairfaxcounty.gov/parks/" target="_blank">More about Parks</a></li>
     </ul>

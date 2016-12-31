@@ -1,8 +1,14 @@
 footer{
   clear: both;
   margin-top: 2%;
+  text-align: center;
 
 
+  .tail {
+    display: block;
+    background-color: $themeColor1;
+    padding-bottom: 1.2%;
+  }
 
 
 }
