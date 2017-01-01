@@ -24,7 +24,8 @@
 
         ParkService.parkList(location.coords)
         .then(function sucessHandeler(data){
-          console.log("In Controller", data);
+          console.log("Getting Parks", data);
+
 
           vm.parkData = data;
           console.log(vm.parkData, "Data in controller for html");

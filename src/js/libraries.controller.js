@@ -12,6 +12,10 @@
     vm.message = undefined;
     vm.libraryData = [];
 
+    /**
+     * [getLibrary description]
+     * @return {[type]} [description]
+     */
     this.getLibrary = function getLibrary(){
 
       navigator.geolocation.getCurrentPosition(function locationHandeler(location){
@@ -21,7 +25,8 @@
         .then(function sucessHandeler(data){
           console.log("Getting Libraries", data);
 
-          vm.libraryData = data.data.searchResults.results;
+          vm.libraryData = data;
+          console.log(vm.libraryData, "Library Data");
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);

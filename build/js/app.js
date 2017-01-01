@@ -72,6 +72,10 @@
     vm.message = undefined;
     vm.centerData = [];
 
+    /**
+     * [getCenter description]
+     * @return {[type]} [description]
+     */
     this.getCenter = function getCenter(){
 
       navigator.geolocation.getCurrentPosition(function locationHandeler(location){
@@ -81,8 +85,9 @@
         .then(function sucessHandeler(data){
           console.log("Getting Centers", data);
 
-          vm.centerData = data.data.searchResults.results;
-
+          // vm.centerData = data.data.searchResults.results;
+          vm.centerData = data;
+          console.log(vm.centerData, "Center Data");
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);
@@ -90,8 +95,6 @@
           vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
 
         });
-
-
       });
     };
   }
@@ -103,14 +106,23 @@
   angular.module("fairfax")
   .factory("CenterService", CenterService);
 
-  CenterService.$inject = ["$http"];
+  CenterService.$inject = ["$http", "$q"];
 
-  function CenterService($http){
+  function CenterService($http, $q){
     return {
       centerList: centerList
     };
 
+    /**
+     * [centerList description]
+     * @param  {[type]} coordinates [description]
+     * @return {[type]}             [description]
+     */
     function centerList(coordinates){
+      if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
+        return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
+      }
+
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
         method: "GET",
@@ -120,7 +132,12 @@
           center: coordinates.latitude + "," + coordinates.longitude,
           distance: "5000"
         }
+      })
+      .then(function successHandeler(response){
+        console.log("path",response.data);
+        return response.data.searchResults.results;
       });
+
     }
   }
 }());
@@ -139,6 +156,10 @@
     vm.message = undefined;
     vm.libraryData = [];
 
+    /**
+     * [getLibrary description]
+     * @return {[type]} [description]
+     */
     this.getLibrary = function getLibrary(){
 
       navigator.geolocation.getCurrentPosition(function locationHandeler(location){
@@ -148,7 +169,8 @@
         .then(function sucessHandeler(data){
           console.log("Getting Libraries", data);
 
-          vm.libraryData = data.data.searchResults.results;
+          vm.libraryData = data;
+          console.log(vm.libraryData, "Library Data");
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);
@@ -168,14 +190,23 @@
   angular.module("fairfax")
   .factory("LibraryService", LibraryService);
 
-  LibraryService.$inject = ["$http"];
+  LibraryService.$inject = ["$http", "$q"];
 
-  function LibraryService($http){
+  function LibraryService($http, $q){
     return {
       libraryList: libraryList
     };
 
+    /**
+     * [libraryList description]
+     * @param  {[type]} coordinates [description]
+     * @return {[type]}             [description]
+     */
     function libraryList(coordinates){
+      if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
+        return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
+      }
+
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
         method: "GET",
@@ -185,6 +216,10 @@
           center: coordinates.latitude + "," + coordinates.longitude,
           distance: "5000"
         }
+      })
+      .then(function successHandeler(response){
+        console.log("path",response.data);
+        return response.data.searchResults.results;
       });
     }
   }
@@ -216,7 +251,8 @@
 
         ParkService.parkList(location.coords)
         .then(function sucessHandeler(data){
-          console.log("In Controller", data);
+          console.log("Getting Parks", data);
+
 
           vm.parkData = data;
           console.log(vm.parkData, "Data in controller for html");

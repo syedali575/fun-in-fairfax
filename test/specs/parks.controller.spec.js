@@ -28,8 +28,7 @@
     it("Should have correct scope variables", function(){
       expect(ParksController.parkData).to.be.an("array");
       expect(ParksController.parkData.length).to.equal(0);
-      expect(ParksController.message).to.be.a("string");
-      expect(ParksController.message.length).to.equal(0);
+      expect(ParksController.message).to.equal(undefined);
     });
 
     // it("Should receive list of parks form service", function(){
