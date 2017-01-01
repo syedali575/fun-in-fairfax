@@ -7,15 +7,15 @@
   LibraryController.$inject = ["LibraryService"];
 
   function LibraryController(LibraryService){
-
+    
     var vm = this;
     vm.message = undefined;
     vm.libraryData = [];
 
     /**
-     * [getLibrary description]
-     * @return {[type]} [description]
-     */
+    * [This function acquires location (latitude and longitude) of a user and execute libraryList function]
+    * @return {Void}
+    */
     this.getLibrary = function getLibrary(){
 
       navigator.geolocation.getCurrentPosition(function locationHandeler(location){
@@ -24,17 +24,12 @@
         LibraryService.libraryList(location.coords)
         .then(function sucessHandeler(data){
           console.log("Getting Libraries", data);
-
           vm.libraryData = data;
-          console.log(vm.libraryData, "Library Data");
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);
-
           vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
-
         });
-
       });
     };
   }

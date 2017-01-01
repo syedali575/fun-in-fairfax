@@ -12,9 +12,9 @@
     };
 
     /**
-     * [centerList description]
-     * @param  {[type]} coordinates [description]
-     * @return {[type]}             [description]
+     * [This function retrieve list of rec-centers based on users geo position]
+     * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
+     * @return {Promise}             [description]
      */
     function centerList(coordinates){
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {

@@ -438,6 +438,11 @@ body button.btn.btn-primary {
   margin-bottom: 3%; }
 body p {
   margin: 5%; }
+body .errorMsg {
+  color: #f55656;
+  font-weight: bold;
+  text-align: left;
+  margin: 2%; }
 
 header {
   background-color: #e0a85d;

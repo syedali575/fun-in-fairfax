@@ -14,8 +14,8 @@
 
 
     /**
-    * [getParks description]
-    * @return {[type]} [description]
+    * [This function acquires location (latitude and longitude) of a user and execute parkList function]
+    * @return {Void}
     */
     this.getParks = function getParks(){
 
@@ -25,14 +25,10 @@
         ParkService.parkList(location.coords)
         .then(function sucessHandeler(data){
           console.log("Getting Parks", data);
-
-
           vm.parkData = data;
-          console.log(vm.parkData, "Data in controller for html");
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);
-
           vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
         });
 

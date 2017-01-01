@@ -14,9 +14,8 @@
 
 
     /**
-    * Locates currrent longitude and Latitude and passes them as argument while
-    * excuting funtion to make ajax call to retrieve list of shop in vicinity.
-    * @return {Void} [description]
+    * [This function acquires location (latitude and longitude) of a user and execute shopList function]
+    * @return {Void}
     */
     this.getShop = function getShop(){
 
@@ -30,11 +29,8 @@
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to Communicate", xhr);
-
           vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
-
         });
-
       });
     };
   }

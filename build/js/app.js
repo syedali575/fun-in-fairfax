@@ -73,9 +73,9 @@
     vm.centerData = [];
 
     /**
-     * [getCenter description]
-     * @return {[type]} [description]
-     */
+    * [This function acquires location (latitude and longitude) of a user and execute centerList function]
+    * @return {Void}
+    */
     this.getCenter = function getCenter(){
 
       navigator.geolocation.getCurrentPosition(function locationHandeler(location){
@@ -84,16 +84,11 @@
         CenterService.centerList(location.coords)
         .then(function sucessHandeler(data){
           console.log("Getting Centers", data);
-
-          // vm.centerData = data.data.searchResults.results;
           vm.centerData = data;
-          console.log(vm.centerData, "Center Data");
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);
-
           vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
-
         });
       });
     };
@@ -114,9 +109,9 @@
     };
 
     /**
-     * [centerList description]
-     * @param  {[type]} coordinates [description]
-     * @return {[type]}             [description]
+     * [This function retrieve list of rec-centers based on users geo position]
+     * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
+     * @return {Promise}             [description]
      */
     function centerList(coordinates){
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
@@ -151,15 +146,15 @@
   LibraryController.$inject = ["LibraryService"];
 
   function LibraryController(LibraryService){
-
+    
     var vm = this;
     vm.message = undefined;
     vm.libraryData = [];
 
     /**
-     * [getLibrary description]
-     * @return {[type]} [description]
-     */
+    * [This function acquires location (latitude and longitude) of a user and execute libraryList function]
+    * @return {Void}
+    */
     this.getLibrary = function getLibrary(){
 
       navigator.geolocation.getCurrentPosition(function locationHandeler(location){
@@ -168,17 +163,12 @@
         LibraryService.libraryList(location.coords)
         .then(function sucessHandeler(data){
           console.log("Getting Libraries", data);
-
           vm.libraryData = data;
-          console.log(vm.libraryData, "Library Data");
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);
-
           vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
-
         });
-
       });
     };
   }
@@ -198,9 +188,9 @@
     };
 
     /**
-     * [libraryList description]
-     * @param  {[type]} coordinates [description]
-     * @return {[type]}             [description]
+     * [This function retrieve list of libraries based on users geo position]
+     * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
+     * @return {Promise}             [description]
      */
     function libraryList(coordinates){
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
@@ -241,8 +231,8 @@
 
 
     /**
-    * [getParks description]
-    * @return {[type]} [description]
+    * [This function acquires location (latitude and longitude) of a user and execute parkList function]
+    * @return {Void}
     */
     this.getParks = function getParks(){
 
@@ -252,14 +242,10 @@
         ParkService.parkList(location.coords)
         .then(function sucessHandeler(data){
           console.log("Getting Parks", data);
-
-
           vm.parkData = data;
-          console.log(vm.parkData, "Data in controller for html");
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to communicate", xhr);
-
           vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
         });
 
@@ -327,9 +313,8 @@
 
 
     /**
-    * Locates currrent longitude and Latitude and passes them as argument while
-    * excuting funtion to make ajax call to retrieve list of shop in vicinity.
-    * @return {Void} [description]
+    * [This function acquires location (latitude and longitude) of a user and execute shopList function]
+    * @return {Void}
     */
     this.getShop = function getShop(){
 
@@ -343,11 +328,8 @@
         })
         .catch(function failHandeler(xhr){
           console.log("Unable to Communicate", xhr);
-
           vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
-
         });
-
       });
     };
   }
