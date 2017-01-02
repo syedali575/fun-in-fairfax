@@ -21,6 +21,8 @@
         return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
       }
 
+        console.log("Am I making ajax call?");
+
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
         method: "GET",

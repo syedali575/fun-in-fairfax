@@ -5,7 +5,7 @@
   .factory("ParkService", ParkService);
 
   var storedItems = JSON.parse(localStorage.getItem("list"));
-  var previouslyStoredParks = storedItems || {};
+  storedItems = storedItems || {coordinates:{}};
   console.log(storedItems);
 
 
@@ -31,23 +31,15 @@
       console.log("Able to access array of parks",storedItems.list);
 
       var cLat = Math.floor(coordinates.latitude);
-      console.log(cLat);
       var cLon = Math.floor(coordinates.longitude);
-      console.log(cLon);
       var sLat = Math.floor(storedItems.coordinates.latitude);
-      console.log(sLat);
       var sLon = Math.floor(storedItems.coordinates.longitude);
-      console.log(sLon);
-
-
-
 
       if (cLat === sLat && cLon === sLon){
         return $q.resolve(storedItems.list);
       }
 
-      // if I have list of parks for current coordinates I do not need to make an ajax call
-      // instead... I can retrieve it from localStorage and return a promise that resolves with data
+      console.log("Am I making ajax call?");
 
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
