@@ -17,7 +17,7 @@
 
 <ul class="categoryList">
   <li ng-repeat="shop in shop.shopData" class="alert alert-success" role="alert">
-      {{shop.doc.metadata.label}}
+      {{shop.doc.metadata.label.toLowerCase()}}
   </li>
 </ul>
 

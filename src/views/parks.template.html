@@ -23,7 +23,7 @@
 
 <ul class="categoryList">
   <li ng-repeat="park in park.parkData" class="alert alert-success" role="alert">
-    {{park.doc.metadata.label}}
+    {{park.doc.metadata.label.toLowerCase()}}
   </li>
 </ul>
 

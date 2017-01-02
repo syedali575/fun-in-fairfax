@@ -14,7 +14,7 @@
 
 <ul class="categoryList">
   <li ng-repeat="library in library.libraryData" class="alert alert-success" role="alert">
-    {{library.doc.metadata.label}}
+    {{library.doc.metadata.label.toLowerCase()}}
   </li>
 </ul>
 

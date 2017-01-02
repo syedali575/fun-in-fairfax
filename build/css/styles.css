@@ -474,7 +474,7 @@ nav {
   padding-left: 0; }
   .categoryList li {
     color: #000000;
-    text-transform: lowercase;
+    text-transform: capitalize;
     font-size: 0.9em;
     list-style: none;
     width: 70%;
