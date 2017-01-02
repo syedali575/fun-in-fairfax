@@ -287,7 +287,19 @@
       console.log("In parkList Function",storedItems.coordinates.latitude);
       console.log("Able to access array of parks",storedItems.list);
 
-      if (coordinates.latitude === storedItems.coordinates.latitude && coordinates.longitude === storedItems.coordinates.longitude){
+      var cLat = Math.floor(coordinates.latitude);
+      console.log(cLat);
+      var cLon = Math.floor(coordinates.longitude);
+      console.log(cLon);
+      var sLat = Math.floor(storedItems.coordinates.latitude);
+      console.log(sLat);
+      var sLon = Math.floor(storedItems.coordinates.longitude);
+      console.log(sLon);
+
+
+
+
+      if (cLat === sLat && cLon === sLon){
         return $q.resolve(storedItems.list);
       }
 
