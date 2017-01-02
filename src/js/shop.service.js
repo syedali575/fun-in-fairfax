@@ -30,7 +30,7 @@
           feature: "shoppingcenters",
           format: "json",
           center: coordinates.latitude + "," + coordinates.longitude,
-          distance: "5000"
+          distance: "10000"
         }
       })
       .then(function successHandeler(response){

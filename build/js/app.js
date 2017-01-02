@@ -51,7 +51,7 @@
     });
 
 
-
+    
 
   }
 
@@ -125,7 +125,7 @@
           feature: "communitycenters",
           format: "json",
           center: coordinates.latitude + "," + coordinates.longitude,
-          distance: "5000"
+          distance: "100000"
         }
       })
       .then(function successHandeler(response){
@@ -204,7 +204,7 @@
           feature: "libraries",
           format: "json",
           center: coordinates.latitude + "," + coordinates.longitude,
-          distance: "5000"
+          distance: "100000"
         }
       })
       .then(function successHandeler(response){
@@ -261,11 +261,19 @@
   angular.module("fairfax")
   .factory("ParkService", ParkService);
 
+  var storedItems = JSON.parse(localStorage.getItem("list"));
+  var previouslyStoredParks = storedItems || {};
+
+
+  console.log(storedItems);
+
+
   ParkService.$inject = ["$http", "$q"];
 
   function ParkService($http, $q){
     return {
-      parkList: parkList
+      parkList: parkList,
+      updateLocalStorage: updateLocalStorage
     };
 
     /**
@@ -278,6 +286,9 @@
         return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
       }
 
+      // if I have list of parks for current coordinates I do not need to make an ajax call
+      // instead... I can retrieve it from localStorage and return a promise that resolves with data
+
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
         method: "GET",
@@ -285,13 +296,30 @@
           feature: "parks",
           format: "json",
           center: coordinates.latitude + "," + coordinates.longitude,
-          distance: "2000"
+          distance: "10000"
         }
       })
       .then(function successHandeler(response){
         console.log("path",response.data);
+
+        updateLocalStorage(response.data.searchResults.results, coordinates);
         return response.data.searchResults.results;
       });
+    }
+
+    /**
+     * Stores list of search results to localStorage
+     * @param  {Array} list [list of search results]
+     * @return {void}      [description]
+     */
+    function updateLocalStorage(list, coordinates){
+
+      var data = {
+        list: list,
+        coordinates: {latitude: coordinates.latitude, longitude: coordinates.longitude}
+      };
+      console.log("Saving list of parks to localStorage", data);
+      localStorage.setItem("list", angular.toJson(data));
     }
 
   }
@@ -368,7 +396,7 @@
           feature: "shoppingcenters",
           format: "json",
           center: coordinates.latitude + "," + coordinates.longitude,
-          distance: "5000"
+          distance: "10000"
         }
       })
       .then(function successHandeler(response){

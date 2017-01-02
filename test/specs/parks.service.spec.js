@@ -19,7 +19,7 @@
       $rootScope = _$rootScope_;
 
       $httpBackend
-      .whenGET("http://www.fairfaxcounty.gov/FFXGISAPI/v1/search?feature=parks&format=json&center=12.3456,12.3456&distance=2000")
+      .whenGET("http://www.fairfaxcounty.gov/FFXGISAPI/v1/search?feature=parks&format=json&center=12.3456,12.3456&distance=10000")
       .respond({searchResults:{results:[{doc:{metadata:{label: "SKYLINE"}}}]}});
 
 

@@ -22,7 +22,7 @@
 
 
       $httpBackend
-      .whenGET("http://www.fairfaxcounty.gov/FFXGISAPI/v1/search?feature=libraries&format=json&center=12.3456,12.3456&distance=5000")
+      .whenGET("http://www.fairfaxcounty.gov/FFXGISAPI/v1/search?feature=libraries&format=json&center=12.3456,12.3456&distance=100000")
       .respond({searchResults:{results:[{doc:{metadata:{label: "GEORGE MASON REGIONAL LIBRARY"}}}]}});
 
 
