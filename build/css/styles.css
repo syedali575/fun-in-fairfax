@@ -403,16 +403,19 @@ template {
   display: none; }
 
 html {
-  height: 100%; }
+  min-height: 100%;
+  position: relative; }
   html body {
-    height: 100%;
+    position: relative;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     margin: 0; }
+    html body.ie {
+      display: block;
+      overflow: auto; }
   html main {
-    flex-grow: 1;
-    overflow: auto; }
+    flex-grow: 1; }
   html header, html footer {
     padding-bottom: 0; }
   html ul {
@@ -528,7 +531,6 @@ nav {
     padding-bottom: 2%; } }
 footer {
   clear: both;
-  margin-top: 2%;
   text-align: center; }
   footer .tail {
     display: block;
