@@ -6,8 +6,6 @@
 
   var storedItems = JSON.parse(localStorage.getItem("list"));
   var previouslyStoredParks = storedItems || {};
-
-
   console.log(storedItems);
 
 
@@ -29,6 +27,13 @@
         return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
       }
 
+      console.log("In parkList Function",storedItems.coordinates.latitude);
+      console.log("Able to access array of parks",storedItems.list);
+
+      if (coordinates.latitude === storedItems.coordinates.latitude && coordinates.longitude === storedItems.coordinates.longitude){
+        return $q.resolve(storedItems.list);
+      }
+
       // if I have list of parks for current coordinates I do not need to make an ajax call
       // instead... I can retrieve it from localStorage and return a promise that resolves with data
 
@@ -43,16 +48,15 @@
         }
       })
       .then(function successHandeler(response){
-        console.log("path",response.data);
-
+        console.log("Getting Park Data via ajax",response.data);
         updateLocalStorage(response.data.searchResults.results, coordinates);
         return response.data.searchResults.results;
       });
     }
 
     /**
-     * Stores list of search results to localStorage
-     * @param  {Array} list [list of search results]
+     * Stores list of search results and coordinates to localStorage
+     * @param  {Object} list [list of search results and coordinates ]
      * @return {void}      [description]
      */
     function updateLocalStorage(list, coordinates){
