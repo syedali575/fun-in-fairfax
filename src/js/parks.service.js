@@ -18,17 +18,17 @@
     };
 
     /**
-     * [This function retrieve list of parks based on users geo position]
-     * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
-     * @return {Promise}             [description]
-     */
+    * [This function retrieve list of parks based on users geo position]
+    * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
+    * @return {Promise}             [description]
+    */
     function parkList(coordinates){
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
         return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
       }
 
-      console.log("In parkList Function",storedItems.coordinates.latitude);
-      console.log("Able to access array of parks",storedItems.list);
+      // console.log("In parkList Function",storedItems.coordinates.latitude);
+      // console.log("Able to access array of parks",storedItems.list);
 
       var cLat = Math.floor(coordinates.latitude);
       var cLon = Math.floor(coordinates.longitude);
@@ -59,10 +59,10 @@
     }
 
     /**
-     * Stores list of search results and coordinates to localStorage
-     * @param  {Object} list [list of search results and coordinates ]
-     * @return {void}      [description]
-     */
+    * Stores list of search results and coordinates to localStorage
+    * @param  {Object} list [list of search results and coordinates ]
+    * @return {void}
+    */
     function updateLocalStorage(list, coordinates){
 
       var data = {

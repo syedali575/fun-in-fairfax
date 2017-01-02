@@ -277,17 +277,17 @@
     };
 
     /**
-     * [This function retrieve list of parks based on users geo position]
-     * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
-     * @return {Promise}             [description]
-     */
+    * [This function retrieve list of parks based on users geo position]
+    * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
+    * @return {Promise}             [description]
+    */
     function parkList(coordinates){
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
         return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
       }
 
-      console.log("In parkList Function",storedItems.coordinates.latitude);
-      console.log("Able to access array of parks",storedItems.list);
+      // console.log("In parkList Function",storedItems.coordinates.latitude);
+      // console.log("Able to access array of parks",storedItems.list);
 
       var cLat = Math.floor(coordinates.latitude);
       var cLon = Math.floor(coordinates.longitude);
@@ -318,10 +318,10 @@
     }
 
     /**
-     * Stores list of search results and coordinates to localStorage
-     * @param  {Object} list [list of search results and coordinates ]
-     * @return {void}      [description]
-     */
+    * Stores list of search results and coordinates to localStorage
+    * @param  {Object} list [list of search results and coordinates ]
+    * @return {void}
+    */
     function updateLocalStorage(list, coordinates){
 
       var data = {
@@ -379,6 +379,12 @@
 
   angular.module("fairfax")
   .factory("ShopService", ShopService);
+// =================================
+// var storedItems =
+// JSON.parse(localStorage.getItem("shop"));
+// storedItems = storedItems || {coordinates:{}};
+// ==================================
+
 
 
   ShopService.$inject = ["$http", "$q"];
@@ -386,6 +392,7 @@
   function ShopService($http, $q){
     return {
       shopList: shopList
+      // updateLocalStorage: updateLocalStorage
     };
 
 
@@ -399,6 +406,23 @@
         return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
       }
 
+
+      // console.log("In shopList Function",storedItems.coordinates.latitude);
+      // console.log("Able to access array of shops",storedItems.shop);
+
+      // var cLat = Math.floor(coordinates.latitude);
+      // var cLon = Math.floor(coordinates.longitude);
+      // var sLat = Math.floor(storedItems.coordinates.latitude);
+      // var sLon = Math.floor(storedItems.coordinates.longitude);
+      //
+      // if (cLat === sLat && cLon === sLon){
+      //   return $q.resolve(storedItems.list);
+      // }
+
+      console.log("Am I making ajax call?");
+
+
+
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
         method: "GET",
@@ -410,10 +434,25 @@
         }
       })
       .then(function successHandeler(response){
-        console.log(response);
+        console.log("Getting Shopping data via ajax",response);
+        // updateLocalStorage(response.data.searchResults.results, coordinates);
         return response.data.searchResults.results;
       });
     }
+
+    // function updateLocalStorage(shop, coordinates){
+    //
+    //   var data = {
+    //     shop: shop,
+    //     coordinates: {latitude: coordinates.latitude, longitude: coordinates.longitude}
+    //   };
+    //   console.log("Saving list of shopping centers to localStorage", data);
+    //   localStorage.setItem("shop", angular.toJson(data));
+    // }
+
+
+
+
   }
 
 }());
