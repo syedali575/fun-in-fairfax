@@ -7,16 +7,26 @@
   describe("ParksController", function(){
     var ParksController;
     var mockParkService = {};
+    window.navigator.geolocation = {};
+    window.navigator.geolocation.getCurrentPosition = function mockGetCurrentPosition(callback) {
+      callback({coords: {latitude: 38.8986131, longitude: -77.0319384}});
+    };
 
     beforeEach(module("fairfax"));
 
+    // beforeEach(inject(function(_$rootScope_){
+    //   $rootScope = _$rootScope_;
+    // }));
+
     beforeEach(module(function($provide){
       $provide.value("ParkService", mockParkService);
+
     }));
 
     beforeEach(inject(function($controller, $q){
 
       mockParkService.parkList = function(){
+        console.log('resolving mock parklist');
         return $q.resolve(
           [{doc:{metadata:{label: "SKYLINE"}}}]
         );
@@ -31,13 +41,20 @@
       expect(ParksController.message).to.equal(undefined);
     });
 
-    // it("Should receive list of parks form service", function(){
-    //   var result = ParksController.getParks();
-    //   expect(result).to.be.undefined;
-    //
-    // });
+    it("Should receive list of parks form service", function(callback){
+      var result = ParksController.getParks(function(){
+
+        console.log("SEE",ParksController.parkData[0].doc.metadata.label);
+        // expect(ParksController.parkData[0].doc.metadata.label).to.equal("SKYLINE");
+        expect(typeof(ParksController.parkData[0].doc.metadata.label)).to.equal("string");
+        callback();
+      });
+      expect(result).to.be.undefined;
 
 
+    });
+
+// $rootScope.$digest();
   });
 
 }());
