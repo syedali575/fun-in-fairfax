@@ -43,15 +43,22 @@
     it("Should receive list of parks from service", function(callback){
       var result = ParksController.getParks(function(){
         console.log(result);
-        // console.log("SEE",ParksController.parkData[0].doc.metadata.label);
         expect(ParksController.parkData[0].doc.metadata.label).to.equal("SKYLINE");
         expect(typeof(ParksController.parkData[0].doc.metadata.label)).to.equal("string");
+        expect(ParksController.parkData[0].doc.metadata.label.length).to.equal(7);
         callback();
       });
       $rootScope.$digest();
     });
 
-
+    it("Should create a function if no function is passed as argument, and make ajax call to retrieve data", function(){
+      var result = ParksController.getParks("apple");
+      console.log(result);
+      expect(typeof(done)).to.equal("undefined");
+      expect(ParksController.parkData).to.be.an("array");
+      expect(ParksController.parkData.length).to.equal(0);
+      expect(ParksController.message).to.equal(undefined);
+    });
 
 
   });
