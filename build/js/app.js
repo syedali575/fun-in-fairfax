@@ -13,7 +13,7 @@
 
     .state({
       name: "home",
-      url: "",
+      url: "/",
       templateUrl: "views/home.template.html"
     })
 
@@ -51,7 +51,7 @@
     });
 
 
-    
+
 
   }
 

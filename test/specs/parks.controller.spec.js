@@ -29,6 +29,7 @@
           [{doc:{metadata:{label: "SKYLINE"}}}]
         );
       };
+
       ParksController = $controller("ParksController");
     }));
 
@@ -39,20 +40,19 @@
       expect(ParksController.message).to.equal(undefined);
     });
 
-    it("Should receive list of parks form service", function(callback){
+    it("Should receive list of parks from service", function(callback){
       var result = ParksController.getParks(function(){
         console.log(result);
         // console.log("SEE",ParksController.parkData[0].doc.metadata.label);
         expect(ParksController.parkData[0].doc.metadata.label).to.equal("SKYLINE");
         expect(typeof(ParksController.parkData[0].doc.metadata.label)).to.equal("string");
-
         callback();
       });
-
       $rootScope.$digest();
     });
 
 
-  });
 
+
+  });
 }());

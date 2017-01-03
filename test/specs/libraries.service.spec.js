@@ -41,8 +41,6 @@
       expect(result.then).to.be.a("function");
       expect(result.catch).to.be.a("function");
 
-
-
       result
       .then(function(data){
         console.log(data);
@@ -54,8 +52,6 @@
       });
 
       $httpBackend.flush();
-
-
     });
 
 

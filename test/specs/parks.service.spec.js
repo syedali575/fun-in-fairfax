@@ -30,8 +30,6 @@
     }));
 
 
-
-
     it("Should retrieve list of parks, if an object with latitude and longitude is provided as argument", function(doneCallback){
       var result = ParkService.parkList({latitude: 12.3456, longitude: 12.3456});
 
@@ -77,8 +75,6 @@
 
         doneCallback();
       });
-
-
       $rootScope.$digest();
     });
 
@@ -101,12 +97,8 @@
         console.log("In my .catch of wrong argument test3", error);
         expect(error).to.be.an.instanceof(Error);
         expect(error.message).to.equal("You must provide an object with latitude and longitude properties");
-
-
         doneCallback();
       });
-
-
       $rootScope.$digest();
     });
 
