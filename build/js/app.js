@@ -258,7 +258,7 @@
             done();
           });
         },
-        function failureHandeler() {
+        function errorHandeler() {
           vm.message = "You must share your geolocation for this application to operate";
           $scope.$apply();
         }
