@@ -26,7 +26,7 @@
       url: "/parks",
       templateUrl: "views/parks.template.html",
       controller: "ParksController",
-      controllerAs: "park"
+      controllerAs: "parkcontroller"
     })
 
     .state({
@@ -51,8 +51,14 @@
       templateUrl: "views/shopping.template.html",
       controller: "ShopController",
       controllerAs: "shop"
-    });
+    })
 
+    .state({
+      name: "todays-plan",
+      url: "/todays-plan",
+      templateUrl: "views/plan.template.html",
+
+    });
 
 
 

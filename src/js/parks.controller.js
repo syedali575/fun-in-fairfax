@@ -4,9 +4,9 @@
   angular.module("fairfax")
   .controller("ParksController", ParksController);
 
-  ParksController.$inject = ["$scope", "ParkService"];
+  ParksController.$inject = ["$scope", "ParkService", "PlanService"];
 
-  function ParksController($scope, ParkService){
+  function ParksController($scope, ParkService, PlanService){
 
     var vm = this;
     vm.message = undefined;
@@ -46,5 +46,10 @@
         }
       );
     };
+
+    this.addToPlan = function addToPlan(){
+      PlanService.addToPlan();
+    };
+
   }
 }());

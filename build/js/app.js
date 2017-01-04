@@ -26,7 +26,7 @@
       url: "/parks",
       templateUrl: "views/parks.template.html",
       controller: "ParksController",
-      controllerAs: "park"
+      controllerAs: "parkcontroller"
     })
 
     .state({
@@ -51,8 +51,14 @@
       templateUrl: "views/shopping.template.html",
       controller: "ShopController",
       controllerAs: "shop"
-    });
+    })
 
+    .state({
+      name: "todays-plan",
+      url: "/todays-plan",
+      templateUrl: "views/plan.template.html",
+
+    });
 
 
 
@@ -226,9 +232,9 @@
   angular.module("fairfax")
   .controller("ParksController", ParksController);
 
-  ParksController.$inject = ["$scope", "ParkService"];
+  ParksController.$inject = ["$scope", "ParkService", "PlanService"];
 
-  function ParksController($scope, ParkService){
+  function ParksController($scope, ParkService, PlanService){
 
     var vm = this;
     vm.message = undefined;
@@ -268,6 +274,11 @@
         }
       );
     };
+
+    this.addToPlan = function addToPlan(){
+      PlanService.addToPlan();
+    };
+
   }
 }());
 
@@ -380,6 +391,27 @@
   'use strict';
 
   angular.module("fairfax")
+  .factory("PlanService", PlanService);
+
+  function PlanService(){
+    return {
+      addToPlan: addToPlan
+    };
+
+    function addToPlan(){
+      // var todayPlan = [];
+      // localStorage.setItem("plan", angular.toJson(todayPlan));
+      console.log("addToPlan is working");
+    }
+
+  }
+
+}());
+
+(function() {
+  'use strict';
+
+  angular.module("fairfax")
   .controller("ShopController", ShopController);
 
   ShopController.$inject = ["ShopService"];
@@ -411,6 +443,8 @@
         });
       });
     };
+
+
   }
 
 }());
