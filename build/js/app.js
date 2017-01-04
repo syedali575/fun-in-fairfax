@@ -250,6 +250,7 @@
           console.log('location data', location);
 
           ParkService.parkList(location.coords)
+          
           .then(function sucessHandeler(data){
             console.log("Getting Parks", data);
             vm.parkData = data;
@@ -328,19 +329,20 @@
 
         var allPromises = response.data.searchResults.results.map(function parkDetail(each){
           console.log(each.url);
-          return detail(each.url);
+          return locationDetail(each.url);
         });
         return $q.all(allPromises);
-      }).then(function allThingsDone(things) {
-        console.log("things", things);
-        // updateLocalStorage(response.data.searchResults.results, coordinates);
-        // return response.data.searchResults.results;
+      })
+      .then(function allThingsDone(itemsDetails) {
+        console.log("itemsDetails", itemsDetails);
+        updateLocalStorage(itemsDetails, coordinates);
+        return itemsDetails;
       });
     }
 
 
 
-    function detail(parkUrl){
+    function locationDetail(parkUrl){
       return $http({
         url: parkUrl,
         method: "GET",
