@@ -9,10 +9,12 @@
       addToPlan: addToPlan
     };
 
-    function addToPlan(){
-      // var todayPlan = [];
+    function addToPlan(data){
+      var todaysPlan = [];
+      todaysPlan.push(data);
       // localStorage.setItem("plan", angular.toJson(todayPlan));
-      console.log("addToPlan is working");
+      console.log("addToPlan is working", data);
+      console.log("Whats in todaysPlan", todaysPlan);
     }
 
   }

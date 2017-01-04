@@ -47,8 +47,8 @@
       );
     };
 
-    this.addToPlan = function addToPlan(){
-      PlanService.addToPlan();
+    this.addToPlan = function addToPlan(data){
+      PlanService.addToPlan(data);
     };
 
   }

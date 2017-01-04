@@ -4,10 +4,10 @@
   angular.module("fairfax")
   .controller("LibraryController", LibraryController);
 
-  LibraryController.$inject = ["LibraryService"];
+  LibraryController.$inject = ["LibraryService", "PlanService"];
 
-  function LibraryController(LibraryService){
-    
+  function LibraryController(LibraryService, PlanService){
+
     var vm = this;
     vm.message = undefined;
     vm.libraryData = [];
@@ -32,5 +32,10 @@
         });
       });
     };
+
+    this.addToPlan = function addToPlan(data){
+      PlanService.addToPlan(data);
+    };
+
   }
 }());

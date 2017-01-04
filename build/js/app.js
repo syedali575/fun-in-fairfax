@@ -152,10 +152,10 @@
   angular.module("fairfax")
   .controller("LibraryController", LibraryController);
 
-  LibraryController.$inject = ["LibraryService"];
+  LibraryController.$inject = ["LibraryService", "PlanService"];
 
-  function LibraryController(LibraryService){
-    
+  function LibraryController(LibraryService, PlanService){
+
     var vm = this;
     vm.message = undefined;
     vm.libraryData = [];
@@ -180,6 +180,11 @@
         });
       });
     };
+
+    this.addToPlan = function addToPlan(data){
+      PlanService.addToPlan(data);
+    };
+
   }
 }());
 
@@ -275,8 +280,8 @@
       );
     };
 
-    this.addToPlan = function addToPlan(){
-      PlanService.addToPlan();
+    this.addToPlan = function addToPlan(data){
+      PlanService.addToPlan(data);
     };
 
   }
@@ -398,10 +403,12 @@
       addToPlan: addToPlan
     };
 
-    function addToPlan(){
-      // var todayPlan = [];
+    function addToPlan(data){
+      var todaysPlan = [];
+      todaysPlan.push(data);
       // localStorage.setItem("plan", angular.toJson(todayPlan));
-      console.log("addToPlan is working");
+      console.log("addToPlan is working", data);
+      console.log("Whats in todaysPlan", todaysPlan);
     }
 
   }
