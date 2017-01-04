@@ -250,7 +250,7 @@
           console.log('location data', location);
 
           ParkService.parkList(location.coords)
-          
+
           .then(function sucessHandeler(data){
             console.log("Getting Parks", data);
             vm.parkData = data;
@@ -334,7 +334,7 @@
         return $q.all(allPromises);
       })
       .then(function allThingsDone(itemsDetails) {
-        console.log("itemsDetails", itemsDetails);
+        console.log("itemsDetails & coordinates", itemsDetails, coordinates);
         updateLocalStorage(itemsDetails, coordinates);
         return itemsDetails;
       });
@@ -348,6 +348,7 @@
         method: "GET",
       })
       .then(function parkSuccessHandeler(response){
+        console.log("Log me please",response.data);
         return response.data;
       })
       .catch(function parkFailureHandeler(xhr){

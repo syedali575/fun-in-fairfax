@@ -28,7 +28,7 @@
           console.log('location data', location);
 
           ParkService.parkList(location.coords)
-          
+
           .then(function sucessHandeler(data){
             console.log("Getting Parks", data);
             vm.parkData = data;
