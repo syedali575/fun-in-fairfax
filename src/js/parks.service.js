@@ -39,7 +39,7 @@
         return $q.resolve(storedItems.list);
       }
 
-      console.log("Am I making ajax call?");
+      console.log("Making ajax call next");
 
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
@@ -53,10 +53,35 @@
       })
       .then(function successHandeler(response){
         console.log("Getting Park Data via ajax",response.data);
-        updateLocalStorage(response.data.searchResults.results, coordinates);
-        return response.data.searchResults.results;
+
+        var allPromises = response.data.searchResults.results.map(function parkDetail(each){
+          console.log(each.url);
+          return detail(each.url);
+        });
+        return $q.all(allPromises);
+      }).then(function allThingsDone(things) {
+        console.log("things", things);
+        // updateLocalStorage(response.data.searchResults.results, coordinates);
+        // return response.data.searchResults.results;
       });
     }
+
+
+
+    function detail(parkUrl){
+      return $http({
+        url: parkUrl,
+        method: "GET",
+      })
+      .then(function parkSuccessHandeler(response){
+        return response.data;
+      })
+      .catch(function parkFailureHandeler(xhr){
+        console.log("Unable to communicate", xhr);
+      });
+    }
+
+
 
     /**
     * Stores list of search results and coordinates to localStorage
