@@ -5,9 +5,12 @@
     .config(routerConfig);
 
 
-  routerConfig.$inject = ["$stateProvider"];
+  routerConfig.$inject = ["$stateProvider", "$urlRouterProvider", "$locationProvider"];
 
-  function routerConfig($stateProvider){
+  function routerConfig($stateProvider, $urlRouterProvider, $locationProvider){
+
+    $urlRouterProvider.when("", "/");
+    $locationProvider.hashPrefix("");
 
     $stateProvider
 
