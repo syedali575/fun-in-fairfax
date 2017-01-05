@@ -79,7 +79,7 @@
         return response.data;
       })
       .catch(function parkFailureHandeler(xhr){
-        console.log("Unable to communicate", xhr);
+        console.log("Unable to communicate 2017", xhr);
       });
     }
 

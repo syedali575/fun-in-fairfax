@@ -8,15 +8,8 @@
   </p>
 </section>
 
-<p ng-show="librarycontroller.message" class="errorMsg">{{library.message}}</p>
-
-
-
-<!-- <ul class="categoryList">
-  <li ng-repeat="library in librarycontroller.libraryData" class="alert alert-success" role="alert">
-    {{library.doc.metadata.label.toLowerCase()}}
-  </li>
-</ul> -->
+<p ng-show="librarycontroller.message" class="errorMsg">{{librarycontroller.message}}</p>
+<p ng-show="librarycontroller.message2" class="errorMsg">{{librarycontroller.message2}}</p>
 
 <ul class="categoryList">
   <li ng-repeat="library in librarycontroller.libraryData" class="panel panel-info" role="alert">

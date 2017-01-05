@@ -35,12 +35,12 @@
           })
           .catch(function failHandeler(xhr){
             console.log("Unable to communicate", xhr);
-            vm.message2 = "We are unable to communicate due to network outage, please contact your Network Administrator";
+            vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
             done();
           });
         },
         function errorHandeler() {
-          vm.message = "You must share your geolocation for this application to operate";
+          vm.message2 = "You must share your geolocation for this application to operate";
           $scope.$apply();
         }
       );

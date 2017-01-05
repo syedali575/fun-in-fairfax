@@ -34,7 +34,7 @@
             done();
           })
           .catch(function failHandeler(xhr){
-            console.log("Unable to communicate", xhr);
+            console.log("Unable to communicate 575", xhr);
             vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
             done();
           });
