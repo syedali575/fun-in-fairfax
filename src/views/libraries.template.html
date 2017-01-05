@@ -8,31 +8,31 @@
   </p>
 </section>
 
-<p ng-show="library.message" class="errorMsg">{{library.message}}</p>
+<p ng-show="librarycontroller.message" class="errorMsg">{{library.message}}</p>
 
 
-
-<ul class="categoryList">
-  <li ng-repeat="library in library.libraryData" class="alert alert-success" role="alert">
-    {{library.doc.metadata.label.toLowerCase()}}
-  </li>
-</ul>
 
 <!-- <ul class="categoryList">
-  <li ng-repeat="library in library.libraryData" class="panel panel-info" role="alert">
-    <h6 class="panel-heading">Park Name: {{libray.searchResults.PARKS_FCPA.PARK_NAME.toLowerCase()}}</h6>
-      <section class="panel-body">
-        <p>Street Address: {{park.searchResults.PARKS_FCPA.STREET.toLowerCase()}}</p>
-        <p name='zip'>Zip Code: {{park.searchResults.PARKS_FCPA.ZIP_CODE}}</p>
-        <button ng-click="parkcontroller.addToPlan(park)" class="btn btn-info" type="button" name="button">Add to Plan</button>
-      </section>
+  <li ng-repeat="library in librarycontroller.libraryData" class="alert alert-success" role="alert">
+    {{library.doc.metadata.label.toLowerCase()}}
   </li>
 </ul> -->
 
+<ul class="categoryList">
+  <li ng-repeat="library in librarycontroller.libraryData" class="panel panel-info" role="alert">
+    <h6 class="panel-heading">Library Name: {{library.searchResults.Libraries.DESCRIPTION.toLowerCase()}}</h6>
+      <section class="panel-body">
+        <p>Street Address: {{library.searchResults.Libraries.STREET_NAME.toLowerCase()}}</p>
+        <p name='zip'>Zip Code: {{library.searchResults.Libraries.ZIP_CODE}}</p>
+        <button ng-click="librarycontroller.addToPlan(library)" class="btn btn-info" type="button" name="button">Add to Plan</button>
+      </section>
+  </li>
+</ul>
 
 
 
-<button ng-click="library.getLibrary()" type="button" class="btn btn-primary">Find Libraries</button>
+
+<button ng-click="librarycontroller.getLibrary()" type="button" class="btn btn-primary">Find Libraries</button>
 
 <p>Other useful links to plan your trip to Fairfax County Libraries.</p>
   <ul>
