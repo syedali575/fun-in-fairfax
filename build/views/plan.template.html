@@ -4,11 +4,15 @@
 <ul class="categoryList">
   <li ng-repeat="plan in plancontroller.yourPlan" class="panel panel-info" role="alert">
 
-    <h6 class="panel-heading">Park Name: {{plan.searchResults.PARKS_FCPA.PARK_NAME.toLowerCase()}}</h6>
+    <h6 class="panel-heading">
+      Park Name: {{plan.name.toLowerCase()}}
+    </h6>
 
       <section class="panel-body">
-        <p>Street Address: {{plan.searchResults.PARKS_FCPA.STREET.toLowerCase()}}</p>
-        <p>Park Name: {{plan.searchResults.PARKS_FCPA.ZIP_CODE.toLowerCase()}}</p>
+        <p>Street Address: {{plan.address.toLowerCase()}}</p>
+        <p>Zip: {{plan.zip.toLowerCase()}}</p>
+        <p>Phone number: {{plan.phone.toLowerCase()}}</p>
+
       </section>
 
 
