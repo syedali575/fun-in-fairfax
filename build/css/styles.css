@@ -441,6 +441,10 @@ body button.btn.btn-primary {
   margin-bottom: 3%; }
 body p {
   margin: 5%; }
+  body p::after {
+    content: '';
+    display: block;
+    clear: both; }
 body .errorMsg {
   color: #f55656;
   font-weight: bold;
