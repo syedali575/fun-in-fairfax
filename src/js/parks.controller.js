@@ -48,6 +48,7 @@
 
     this.addToPlan = function addToPlan(data){
       PlanService.addToPlan(data);
+      console.log("Checking if I have todaysPlan",PlanService.todaysPlan);
     };
 
   }
