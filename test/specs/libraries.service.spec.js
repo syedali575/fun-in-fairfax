@@ -41,9 +41,13 @@
       expect(result.then).to.be.a("function");
       expect(result.catch).to.be.a("function");
 
+
       result
       .then(function(data){
         console.log(data);
+        expect(data).to.be.an("array");
+        expect(data[0].doc.metadata.label).to.equal("GEORGE MASON REGIONAL LIBRARY");
+
         doneCallback();
       })
       .catch(function(error){
