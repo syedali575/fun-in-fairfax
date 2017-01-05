@@ -57,6 +57,9 @@
       name: "todays-plan",
       url: "/todays-plan",
       templateUrl: "views/plan.template.html",
+      controller: "PlanController",
+      controllerAs: "plancontroller"
+
 
     });
 
@@ -534,6 +537,26 @@
   'use strict';
 
   angular.module("fairfax")
+  .controller("PlanController", PlanController);
+
+  PlanController.$inject = ["PlanService"];
+
+
+  function PlanController(PlanService){
+
+    var vm = this;
+    vm.yourPlan = PlanService.todaysPlan;
+    // vm.yourPlan = JSON.parse(localStorage.getItem("plan"));
+
+
+
+  }
+}());
+
+(function() {
+  'use strict';
+
+  angular.module("fairfax")
   .factory("PlanService", PlanService);
 
 
@@ -552,7 +575,7 @@
 
       console.log("addToPlan is working", data);
       console.log("Whats in todaysPlan", todaysPlan);
-      localStorage.setItem("plan", angular.toJson(todaysPlan));
+      // localStorage.setItem("plan", angular.toJson(todaysPlan));
     }
 
   }

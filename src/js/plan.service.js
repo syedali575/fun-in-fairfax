@@ -20,7 +20,7 @@
 
       console.log("addToPlan is working", data);
       console.log("Whats in todaysPlan", todaysPlan);
-      localStorage.setItem("plan", angular.toJson(todaysPlan));
+      // localStorage.setItem("plan", angular.toJson(todaysPlan));
     }
 
   }

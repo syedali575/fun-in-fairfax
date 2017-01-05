@@ -1,1 +1,23 @@
 <h3>Today's Plan</h3>
+
+
+<ul class="categoryList">
+  <li ng-repeat="plan in plancontroller.yourPlan" class="panel panel-info" role="alert">
+
+    <h6 class="panel-heading">Park Name: {{plan.searchResults.PARKS_FCPA.PARK_NAME.toLowerCase()}}</h6>
+
+      <section class="panel-body">
+        <p>Street Address: {{plan.searchResults.PARKS_FCPA.STREET.toLowerCase()}}</p>
+        <p>Park Name: {{plan.searchResults.PARKS_FCPA.ZIP_CODE.toLowerCase()}}</p>
+      </section>
+
+
+      <!-- <h6 class="panel-heading">Library Name: {{plan.searchResults.Libraries.DESCRIPTION.toLowerCase()}}</h6>
+
+        <section class="panel-body">
+          <p>Street Address: {{plan.searchResults.PARKS_FCPA.STREET.toLowerCase()}}</p>
+          <p>Park Name: {{plan.searchResults.PARKS_FCPA.ZIP_CODE.toLowerCase()}}</p>
+        </section> -->
+
+  </li>
+</ul>

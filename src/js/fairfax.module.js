@@ -57,6 +57,9 @@
       name: "todays-plan",
       url: "/todays-plan",
       templateUrl: "views/plan.template.html",
+      controller: "PlanController",
+      controllerAs: "plancontroller"
+
 
     });
 
