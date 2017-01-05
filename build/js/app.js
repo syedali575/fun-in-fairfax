@@ -42,7 +42,7 @@
       url: "/rec-centers",
       templateUrl: "views/rec.template.html",
       controller: "CenterController",
-      controllerAs: "center"
+      controllerAs: "centercontroller"
     })
 
     .state({
@@ -73,33 +73,49 @@
   angular.module("fairfax")
   .controller("CenterController", CenterController);
 
-  CenterController.$inject = ["CenterService"];
+  CenterController.$inject = ["$scope", "CenterService", "PlanService"];
 
-  function CenterController(CenterService){
+  function CenterController($scope, CenterService, PlanService){
 
     var vm = this;
     vm.message = undefined;
+    vm.message2 = undefined;
     vm.centerData = [];
 
     /**
     * [This function acquires location (latitude and longitude) of a user and execute centerList function]
+    * @param {function} done this callback function excuted when the data is arrived
     * @return {Void}
     */
-    this.getCenter = function getCenter(){
+    this.getCenter = function getCenter(done){
+      if (typeof(done) !== "function"){
+        done = function(){};
+      }
 
-      navigator.geolocation.getCurrentPosition(function locationHandeler(location){
-        console.log(location);
+      navigator.geolocation.getCurrentPosition(
+        function locationHandeler(location){
+          console.log("location data",location);
 
-        CenterService.centerList(location.coords)
-        .then(function sucessHandeler(data){
-          console.log("Getting Centers", data);
-          vm.centerData = data;
-        })
-        .catch(function failHandeler(xhr){
-          console.log("Unable to communicate", xhr);
-          vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
-        });
-      });
+          CenterService.centerList(location.coords)
+          .then(function sucessHandeler(data){
+            console.log("Getting Centers", data);
+            vm.centerData = data;
+            done();
+          })
+          .catch(function failHandeler(xhr){
+            console.log("Unable to communicate", xhr);
+            vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
+            done();
+          });
+        },
+        function errorHandeler() {
+          vm.message2 = "You must share your geolocation for this application to operate";
+          $scope.$apply();
+        }
+      );
+    };
+    this.addToPlan = function addToPlan(data){
+      PlanService.addToPlan(data);
     };
   }
 }());
@@ -110,22 +126,38 @@
   angular.module("fairfax")
   .factory("CenterService", CenterService);
 
+  var storedItems = JSON.parse(localStorage.getItem("center"));
+  storedItems = storedItems || {coordinates:{}};
+  console.log(storedItems);
+
   CenterService.$inject = ["$http", "$q"];
 
   function CenterService($http, $q){
     return {
-      centerList: centerList
+      centerList: centerList,
+      updateLocalStorage: updateLocalStorage
     };
 
     /**
-     * [This function retrieve list of rec-centers based on users geo position]
-     * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
-     * @return {Promise}             [description]
-     */
+    * [This function retrieve list of rec-centers based on users geo position]
+    * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
+    * @return {Promise}             [description]
+    */
     function centerList(coordinates){
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
         return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
       }
+
+      var cLat = Math.floor(coordinates.latitude);
+      var cLon = Math.floor(coordinates.longitude);
+      var sLat = Math.floor(storedItems.coordinates.latitude);
+      var sLon = Math.floor(storedItems.coordinates.longitude);
+
+      if (cLat === sLat && cLon === sLon){
+        return $q.resolve(storedItems.list);
+      }
+
+      console.log("Making ajax call next");
 
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
@@ -138,10 +170,48 @@
         }
       })
       .then(function successHandeler(response){
-        console.log("path",response.data);
-        return response.data.searchResults.results;
-      });
+        console.log("Getting Rec-Center Data via ajax",response.data);
 
+        var allPromises = response.data.searchResults.results.map(function parkDetail(each){
+          console.log(each.url);
+          return locationDetail(each.url);
+        });
+        return $q.all(allPromises);
+      })
+      .then(function allThingsDone(itemsDetails) {
+        console.log("itemsDetails & coordinates", itemsDetails, coordinates);
+        updateLocalStorage(itemsDetails, coordinates);
+        return itemsDetails;
+      });
+    }
+
+    function locationDetail(centerUrl){
+      return $http({
+        url: centerUrl,
+        method: "GET",
+      })
+      .then(function parkSuccessHandeler(response){
+        console.log("Log me please",response.data);
+        return response.data;
+      })
+      .catch(function parkFailureHandeler(xhr){
+        console.log("Unable to communicate", xhr);
+      });
+    }
+
+    /**
+    * Stores list of search results and coordinates to localStorage
+    * @param  {Object} list [list of search results and coordinates ]
+    * @return {void}
+    */
+    function updateLocalStorage(list, coordinates){
+
+      var data = {
+        list: list,
+        coordinates: {latitude: coordinates.latitude, longitude: coordinates.longitude}
+      };
+      console.log("Saving list of Rec-Centers to localStorage", data);
+      localStorage.setItem("center", angular.toJson(data));
     }
   }
 }());
@@ -152,39 +222,51 @@
   angular.module("fairfax")
   .controller("LibraryController", LibraryController);
 
-  LibraryController.$inject = ["LibraryService", "PlanService"];
+  LibraryController.$inject = ["$scope", "LibraryService", "PlanService"];
 
-  function LibraryController(LibraryService, PlanService){
+  function LibraryController($scope, LibraryService, PlanService){
 
     var vm = this;
     vm.message = undefined;
+    vm.message2 = undefined;
     vm.libraryData = [];
 
     /**
     * [This function acquires location (latitude and longitude) of a user and execute libraryList function]
+    * @param {function} done this callback function excuted when the data is arrived
     * @return {Void}
     */
-    this.getLibrary = function getLibrary(){
+    this.getLibrary = function getLibrary(done){
+      if (typeof(done) !== "function"){
+        done = function(){};
+      }
 
-      navigator.geolocation.getCurrentPosition(function locationHandeler(location){
-        console.log(location);
+      navigator.geolocation.getCurrentPosition(
+        function locationHandeler(location){
+          console.log("location data",location);
 
-        LibraryService.libraryList(location.coords)
-        .then(function sucessHandeler(data){
-          console.log("Getting Libraries", data);
-          vm.libraryData = data;
-        })
-        .catch(function failHandeler(xhr){
-          console.log("Unable to communicate", xhr);
-          vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
-        });
-      });
+          LibraryService.libraryList(location.coords)
+          .then(function sucessHandeler(data){
+            console.log("Getting Libraries", data);
+            vm.libraryData = data;
+            done();
+          })
+          .catch(function failHandeler(xhr){
+            console.log("Unable to communicate", xhr);
+            vm.message2 = "We are unable to communicate due to network outage, please contact your Network Administrator";
+            done();
+          });
+        },
+        function errorHandeler() {
+          vm.message = "You must share your geolocation for this application to operate";
+          $scope.$apply();
+        }
+      );
     };
 
     this.addToPlan = function addToPlan(data){
       PlanService.addToPlan(data);
     };
-
   }
 }());
 
@@ -314,10 +396,9 @@
 
       navigator.geolocation.getCurrentPosition(
         function locationHandeler(location) {
-          console.log('location data', location);
+          console.log("location data", location);
 
           ParkService.parkList(location.coords)
-
           .then(function sucessHandeler(data){
             console.log("Getting Parks", data);
             vm.parkData = data;
@@ -325,12 +406,12 @@
           })
           .catch(function failHandeler(xhr){
             console.log("Unable to communicate", xhr);
-            vm.message2 = "We are unable to communicate due to network outage, please contact your Network Administrator";
+            vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
             done();
           });
         },
         function errorHandeler() {
-          vm.message = "You must share your geolocation for this application to operate";
+          vm.message2 = "You must share your geolocation for this application to operate";
           $scope.$apply();
         }
       );

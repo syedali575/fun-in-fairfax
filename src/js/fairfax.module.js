@@ -42,7 +42,7 @@
       url: "/rec-centers",
       templateUrl: "views/rec.template.html",
       controller: "CenterController",
-      controllerAs: "center"
+      controllerAs: "centercontroller"
     })
 
     .state({

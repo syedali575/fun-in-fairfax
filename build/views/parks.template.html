@@ -25,7 +25,6 @@
 
 <ul class="categoryList">
   <li ng-repeat="park in parkcontroller.parkData" class="panel panel-info" role="alert">
-    <!-- {{park.doc.metadata.label.toLowerCase()}} -->
     <h6 class="panel-heading">Park Name: {{park.searchResults.PARKS_FCPA.PARK_NAME.toLowerCase()}}</h6>
       <section class="panel-body">
         <p>Street Address: {{park.searchResults.PARKS_FCPA.STREET.toLowerCase()}}</p>
@@ -35,12 +34,7 @@
   </li>
 </ul>
 
-
-
 <button type="button" ng-click="parkcontroller.getParks()" type="button" class="btn btn-primary">Find Parks</button>
-
-
-
 
   <p>Other useful links to plan your trip to Fairfax County Parks.</p>
     <ul>

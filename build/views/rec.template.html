@@ -14,19 +14,25 @@
 </section>
 
 
-<p ng-show="center.message" class="errorMsg">{{center.message}}</p>
+<p ng-show="centercontroller.message" class="errorMsg">{{center.message}}</p>
 
+<p ng-show="centercontroller.message2" class="errorMsg">{{park.message2}}</p>
 
 
 <ul class="categoryList">
-  <li ng-repeat="center in center.centerData" class="alert alert-success" role="alert">
-    {{center.doc.metadata.label.toLowerCase()}}
+  <li ng-repeat="center in centercontroller.centerData" class="panel panel-info" role="alert">
+    <h6 class="panel-heading">Rec-center Name: {{center.searchResults.COMMUNITY_CENTERS.DESCRIPTION.toLowerCase()}}</h6>
+      <section class="panel-body">
+        <p>Street Address: {{center.searchResults.COMMUNITY_CENTERS.STREET_NAME.toLowerCase()}}</p>
+        <p name='zip'>Zip Code: {{center.searchResults.PARKS_FCPA.ZIP_CODE}}</p>
+        <button ng-click="centercontroller.addToPlan(center)" class="btn btn-info" type="button" name="button">Add to Plan</button>
+      </section>
   </li>
 </ul>
 
 
 
-<button id="center" ng-click="center.getCenter()" type="button" class="btn btn-primary">Find Rec-Centers</button>
+<button  ng-click="centercontroller.getCenter()" type="button" class="btn btn-primary">Find Rec-Centers</button>
 
 <p>Other useful links to plan your trip to Fairfax County Rec-Centers.</p>
   <ul>
