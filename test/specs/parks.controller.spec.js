@@ -6,8 +6,10 @@
 
   describe("ParksController", function(){
     var ParksController;
+    var $scope = {};
     var $rootScope;
     var mockParkService = {};
+    var mockPlanService = {};
     window.navigator.geolocation = {};
     window.navigator.geolocation.getCurrentPosition = function mockGetCurrentPosition(callback) {
       callback({coords: {latitude: 38.8986131, longitude: -77.0319384}});
@@ -18,6 +20,7 @@
 
     beforeEach(module(function($provide){
       $provide.value("ParkService", mockParkService);
+      $provide.value("PlanService", mockPlanService);
 
     }));
 
@@ -30,7 +33,7 @@
         );
       };
 
-      ParksController = $controller("ParksController");
+      ParksController = $controller("ParksController", { $scope: $scope});
     }));
 
 

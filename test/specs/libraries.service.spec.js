@@ -22,8 +22,8 @@
 
 
       $httpBackend
-      .whenGET("http://www.fairfaxcounty.gov/FFXGISAPI/v1/search?feature=libraries&format=json&center=12.3456,12.3456&distance=100000")
-      .respond({searchResults:{results:[{doc:{metadata:{label: "GEORGE MASON REGIONAL LIBRARY"}}}]}});
+      .whenGET("http://www.fairfaxcounty.gov/FFXGISAPI/v1/search?feature=libraries&format=json&center=38.8986131,-77.0319384&distance=100000")
+      .respond({searchResults:{libraries:[{doc:{metadata:{label: "GEORGE MASON REGIONAL LIBRARY"}}}]}});
 
 
       $httpBackend
@@ -35,7 +35,7 @@
     }));
 
     it("Should retrieve list of libraries, if an object with latitude and longitude is provided as argument", function(doneCallback){
-      var result = LibraryService.libraryList({latitude: 12.3456, longitude: 12.3456});
+      var result = LibraryService.libraryList({latitude: 38.8986131, longitude: -77.0319384});
 
       expect(result).to.be.an("object");
       expect(result.then).to.be.a("function");
