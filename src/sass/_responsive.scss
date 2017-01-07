@@ -4,12 +4,12 @@
   .categoryImage  {
     float: left;
     width: $imageMobileWidth2;
-    margin-right: 2%;
-    margin-bottom: 2%;
+    margin-right: $marginSetting3;
+    margin-bottom: $marginSetting3;
   }
 
   body p {
-    margin: 0% 2% 0% 2%;
+    margin: 0% $marginSetting3 0% $marginSetting3;
   }
 
   body .paraSection .paraLinks {
@@ -18,7 +18,7 @@
   }
 
   .homePage p {
-    margin: 3%;
+    margin: $marginSetting4;
   }
 
 

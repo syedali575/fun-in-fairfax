@@ -1,12 +1,10 @@
 .links {
   list-style: none;
-  padding-left: 5%;
+  padding-left: $paddingSetting2;
 
 
   li:last-child {
-    padding-bottom: 2%;
+    padding-bottom: $paddingSetting2;
   }
-
-
 
 }

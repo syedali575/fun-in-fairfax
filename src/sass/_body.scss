@@ -22,17 +22,15 @@ body{
     width: $imageMobileWidth;
   }
 
-
-
   button.btn.btn-primary {
     display:block;
     margin-left: $marginSetting1;
-    margin-top: 3%;
-    margin-bottom: 3%;
+    margin-top: $marginSetting4;
+    margin-bottom: $marginSetting4;
   }
 
   p {
-    margin: 5%;
+    margin: $marginSetting1;
     &::after{
       content: '';
       display: block;
@@ -41,7 +39,7 @@ body{
   }
 
   .paraLinks {
-    margin-bottom: 2%;
+    margin-bottom: $marginSetting3;
     margin-left: $marginSetting1;
   }
 
@@ -52,14 +50,13 @@ body{
     margin: 2%;
   }
 
-section.panel-body {
-  padding: 1%;
+  section.panel-body {
+    padding: 1%;
 
-  p {
-    margin: 1%;
+    p {
+      margin: $marginSetting2;
+    }
+
   }
-
-}
-
 
 }
