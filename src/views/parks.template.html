@@ -4,18 +4,10 @@
 
 
   <section>
-
     <p>
       Fairfax County has a number of parks—from big to small—that offer a range of opportunities for hours of fun. They include historic buildings, gorgeous lakes, scenic vegetation, and lots of opportunity to commune with nature  Come row or pedal a boat, engage in a friendly game of disc golf, let the kids run around a playground, take a ride on a carousel, hike or bike a nature trail, mini-golf, take a train ride, play basketball, kick around a soccer ball, barbecue some food, or just spread out a blanket and enjoy the beautiful scenery.
     </p>
-
-    <!-- <p>
-      Whether you’re looking to fill a day with vigorous activity or just drop in for some quick and fun relaxation, there’s a nearby park for you. Some parks offer free entrance while others charge a nominal fee for non-County residents. Parking is generally available. Snacks such as ice cream and vending machines are available in some locations. Restrooms available at the larger parks.
-    </p> -->
   </section>
-
-
-
 
 
 <p ng-show="parkcontroller.message" class="errorMsg">{{parkcontroller.message}}</p>
@@ -36,7 +28,10 @@
 
 <button type="button" ng-click="parkcontroller.getParks()" type="button" class="btn btn-primary">Find Parks</button>
 
-  <p>Other useful links to plan your trip to Fairfax County Parks.</p>
+  <section class="paraSection">
+    <p class="paraLinks">Other useful links to plan your trip to Fairfax County Parks.</p>
+  </section>
+
     <ul class="links">
       <li><a href="https://darksky.net" target="_blank">Weather</a></li>
       <li><a href="https://www.google.com/maps" target="_blank">Direction/Maps</a></li>

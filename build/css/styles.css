@@ -445,6 +445,9 @@ body p {
     content: '';
     display: block;
     clear: both; }
+body .paraLinks {
+  margin-bottom: 2%;
+  margin-left: 5%; }
 body .errorMsg {
   color: #f55656;
   font-weight: bold;
@@ -499,6 +502,10 @@ nav {
   body p {
     margin: 0% 2% 0% 2%; }
 
+  body .paraSection .paraLinks {
+    margin-bottom: .75%;
+    color: #f55656; }
+
   .homePage p {
     margin: 3%; }
 
@@ -529,6 +536,10 @@ nav {
 
   body p {
     margin: 0% 1% 0% 1%; }
+
+  body button.btn.btn-primary {
+    margin-top: 2%;
+    margin-bottom: 2%; }
 
   body h1 {
     padding-top: 2%;

@@ -40,6 +40,11 @@ body{
     }
   }
 
+  .paraLinks {
+    margin-bottom: 2%;
+    margin-left: $marginSetting1;
+  }
+
   .errorMsg {
     color: $themeColor3;
     font-weight: bold;
