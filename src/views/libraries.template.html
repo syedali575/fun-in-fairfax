@@ -11,6 +11,7 @@
 <p ng-show="librarycontroller.message" class="errorMsg">{{librarycontroller.message}}</p>
 <p ng-show="librarycontroller.message2" class="errorMsg">{{librarycontroller.message2}}</p>
 
+
 <ul class="categoryList">
   <li ng-repeat="library in librarycontroller.libraryData" class="panel panel-info" role="alert">
     <h6 class="panel-heading">Library Name: {{library.searchResults.Libraries.DESCRIPTION.toLowerCase()}}</h6>
@@ -23,15 +24,13 @@
 </ul>
 
 
-
-
 <button ng-click="librarycontroller.getLibrary()" type="button" class="btn btn-primary">Find Libraries</button>
 
 <p>Other useful links to plan your trip to Fairfax County Libraries.</p>
-  <ul>
+
+
+  <ul class="links">
     <li><a href="https://www.goodreads.com/" target="_blank">Find Good Reads</a></li>
     <li><a href="http://www.fairfaxcounty.gov/library/" target="_blank">More about Libraries</a></li>
     <li><a href="https://www.google.com/maps" target="_blank">Direction/Maps</a></li>
-
-
   </ul>

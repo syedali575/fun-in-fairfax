@@ -541,4 +541,10 @@ footer {
     background-color: #e0a85d;
     padding-bottom: 1.2%; }
 
+.links {
+  list-style: none;
+  padding-left: 5%; }
+  .links li:last-child {
+    padding-bottom: 2%; }
+
 /*# sourceMappingURL=styles.css.map */
