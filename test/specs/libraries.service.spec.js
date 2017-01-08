@@ -25,6 +25,29 @@
       .whenGET("http://www.fairfaxcounty.gov/FFXGISAPI/v1/search?feature=libraries&format=json&center=38.8986131,-77.0319384&distance=100000")
       .respond({searchResults:{libraries:[{doc:{metadata:{label: "GEORGE MASON REGIONAL LIBRARY"}}}]}});
 
+//       .respond({
+// searchResults: {
+// uniqueID: "37cd070a-7874-e6c5-533a-a67f5b251cfb",
+// feature: "libraries",
+// label: "GEORGE MASON REGIONAL LIBRARY",
+// Libraries: {
+// OBJECTID: "9",
+// DESCRIPTION: "GEORGE MASON REGIONAL LIBRARY",
+// JURISDICTION: "COUNTY OF FAIRFAX",
+// WEB_ADDRESS: "www.fairfaxcounty.gov/library/branches/gm/default.htm",
+// STREET_NUMBER: "7001",
+// STREET_NAME: "LITTLE RIVER TPKE",
+// CITY: "ANNANDALE",
+// ZIP: "22003",
+// ERC_PHONE: "(703) 256-3800",
+// POI_ID: "2",
+// pointProperty: { Point: { pos: "38.82741035 -77.186215558"}}
+// }
+// }
+// }
+// );
+
+
 
       $httpBackend
       .whenGET("views/home.template.html")
@@ -51,8 +74,8 @@
         doneCallback();
       })
       .catch(function(error){
-        console.log(error);
-        doneCallback("There is something wrong");
+        console.log("doneCallback error message",error.message);
+        doneCallback("There is something wrong in libraries", error);
       });
 
       $httpBackend.flush();
