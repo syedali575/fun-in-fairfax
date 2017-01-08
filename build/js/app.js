@@ -322,7 +322,7 @@
         console.log("Getting Libraries Data via ajax",response.data);
 
         var allPromises = response.data.searchResults.results.map(function libraryDetail(each){
-          console.log(each.url);
+          console.log("Each URL",each.url);
           return locationDetail(each.url);
         });
         return $q.all(allPromises);

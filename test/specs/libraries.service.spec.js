@@ -22,30 +22,37 @@
 
 
       $httpBackend
-      .whenGET("http://www.fairfaxcounty.gov/FFXGISAPI/v1/search?feature=libraries&format=json&center=38.8986131,-77.0319384&distance=100000")
-      .respond({searchResults:{libraries:[{doc:{metadata:{label: "GEORGE MASON REGIONAL LIBRARY"}}}]}});
+      .whenGET("http://www.fairfaxcounty.gov/FFXGISAPI/v1/search?feature=libraries&format=json&center=38.82741035,-77.186215558&distance=100000")
+      // .respond({searchResults:{results:[{
+      //   url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/retrieve/json/37cd070a-7874-e6c5-533a-a67f5b251cfb",
+      //   doc:{metadata:{label: "GEORGE MASON REGIONAL LIBRARY"}}}]}});
 
-//       .respond({
-// searchResults: {
-// uniqueID: "37cd070a-7874-e6c5-533a-a67f5b251cfb",
-// feature: "libraries",
-// label: "GEORGE MASON REGIONAL LIBRARY",
-// Libraries: {
-// OBJECTID: "9",
-// DESCRIPTION: "GEORGE MASON REGIONAL LIBRARY",
-// JURISDICTION: "COUNTY OF FAIRFAX",
-// WEB_ADDRESS: "www.fairfaxcounty.gov/library/branches/gm/default.htm",
-// STREET_NUMBER: "7001",
-// STREET_NAME: "LITTLE RIVER TPKE",
-// CITY: "ANNANDALE",
-// ZIP: "22003",
-// ERC_PHONE: "(703) 256-3800",
-// POI_ID: "2",
-// pointProperty: { Point: { pos: "38.82741035 -77.186215558"}}
-// }
-// }
-// }
-// );
+      .respond(
+        {
+          searchResults: {
+            uniqueID: "37cd070a-7874-e6c5-533a-a67f5b251cfb",
+            feature: "libraries",
+            label: "GEORGE MASON REGIONAL LIBRARY",
+            Libraries: {
+              OBJECTID: "9",
+              DESCRIPTION: "GEORGE MASON REGIONAL LIBRARY",
+              JURISDICTION: "COUNTY OF FAIRFAX",
+              WEB_ADDRESS: "www.fairfaxcounty.gov/library/branches/gm/default.htm",
+              STREET_NUMBER: "7001",
+              STREET_NAME: "LITTLE RIVER TPKE",
+              CITY: "ANNANDALE",
+              ZIP: "22003",
+              ERC_PHONE: "(703) 256-3800",
+              POI_ID: "2",
+              pointProperty: {
+                Point: {
+                  pos: "38.82741035 -77.186215558"
+                }
+              }
+            }
+          }
+        }
+      );
 
 
 
@@ -57,8 +64,9 @@
 
     }));
 
+
     it("Should retrieve list of libraries, if an object with latitude and longitude is provided as argument", function(doneCallback){
-      var result = LibraryService.libraryList({latitude: 38.8986131, longitude: -77.0319384});
+      var result = LibraryService.libraryList({latitude: 38.82741035, longitude: -77.186215558});
 
       expect(result).to.be.an("object");
       expect(result.then).to.be.a("function");
