@@ -20,15 +20,12 @@
     /**
     * [This function retrieve list of parks based on users geo position]
     * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
-    * @return {Promise}             [description]
+    * @return {Promise}             It returns promise object
     */
     function parkList(coordinates){
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
         return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
       }
-
-      // console.log("In parkList Function",storedItems.coordinates.latitude);
-      // console.log("Able to access array of parks",storedItems.list);
 
       var cLat = Math.floor(coordinates.latitude);
       var cLon = Math.floor(coordinates.longitude);
@@ -55,7 +52,7 @@
         console.log("Getting Park Data via ajax",response.data);
 
         var allPromises = response.data.searchResults.results.map(function parkDetail(each){
-          console.log(each.url);
+          console.log("Each location URL",each.url);
           return locationDetail(each.url);
         });
         return $q.all(allPromises);
@@ -68,7 +65,11 @@
     }
 
 
-
+    /**
+     * This function retrives detail of each location.
+     * @param  {[type]} parkUrl [description]
+     * @return {[type]}         [description]
+     */
     function locationDetail(parkUrl){
       return $http({
         url: parkUrl,
@@ -79,7 +80,7 @@
         return response.data;
       })
       .catch(function parkFailureHandeler(xhr){
-        console.log("Unable to communicate 2017", xhr);
+        console.log("Unable to communicate", xhr);
       });
     }
 
@@ -99,6 +100,5 @@
       console.log("Saving list of parks to localStorage", data);
       localStorage.setItem("list", angular.toJson(data));
     }
-
   }
 }());

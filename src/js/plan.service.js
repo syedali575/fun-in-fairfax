@@ -41,7 +41,7 @@
         updatedObject.phone = data.searchResults.Libraries.ERC_PHONE;
         updatedObject.web = data.searchResults.Libraries.WEB_ADDRESS;
       }
-      else {
+      else if (data.searchResults.COMMUNITY_CENTERS){
         updatedObject.name = data.searchResults.COMMUNITY_CENTERS.DESCRIPTION;
         updatedObject.feature = "Fairfax County Rec-center";
         updatedObject.streetNumber = data.searchResults.COMMUNITY_CENTERS.STREET_NUMBER;
@@ -50,9 +50,10 @@
         updatedObject.phone = data.searchResults.COMMUNITY_CENTERS.ERC_PHONE;
         updatedObject.web = data.searchResults.COMMUNITY_CENTERS.WEB_ADDRESS;
       }
-
-
-
+      else {
+        updatedObject.name = data.searchResults.SHOPPING_CENTERS.DESCRIPTIO;
+        updatedObject.feature = "Fairfax County Shopping Center";
+      }
 
       todaysPlan.push(updatedObject);
 

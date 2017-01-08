@@ -62,12 +62,7 @@
 
 
     });
-
-
-
   }
-
-
 }());
 
 (function() {
@@ -389,7 +384,7 @@
 
     /**
     * [This function acquires location (latitude and longitude) of a user and execute parkList function]
-    * @param {function} done this callback function excuted when the data is arrived
+    * @param {function} done this callback function get executed when the data is arrived
     * @return {Void}
     */
     this.getParks = function getParks(done){
@@ -450,15 +445,12 @@
     /**
     * [This function retrieve list of parks based on users geo position]
     * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
-    * @return {Promise}             [description]
+    * @return {Promise}             It returns promise object
     */
     function parkList(coordinates){
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
         return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
       }
-
-      // console.log("In parkList Function",storedItems.coordinates.latitude);
-      // console.log("Able to access array of parks",storedItems.list);
 
       var cLat = Math.floor(coordinates.latitude);
       var cLon = Math.floor(coordinates.longitude);
@@ -485,7 +477,7 @@
         console.log("Getting Park Data via ajax",response.data);
 
         var allPromises = response.data.searchResults.results.map(function parkDetail(each){
-          console.log(each.url);
+          console.log("Each location URL",each.url);
           return locationDetail(each.url);
         });
         return $q.all(allPromises);
@@ -498,7 +490,11 @@
     }
 
 
-
+    /**
+     * This function retrives detail of each location.
+     * @param  {[type]} parkUrl [description]
+     * @return {[type]}         [description]
+     */
     function locationDetail(parkUrl){
       return $http({
         url: parkUrl,
@@ -509,7 +505,7 @@
         return response.data;
       })
       .catch(function parkFailureHandeler(xhr){
-        console.log("Unable to communicate 2017", xhr);
+        console.log("Unable to communicate", xhr);
       });
     }
 
@@ -529,7 +525,6 @@
       console.log("Saving list of parks to localStorage", data);
       localStorage.setItem("list", angular.toJson(data));
     }
-
   }
 }());
 
@@ -596,7 +591,7 @@
         updatedObject.phone = data.searchResults.Libraries.ERC_PHONE;
         updatedObject.web = data.searchResults.Libraries.WEB_ADDRESS;
       }
-      else {
+      else if (data.searchResults.COMMUNITY_CENTERS){
         updatedObject.name = data.searchResults.COMMUNITY_CENTERS.DESCRIPTION;
         updatedObject.feature = "Fairfax County Rec-center";
         updatedObject.streetNumber = data.searchResults.COMMUNITY_CENTERS.STREET_NUMBER;
@@ -605,9 +600,10 @@
         updatedObject.phone = data.searchResults.COMMUNITY_CENTERS.ERC_PHONE;
         updatedObject.web = data.searchResults.COMMUNITY_CENTERS.WEB_ADDRESS;
       }
-
-
-
+      else {
+        updatedObject.name = data.searchResults.SHOPPING_CENTERS.DESCRIPTIO;
+        updatedObject.feature = "Fairfax County Shopping Center";
+      }
 
       todaysPlan.push(updatedObject);
 
@@ -626,36 +622,52 @@
   angular.module("fairfax")
   .controller("ShopController", ShopController);
 
-  ShopController.$inject = ["ShopService"];
+  ShopController.$inject = ["$scope", "ShopService", "PlanService"];
 
-  function ShopController(ShopService){
+  function ShopController($scope, ShopService, PlanService){
 
     var vm = this;
     vm.message = undefined;
+    vm.message = undefined;
     vm.shopData = [];
-
 
     /**
     * [This function acquires location (latitude and longitude) of a user and execute shopList function]
+    * @param {function} done this callback function get executed when the data is arrived
     * @return {Void}
     */
-    this.getShop = function getShop(){
+    this.getShop = function getShop(done){
+      if (typeof(done) !== "function"){
+        done = function(){};
+      }
 
-      navigator.geolocation.getCurrentPosition(function locationHandeler(location){
-        console.log(location);
+      navigator.geolocation.getCurrentPosition(
+        function locationHandeler(location){
+          console.log("location data",location);
 
-        ShopService.shopList(location.coords)
-        .then(function successHandeler(data){
-          console.log("In Shop Controller", data);
-          vm.shopData = data;
-        })
-        .catch(function failHandeler(xhr){
-          console.log("Unable to Communicate", xhr);
-          vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
-        });
-      });
+          ShopService.shopList(location.coords)
+          .then(function successHandeler(data){
+            console.log("Getting Shopping Centers", data);
+            vm.shopData = data;
+            done();
+          })
+          .catch(function failHandeler(xhr){
+            console.log("Unable to Communicate", xhr);
+            vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
+            done();
+          });
+        },
+        function errorHandeler(){
+          vm.message2 = "You must share your geolocation for this application to operate";
+          $scope.$apply();
+        }
+      );
     };
 
+    this.addToPlan = function addToPlan(data){
+      PlanService.addToPlan(data);
+      console.log("Checking if I have todaysPlan",PlanService.todaysPlan);
+    };
 
   }
 
@@ -666,11 +678,10 @@
 
   angular.module("fairfax")
   .factory("ShopService", ShopService);
-// =================================
-// var storedItems =
-// JSON.parse(localStorage.getItem("shop"));
-// storedItems = storedItems || {coordinates:{}};
-// ==================================
+
+  var storedItems = JSON.parse(localStorage.getItem("shop"));
+  storedItems = storedItems || {coordinates:{}};
+  console.log(storedItems);
 
 
 
@@ -678,37 +689,32 @@
 
   function ShopService($http, $q){
     return {
-      shopList: shopList
-      // updateLocalStorage: updateLocalStorage
+      shopList: shopList,
+      updateLocalStorage: updateLocalStorage
     };
 
 
     /**
-     * [This function retrieves list of shopping centers in Fairfax County by location of user]
-     * @param  {Object} coordinates [object coordinates with two properties: latitude and longitude]
-     * @return {Promise}             [description]
-     */
+    * [This function retrieves list of shopping centers in Fairfax County by location of user]
+    * @param  {Object} coordinates [object coordinates with two properties: latitude and longitude]
+    * @return {Promise}             [It returns promise object]
+    */
     function shopList(coordinates){
       if (!coordinates  || !coordinates.latitude || !coordinates.longitude){
         return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
       }
 
 
-      // console.log("In shopList Function",storedItems.coordinates.latitude);
-      // console.log("Able to access array of shops",storedItems.shop);
+      var cLat = Math.floor(coordinates.latitude);
+      var cLon = Math.floor(coordinates.longitude);
+      var sLat = Math.floor(storedItems.coordinates.latitude);
+      var sLon = Math.floor(storedItems.coordinates.longitude);
 
-      // var cLat = Math.floor(coordinates.latitude);
-      // var cLon = Math.floor(coordinates.longitude);
-      // var sLat = Math.floor(storedItems.coordinates.latitude);
-      // var sLon = Math.floor(storedItems.coordinates.longitude);
-      //
-      // if (cLat === sLat && cLon === sLon){
-      //   return $q.resolve(storedItems.list);
-      // }
+      if (cLat === sLat && cLon === sLon){
+        return $q.resolve(storedItems.list);
+      }
 
       console.log("Am I making ajax call?");
-
-
 
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
@@ -721,25 +727,48 @@
         }
       })
       .then(function successHandeler(response){
-        console.log("Getting Shopping data via ajax",response);
-        // updateLocalStorage(response.data.searchResults.results, coordinates);
-        return response.data.searchResults.results;
+        console.log("Getting Shopping data via ajax",response.data);
+
+        var allPromises = response.data.searchResults.results.map(function shopDetail(each){
+          console.log("Each location URL", each.url);
+          return locationDetail(each.url);
+        });
+        return $q.all(allPromises);
+      })
+      .then(function allThingsDone(itemsDetails){
+        console.log("itemsDetails & coordinates", itemsDetails, coordinates);
+        updateLocalStorage(itemsDetails, coordinates);
+        return itemsDetails;
       });
     }
 
-    // function updateLocalStorage(shop, coordinates){
-    //
-    //   var data = {
-    //     shop: shop,
-    //     coordinates: {latitude: coordinates.latitude, longitude: coordinates.longitude}
-    //   };
-    //   console.log("Saving list of shopping centers to localStorage", data);
-    //   localStorage.setItem("shop", angular.toJson(data));
-    // }
+    /**
+    * This function retrives detail of each location.
+    * @param  {[type]} parkUrl [description]
+    * @return {[type]}         [description]
+    */
+    function locationDetail(storeUrl){
+      return $http({
+        url: storeUrl,
+        method: "GET"
+      })
+      .then(function parkSuccessHandeler(response){
+        console.log("Log me please",response.data);
+        return response.data;
+      })
+      .catch(function parkFailureHandeler(xhr){
+        console.log("Unable to communicate", xhr);
+      });
+    }
 
+    function updateLocalStorage(list, coordinates){
 
-
-
+      var data = {
+        list: list,
+        coordinates: {latitude: coordinates.latitude, longitude: coordinates.longitude}
+      };
+      console.log("Saving list of shopping centers to localStorage", data);
+      localStorage.setItem("shop", angular.toJson(data));
+    }
   }
-
 }());

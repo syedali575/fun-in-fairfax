@@ -15,7 +15,7 @@
 
     /**
     * [This function acquires location (latitude and longitude) of a user and execute parkList function]
-    * @param {function} done this callback function excuted when the data is arrived
+    * @param {function} done this callback function get executed when the data is arrived
     * @return {Void}
     */
     this.getParks = function getParks(done){
