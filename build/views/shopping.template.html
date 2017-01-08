@@ -12,16 +12,22 @@
   </p> -->
 </section>
 
-<p ng-show="shop.message" class="errorMsg">{{shop.message}}</p>
+<p ng-show="shopcontroller.message" class="errorMsg">{{shopcontroller.message}}</p>
+
+<p ng-show="shopcontroller.message2" class="errorMsg">{{shopcontroller.message2}}</p>
 
 
 <ul class="categoryList">
-  <li ng-repeat="shop in shop.shopData" class="alert alert-success" role="alert">
-      {{shop.doc.metadata.label.toLowerCase()}}
+  <li ng-repeat="shop in shopcontroller.shopData" class="panel panel-info" role="alert">
+    <h6 class="panel-heading">Shopping Center Name: {{shop.searchResults.SHOPPING_CENTERS.DESCRIPTIO.toLowerCase()}}</h6>
+      <section class="panel-body">
+        <button ng-click="shopcontroller.addToPlan(shop)" class="btn btn-info" type="button" name="button">Add to Plan</button>
+      </section>
   </li>
 </ul>
 
-<button ng-click="shop.getShop()" type="button" class="btn btn-primary">Find Shopping Centers</button>
+
+<button ng-click="shopcontroller.getShop()" type="button" class="btn btn-primary">Find Shopping Centers</button>
 
 <section class="paraSection">
   <p class="paraLinks">Other useful links to plan your trip to Fairfax County Shopping Centers.</p>

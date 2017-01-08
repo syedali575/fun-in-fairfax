@@ -50,7 +50,7 @@
       url: "/shopping-centers",
       templateUrl: "views/shopping.template.html",
       controller: "ShopController",
-      controllerAs: "shop"
+      controllerAs: "shopcontroller"
     })
 
     .state({
