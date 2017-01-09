@@ -543,11 +543,13 @@
 
 
   function PlanController(PlanService){
-
     var vm = this;
     vm.yourPlan = PlanService.todaysPlan;
-    // vm.yourPlan = JSON.parse(localStorage.getItem("plan"));
 
+    vm.clearTodaysPlan = function clearTodaysPlan(){
+      localStorage.removeItem("plan");
+      vm.yourPlan = [];
+    };
 
 
   }
@@ -568,7 +570,8 @@
   function PlanService(){
     return {
       addToPlan: addToPlan,
-      todaysPlan: todaysPlan
+      todaysPlan: todaysPlan,
+      locationStorage: locationStorage
 
     };
 
@@ -629,7 +632,7 @@
     * @return {void}
     */
     function locationStorage(todaysPlan){
-      localStorage.setItem("location", angular.toJson(todaysPlan));
+      localStorage.setItem("plan", angular.toJson(todaysPlan));
       console.log("Saving location to localStorage", todaysPlan);
     }
 

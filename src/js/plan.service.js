@@ -13,7 +13,8 @@
   function PlanService(){
     return {
       addToPlan: addToPlan,
-      todaysPlan: todaysPlan
+      todaysPlan: todaysPlan,
+      locationStorage: locationStorage
 
     };
 
@@ -74,7 +75,7 @@
     * @return {void}
     */
     function locationStorage(todaysPlan){
-      localStorage.setItem("location", angular.toJson(todaysPlan));
+      localStorage.setItem("plan", angular.toJson(todaysPlan));
       console.log("Saving location to localStorage", todaysPlan);
     }
 

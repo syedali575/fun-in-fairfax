@@ -1,4 +1,5 @@
 <h3>Today's Plan</h3>
+<button ng-click="plancontroller.clearTodaysPlan()" class="btn btn-info" type="button" name="button">Clear Today's Plan</button>
 
 
 <ul class="categoryList">
@@ -9,8 +10,6 @@
         <p>Street Address: {{plan.streetNumber}} {{plan.address.toLowerCase()}}</p>
         <p>Zip: {{plan.zip}}</p>
         <p>Phone number: {{plan.phone}}</p>
-        <!-- <a ng-href={{plan.web}}>Link</a>
-        <p>Web: {{plan.web.toLowerCase()}}</p> -->
       </section>
   </li>
 </ul>

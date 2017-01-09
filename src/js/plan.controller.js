@@ -8,11 +8,13 @@
 
 
   function PlanController(PlanService){
-
     var vm = this;
     vm.yourPlan = PlanService.todaysPlan;
-    // vm.yourPlan = JSON.parse(localStorage.getItem("plan"));
 
+    vm.clearTodaysPlan = function clearTodaysPlan(){
+      localStorage.removeItem("plan");
+      vm.yourPlan = [];
+    };
 
 
   }
