@@ -23,46 +23,119 @@
 
       $httpBackend
       .whenGET("http://www.fairfaxcounty.gov/FFXGISAPI/v1/search?feature=libraries&format=json&center=38.82741035,-77.186215558&distance=100000")
-      // .respond({searchResults:{results:[{
-      //   url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/retrieve/json/37cd070a-7874-e6c5-533a-a67f5b251cfb",
-      //   doc:{metadata:{label: "GEORGE MASON REGIONAL LIBRARY"}}}]}});
+      // .respond(
+      //   {
+      //     searchResults: {
+      //       totalHits: 1,
+      //       hitFeatures: [
+      //         {
+      //           hitFeatureName: "libraries",
+      //           hitFeatureCount: 1
+      //         }
+      //       ],
+      //       results: [
+      //         {
+      //           index: 1,
+      //           url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/retrieve/json/37cd070a-7874-e6c5-533a-a67f5b251cfb",
+      //           distance: "0",
+      //           doc: {
+      //             uniqueID: "37cd070a-7874-e6c5-533a-a67f5b251cfb",
+      //             metadata: {
+      //               label: "GEORGE MASON REGIONAL LIBRARY",
+      //               last_modified_date: "2013-03-28T17:20:35.612-04:00",
+      //               geo_elements: [
+      //                 "point",
+      //                 "38.82741035 -77.186215558"
+      //               ],
+      //               adv_geo: {
+      //                 geo_elements: []
+      //               },
+      //               feature: "libraries",
+      //               legacy_id_list: [
+      //                 {
+      //                   id_type: "OBJECTID",
+      //                   id_value: "9"
+      //                 },
+      //                 {
+      //                   id_type: "POI_ID",
+      //                   id_value: "2"
+      //                 }
+      //               ]
+      //             }
+      //           }
+      //         }
+      //       ]
+      //     }
+      //   }
+      // );
+
 
       .respond(
         {
-          searchResults: {
-            totalHits: 1,
-            hitFeatures: [
+          "searchResults": {
+            "totalHits": 2,
+            "hitFeatures": [
               {
-                hitFeatureName: "libraries",
-                hitFeatureCount: 1
+                "hitFeatureName": "libraries",
+                "hitFeatureCount": 2
               }
             ],
-            results: [
+            "results": [
               {
-                index: 1,
-                url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/retrieve/json/37cd070a-7874-e6c5-533a-a67f5b251cfb",
-                distance: "0",
-                doc: {
-                  uniqueID: "37cd070a-7874-e6c5-533a-a67f5b251cfb",
-                  metadata: {
-                    label: "GEORGE MASON REGIONAL LIBRARY",
-                    last_modified_date: "2013-03-28T17:20:35.612-04:00",
-                    geo_elements: [
+                "index": 1,
+                "url": "http://www.fairfaxcounty.gov/FFXGISAPI/v1/retrieve/json/37cd070a-7874-e6c5-533a-a67f5b251cfb",
+                "distance": "0",
+                "doc": {
+                  "uniqueID": "37cd070a-7874-e6c5-533a-a67f5b251cfb",
+                  "metadata": {
+                    "label": "GEORGE MASON REGIONAL LIBRARY",
+                    "last-modified-date": "2013-03-28T17:20:35.612-04:00",
+                    "geo-elements": [
                       "point",
                       "38.82741035 -77.186215558"
                     ],
-                    adv_geo: {
-                      geo_elements: []
+                    "adv-geo": {
+                      "geo-elements": []
                     },
-                    feature: "libraries",
-                    legacy_id_list: [
+                    "feature": "libraries",
+                    "legacy_id_list": [
                       {
-                        id_type: "OBJECTID",
-                        id_value: "9"
+                        "id-type": "OBJECTID",
+                        "id-value": "9"
                       },
                       {
-                        id_type: "POI_ID",
-                        id_value: "2"
+                        "id-type": "POI_ID",
+                        "id-value": "2"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "index": 2,
+                "url": "http://www.fairfaxcounty.gov/FFXGISAPI/v1/retrieve/json/6083efa3-8791-2d18-aeae-f306e9484690",
+                "distance": "13394",
+                "doc": {
+                  "uniqueID": "6083efa3-8791-2d18-aeae-f306e9484690",
+                  "metadata": {
+                    "label": "SHERWOOD REGIONAL LIBRARY",
+                    "last-modified-date": "2013-03-28T17:20:35.612-04:00",
+                    "geo-elements": [
+                      "point",
+                      "38.743484047 -77.0748970619999"
+                    ],
+                    "adv-geo": {
+                      "geo-elements": []
+                    },
+                    "feature": "libraries",
+                    "legacy_id_list": [
+                      {
+                        "id-type": "OBJECTID",
+                        "id-value": "11"
+                      },
+                      {
+                        "id-type": "POI_ID",
+                        "id-value": "16"
                       }
                     ]
                   }
@@ -101,6 +174,36 @@
       });
 
 
+      $httpBackend
+      .whenGET("http://www.fairfaxcounty.gov/FFXGISAPI/v1/retrieve/json/6083efa3-8791-2d18-aeae-f306e9484690")
+      .respond({
+        "searchResults": {
+          "uniqueID": "6083efa3-8791-2d18-aeae-f306e9484690",
+          "feature": "libraries",
+          "label": "SHERWOOD REGIONAL LIBRARY",
+          "Libraries": {
+            "OBJECTID": "11",
+            "DESCRIPTION": "SHERWOOD REGIONAL LIBRARY",
+            "JURISDICTION": "COUNTY OF FAIRFAX",
+            "WEB_ADDRESS": "www.fairfaxcounty.gov/library/branches/sh/default.htm",
+            "STREET_NUMBER": "2501",
+            "STREET_NAME": "SHERWOOD HALL LN",
+            "CITY": "ALEXANDRIA",
+            "ZIP": "22306",
+            "ERC_PHONE": "(703) 765-3645",
+            "POI_ID": "16",
+            "pointProperty": {
+              "Point": {
+                "pos": "38.743484047 -77.0748970619999"
+              }
+            }
+          }
+        }
+      });
+
+
+
+
 
       $httpBackend
       .whenGET("views/home.template.html")
@@ -123,7 +226,7 @@
       .then(function(data){
         console.log("I am here bro",data);
         expect(data).to.be.an("array");
-        // expect(data.length).to.equal(2);
+        expect(data.length).to.equal(2);
         expect(data[0].searchResults.label).to.equal("GEORGE MASON REGIONAL LIBRARY");
 
         doneCallback();

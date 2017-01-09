@@ -344,7 +344,7 @@
         url: libraryUrl,
         method: "GET",
       })
-      .then(function parkSuccessHandeler(response){
+      .then(function librarySuccessHandeler(response){
         console.log("Log me please",response.data);
         return response.data;
       })
