@@ -6,7 +6,7 @@
 
   PlanController.$inject = ["PlanService"];
 
-
+  
   function PlanController(PlanService){
     var vm = this;
     vm.yourPlan = PlanService.todaysPlan;
@@ -15,7 +15,5 @@
       localStorage.removeItem("plan");
       vm.yourPlan = [];
     };
-
-
   }
 }());

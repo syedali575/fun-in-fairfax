@@ -62,10 +62,6 @@
       todaysPlan.push(updatedObject);
       locationStorage(todaysPlan);
       console.log("Right after locationStorage",todaysPlan);
-
-      // console.log("addToPlan is working", updatedObject);
-      // console.log("Whats in todaysPlan", updatedObject);
-      // localStorage.setItem("plan", angular.toJson(todaysPlan));
     }
 
 

@@ -541,7 +541,7 @@
 
   PlanController.$inject = ["PlanService"];
 
-
+  
   function PlanController(PlanService){
     var vm = this;
     vm.yourPlan = PlanService.todaysPlan;
@@ -550,8 +550,6 @@
       localStorage.removeItem("plan");
       vm.yourPlan = [];
     };
-
-
   }
 }());
 
@@ -619,10 +617,6 @@
       todaysPlan.push(updatedObject);
       locationStorage(todaysPlan);
       console.log("Right after locationStorage",todaysPlan);
-
-      // console.log("addToPlan is working", updatedObject);
-      // console.log("Whats in todaysPlan", updatedObject);
-      // localStorage.setItem("plan", angular.toJson(todaysPlan));
     }
 
 
