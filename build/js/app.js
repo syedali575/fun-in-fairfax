@@ -559,8 +559,11 @@
   angular.module("fairfax")
   .factory("PlanService", PlanService);
 
-
   var todaysPlan = [];
+  var storedLocations = JSON.parse(localStorage.getItem("location"));
+  console.log("Stored Locations",storedLocations);
+  todaysPlan = storedLocations || todaysPlan;
+
 
   function PlanService(){
     return {
@@ -611,10 +614,11 @@
       }
 
       todaysPlan.push(updatedObject);
-      locationStorage(updatedObject);
+      locationStorage(todaysPlan);
+      console.log("Right after locationStorage",todaysPlan);
 
-      console.log("addToPlan is working", updatedObject);
-      console.log("Whats in todaysPlan", updatedObject);
+      // console.log("addToPlan is working", updatedObject);
+      // console.log("Whats in todaysPlan", updatedObject);
       // localStorage.setItem("plan", angular.toJson(todaysPlan));
     }
 
@@ -624,9 +628,9 @@
     * @param  {Object} list [Choosen location ]
     * @return {void}
     */
-    function locationStorage(updatedObject){
-      localStorage.setItem("location", angular.toJson(updatedObject));
-      console.log("Saving location to localStorage", updatedObject);
+    function locationStorage(todaysPlan){
+      localStorage.setItem("location", angular.toJson(todaysPlan));
+      console.log("Saving location to localStorage", todaysPlan);
     }
 
   }
