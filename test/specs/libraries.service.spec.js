@@ -23,53 +23,6 @@
 
       $httpBackend
       .whenGET("http://www.fairfaxcounty.gov/FFXGISAPI/v1/search?feature=libraries&format=json&center=38.82741035,-77.186215558&distance=100000")
-      // .respond(
-      //   {
-      //     searchResults: {
-      //       totalHits: 1,
-      //       hitFeatures: [
-      //         {
-      //           hitFeatureName: "libraries",
-      //           hitFeatureCount: 1
-      //         }
-      //       ],
-      //       results: [
-      //         {
-      //           index: 1,
-      //           url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/retrieve/json/37cd070a-7874-e6c5-533a-a67f5b251cfb",
-      //           distance: "0",
-      //           doc: {
-      //             uniqueID: "37cd070a-7874-e6c5-533a-a67f5b251cfb",
-      //             metadata: {
-      //               label: "GEORGE MASON REGIONAL LIBRARY",
-      //               last_modified_date: "2013-03-28T17:20:35.612-04:00",
-      //               geo_elements: [
-      //                 "point",
-      //                 "38.82741035 -77.186215558"
-      //               ],
-      //               adv_geo: {
-      //                 geo_elements: []
-      //               },
-      //               feature: "libraries",
-      //               legacy_id_list: [
-      //                 {
-      //                   id_type: "OBJECTID",
-      //                   id_value: "9"
-      //                 },
-      //                 {
-      //                   id_type: "POI_ID",
-      //                   id_value: "2"
-      //                 }
-      //               ]
-      //             }
-      //           }
-      //         }
-      //       ]
-      //     }
-      //   }
-      // );
-
-
       .respond(
         {
           "searchResults": {
@@ -202,14 +155,9 @@
       });
 
 
-
-
-
       $httpBackend
       .whenGET("views/home.template.html")
       .respond("home template");
-
-
 
     }));
 
