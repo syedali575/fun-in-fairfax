@@ -1,10 +1,10 @@
-# funinfairfax
+# FuninFairfax
 
 INTRODUCTION:
-This web application is designed to access entertainment resources available in Fairfax County; such as parks, libraries, recreational centers, and shopping centers. Key feature of this web application is that it allows a user to find entertainment location  based on user's current location (latitude and longitude) and provide closest results by distance.
+This web application is designed to access entertainment resources available in Fairfax County; such as parks, libraries, recreational centers, and shopping centers. Key feature of this web application is that it allows a user to find entertainment location  based on user's current location (latitude and longitude) and provide closest results by distance. User can choose locations they want to visit and add them to today's plan; user can then switch to today's plan view to see the list of their choices.
 
 Families, friends, and other social groups can use this site to look up outdoor and indoor entertaining
-location in their vicinity to plan a entertaining day. This websites also provides other external useful links such as: weather conditions, fishing 101, and camping 101.
+location in Fairfax County to plan a day of fun activities. This websites also provides other external useful links such as: weather conditions, maps, , volunteering, and other resources available in Fairfax County.
 
 
 REQUIREMENTS:

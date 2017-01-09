@@ -56,10 +56,22 @@
       }
 
       todaysPlan.push(updatedObject);
+      locationStorage(updatedObject);
 
       console.log("addToPlan is working", updatedObject);
       console.log("Whats in todaysPlan", updatedObject);
       // localStorage.setItem("plan", angular.toJson(todaysPlan));
+    }
+
+
+    /**
+    * Stores choosen location to localStorage
+    * @param  {Object} list [Choosen location ]
+    * @return {void}
+    */
+    function locationStorage(updatedObject){
+      localStorage.setItem("location", angular.toJson(updatedObject));
+      console.log("Saving location to localStorage", updatedObject);
     }
 
   }

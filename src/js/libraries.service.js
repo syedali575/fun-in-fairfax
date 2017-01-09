@@ -20,7 +20,7 @@
     /**
      * [This function retrieve list of libraries based on users geo position]
      * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
-     * @return {Promise}             [description]
+     * @return {Promise}             Promise object
      */
     function libraryList(coordinates){
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
@@ -64,6 +64,11 @@
       });
     }
 
+    /**
+     * This function makes an ajax call to get detail of each location
+     * @param  {URL} libraryUrl URL of each location
+     * @return {Promise}        Promise object
+     */
     function locationDetail(libraryUrl){
       return $http({
         url: libraryUrl,
@@ -74,7 +79,7 @@
         return response.data;
       })
       .catch(function parkFailureHandeler(xhr){
-        console.log("Unable to communicate", xhr);
+        console.log("Unable to communicate in location details", xhr);
       });
     }
 
