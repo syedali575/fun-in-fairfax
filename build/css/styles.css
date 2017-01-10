@@ -466,6 +466,12 @@ header {
     margin-bottom: 0;
     padding-top: 3.5%;
     padding-bottom: 3.5%; }
+  header nav a:link {
+    color: #fbfbfb;
+    text-decoration: none; }
+  header nav a:visited {
+    color: #e0a85d;
+    text-decoration: none; }
 
 nav {
   background-color: #000000;

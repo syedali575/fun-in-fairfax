@@ -541,7 +541,7 @@
 
   PlanController.$inject = ["PlanService"];
 
-  
+
   function PlanController(PlanService){
     var vm = this;
     vm.yourPlan = PlanService.todaysPlan;
@@ -560,7 +560,7 @@
   .factory("PlanService", PlanService);
 
   var todaysPlan = [];
-  var storedLocations = JSON.parse(localStorage.getItem("location"));
+  var storedLocations = JSON.parse(localStorage.getItem("plan"));
   console.log("Stored Locations",storedLocations);
   todaysPlan = storedLocations || todaysPlan;
 
