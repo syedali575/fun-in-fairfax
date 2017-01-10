@@ -2,10 +2,7 @@
 @media (min-width: 500px) {
 
   .categoryImage  {
-    float: left;
-    width: $imageMobileWidth2;
-    margin-right: $marginSetting3;
-    margin-bottom: $marginSetting3;
+    @include mobileImages500px($imageMobileWidth2, $marginSetting3, $marginSetting3);
   }
 
   body p {
@@ -13,7 +10,7 @@
   }
 
   body .paraSection .paraLinks {
-    margin-bottom: .75%;
+    margin-bottom: $marginSetting5;
     // color: $themeColor3;
   }
 
@@ -67,21 +64,21 @@
 
 
   body p {
-    margin: 0% 1% 0% 1%;
+    @include mobileP800px();
   }
 
 
 
   body button.btn.btn-primary {
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin-top: $marginSetting3;
+    margin-bottom: $marginSetting3;
   }
 
 
 
   body h1 {
-    padding-top: 2%;
-    padding-bottom: 2%;
+    padding-top: $paddingSetting2;
+    padding-bottom: $paddingSetting2;
   }
 
 

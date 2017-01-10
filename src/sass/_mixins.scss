@@ -1,0 +1,32 @@
+
+
+@mixin navList($margin){
+  display: inline-block;
+  margin: $margin;
+  list-style: none;
+}
+
+@mixin errorMsg($color, $margin){
+  color: $themeColor3;
+  font-weight: bold;
+  text-align: left;
+  margin: $marginSetting3;
+}
+
+@mixin buttons($mgL, $mgT, $mgB) {
+  display:block;
+  margin-left: $mgL;
+  margin-top: $mgT;
+  margin-bottom: $mgB;
+}
+
+@mixin mobileImages500px($width, $mgR, $mgB) {
+  float: left;
+  width: $width;
+  margin-right: $mgR;
+  margin-bottom: $mgB;
+}
+
+@mixin mobileP800px(){
+    margin: 0% 1% 0% 1%;
+}

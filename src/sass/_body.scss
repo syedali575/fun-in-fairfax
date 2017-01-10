@@ -22,12 +22,11 @@ body{
     width: $imageMobileWidth;
   }
 
-  button.btn.btn-primary {
-    display:block;
-    margin-left: $marginSetting1;
-    margin-top: $marginSetting4;
-    margin-bottom: $marginSetting4;
-  }
+
+    button.btn.btn-primary {
+      @include buttons($marginSetting1, $marginSetting4,$marginSetting4);
+    }
+
 
   p {
     margin: $marginSetting1;
@@ -43,12 +42,11 @@ body{
     margin-left: $marginSetting1;
   }
 
-  .errorMsg {
-    color: $themeColor3;
-    font-weight: bold;
-    text-align: left;
-    margin: $marginSetting3;
-  }
+
+ .errorMsg{
+   @include errorMsg($themeColor3, $marginSetting3);
+ }
+
 
   section.panel-body {
     padding: $paddingSetting3;
@@ -56,7 +54,6 @@ body{
     p {
       margin: $marginSetting2;
     }
-
   }
 
 }
