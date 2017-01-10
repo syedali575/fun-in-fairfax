@@ -6,23 +6,20 @@
   }
 
   body p {
-    margin: 0% $marginSetting3 0% $marginSetting3;
+    margin: 0 $marginSetting3 0 $marginSetting3;
   }
 
   body .paraSection .paraLinks {
     margin-bottom: $marginSetting5;
-    // color: $themeColor3;
   }
 
   .homePage p {
     margin: $marginSetting4;
   }
 
-
   li.alert.alert-success {
     display: block;
     clear: both;
-
   }
 
   button.btn.btn-primary {
@@ -57,24 +54,18 @@
     margin-right: 17%;
   }
 
-
   .homePage p {
     margin: 1.5% 17% 1.5% 17%;
   }
-
 
   body p {
     @include mobileP800px();
   }
 
-
-
   body button.btn.btn-primary {
     margin-top: $marginSetting3;
     margin-bottom: $marginSetting3;
   }
-
-
 
   body h1 {
     padding-top: $paddingSetting2;

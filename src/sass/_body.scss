@@ -23,9 +23,9 @@ body{
   }
 
 
-    button.btn.btn-primary {
-      @include buttons($marginSetting1, $marginSetting4,$marginSetting4);
-    }
+  button.btn.btn-primary {
+    @include buttons($marginSetting1, $marginSetting4,$marginSetting4);
+  }
 
 
   p {
@@ -43,9 +43,9 @@ body{
   }
 
 
- .errorMsg{
-   @include errorMsg($themeColor3, $marginSetting3);
- }
+  .errorMsg{
+    @include errorMsg($themeColor3, $marginSetting3);
+  }
 
 
   section.panel-body {
