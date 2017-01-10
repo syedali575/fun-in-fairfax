@@ -466,10 +466,7 @@ header {
     margin-bottom: 0;
     padding-top: 3.5%;
     padding-bottom: 3.5%; }
-  header nav a:link {
-    color: #fbfbfb;
-    text-decoration: none; }
-  header nav a:visited {
+  header a:focus, header a:hover {
     color: #e0a85d;
     text-decoration: none; }
 
@@ -560,6 +557,9 @@ footer {
     display: block;
     background-color: #e0a85d;
     padding-bottom: 1.2%; }
+  footer a:focus, footer a:hover {
+    color: #e0a85d;
+    text-decoration: none; }
 
 .links {
   list-style: none;

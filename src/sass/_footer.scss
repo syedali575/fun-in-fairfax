@@ -9,4 +9,9 @@ footer{
     padding-bottom: 1.2%;
   }
 
+  a:focus, a:hover {
+    color: $themeColor1;
+    text-decoration: none;
+  }
+
 }

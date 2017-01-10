@@ -10,28 +10,10 @@ header{
   }
 
 
-
-  nav a:link {
-      color: $themeFontColor1;
-      text-decoration: none;
+  a:focus, a:hover {
+    color: $themeColor1;
+    text-decoration: none;
   }
-
-  nav a:visited {
-      color: $themeColor1;
-      text-decoration: none;
-  }
-
-  // nav a:hover {
-  //     color: red;
-  //     text-decoration: none;
-  // }
-  //
-  //
-  //
-  // nav a:active {
-  //     color: green;
-  //     text-decoration: none;
-  // }
 
 
 
