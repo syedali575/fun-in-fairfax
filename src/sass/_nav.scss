@@ -8,11 +8,6 @@ nav{
     padding-left: 0;
   }
 
-  // li{
-  //   display: inline-block;
-  //   margin: $marginSetting2;
-  //   list-style: none;
-  // }
 
   li{
     @include navList($marginSetting2);
