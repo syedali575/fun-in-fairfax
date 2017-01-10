@@ -561,10 +561,11 @@ footer {
     color: #e0a85d;
     text-decoration: none; }
 
-.links {
+ul.links {
   list-style: none;
-  padding-left: 2%; }
-  .links li:last-child {
+  padding-left: 0;
+  margin-left: 5%; }
+  ul.links li:last-child {
     padding-bottom: 2%; }
 
 /*# sourceMappingURL=styles.css.map */
