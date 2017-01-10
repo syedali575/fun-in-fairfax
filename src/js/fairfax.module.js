@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module("fairfax", ["ui.router"])
-    .config(routerConfig);
+  .config(routerConfig);
 
 
   routerConfig.$inject = ["$stateProvider", "$urlRouterProvider", "$locationProvider"];

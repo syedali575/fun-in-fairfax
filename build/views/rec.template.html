@@ -7,10 +7,6 @@
   <p>
     Fairfax County boasts a large network of recreational centers spread throughout the county. They offer great opportunities to exercise and are a particularly great resource for the cold winter months when outdoor activities are limited. Centers’ doors are open to club members as well as individuals and families who purchase guest passes. While amenities vary across facilities, all offer great opportunities for activity. Kids especially enjoy the pool areas and the soft playrooms offered at select centers. Adults tend to be partial to the hot tubs and saunas.  All centers offer locker facilities.
   </p>
-
-  <!-- <p>
-    The centers also offer a plethora of classes, many of which require advanced seasonal registration. From swimming to gymnastics to team sports, these something for every type of athlete.
-  </p> -->
 </section>
 
 
@@ -22,11 +18,11 @@
 <ul class="categoryList">
   <li ng-repeat="center in centercontroller.centerData" class="panel panel-info" role="alert">
     <h6 class="panel-heading">Rec-center Name: {{center.searchResults.COMMUNITY_CENTERS.DESCRIPTION.toLowerCase()}}</h6>
-      <section class="panel-body">
-        <p>Street Address: {{center.searchResults.COMMUNITY_CENTERS.STREET_NAME.toLowerCase()}}</p>
-        <p name='zip'>Zip Code: {{center.searchResults.PARKS_FCPA.ZIP_CODE}}</p>
-        <button ng-click="centercontroller.addToPlan(center)" class="btn btn-info" type="button" name="button">Add to Plan</button>
-      </section>
+    <section class="panel-body">
+      <p>Street Address: {{center.searchResults.COMMUNITY_CENTERS.STREET_NAME.toLowerCase()}}</p>
+      <p name='zip'>Zip Code: {{center.searchResults.PARKS_FCPA.ZIP_CODE}}</p>
+      <button ng-click="centercontroller.addToPlan(center)" class="btn btn-info" type="button" name="button">Add to Plan</button>
+    </section>
   </li>
 </ul>
 
@@ -38,8 +34,8 @@
   <p class="paraLinks">Other useful links to plan your trip to Fairfax County Rec-Centers.</p>
 </section>
 
-  <ul class="links">
-    <li><a href="http://www.fairfaxcounty.gov/parks/wp-recenter.htm" target="_blank">More about Rec-Centers</a></li>
-    <li><a href="https://www.google.com/maps" target="_blank">Direction/Maps</a></li>
-    <li><a href="https://darksky.net" target="_blank">Weather</a></li>
-  </ul>
+<ul class="links">
+  <li><a href="http://www.fairfaxcounty.gov/parks/wp-recenter.htm" target="_blank">More about Rec-Centers</a></li>
+  <li><a href="https://www.google.com/maps" target="_blank">Direction/Maps</a></li>
+  <li><a href="https://darksky.net" target="_blank">Weather</a></li>
+</ul>

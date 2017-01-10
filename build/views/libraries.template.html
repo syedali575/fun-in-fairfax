@@ -15,11 +15,11 @@
 <ul class="categoryList">
   <li ng-repeat="library in librarycontroller.libraryData" class="panel panel-info" role="alert">
     <h6 class="panel-heading">Library Name: {{library.searchResults.Libraries.DESCRIPTION.toLowerCase()}}</h6>
-      <section class="panel-body">
-        <p>Street Address: {{library.searchResults.Libraries.STREET_NAME.toLowerCase()}}</p>
-        <p name='zip'>Zip Code: {{library.searchResults.Libraries.ZIP_CODE}}</p>
-        <button ng-click="librarycontroller.addToPlan(library)" class="btn btn-info" type="button" name="button">Add to Plan</button>
-      </section>
+    <section class="panel-body">
+      <p>Street Address: {{library.searchResults.Libraries.STREET_NAME.toLowerCase()}}</p>
+      <p name='zip'>Zip Code: {{library.searchResults.Libraries.ZIP_CODE}}</p>
+      <button ng-click="librarycontroller.addToPlan(library)" class="btn btn-info" type="button" name="button">Add to Plan</button>
+    </section>
   </li>
 </ul>
 
@@ -31,8 +31,8 @@
 </section>
 
 
-  <ul class="links">
-    <li><a href="https://www.goodreads.com/" target="_blank">Find Good Reads</a></li>
-    <li><a href="http://www.fairfaxcounty.gov/library/" target="_blank">More about Libraries</a></li>
-    <li><a href="https://www.google.com/maps" target="_blank">Direction/Maps</a></li>
-  </ul>
+<ul class="links">
+  <li><a href="https://www.goodreads.com/" target="_blank">Find Good Reads</a></li>
+  <li><a href="http://www.fairfaxcounty.gov/library/" target="_blank">More about Libraries</a></li>
+  <li><a href="https://www.google.com/maps" target="_blank">Direction/Maps</a></li>
+</ul>

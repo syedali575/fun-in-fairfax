@@ -66,10 +66,10 @@
 
 
     /**
-     * This function retrives detail of each location.
-     * @param  {[type]} parkUrl [description]
-     * @return {[type]}         [description]
-     */
+    * This function retrives detail of each location.
+    * @param  {[type]} parkUrl [description]
+    * @return {[type]}         [description]
+    */
     function locationDetail(parkUrl){
       return $http({
         url: parkUrl,

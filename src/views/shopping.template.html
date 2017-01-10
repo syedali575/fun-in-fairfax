@@ -6,10 +6,6 @@
   <p>
     Fairfax Shopping Centers offer a wide variety of options such as stores, theaters, restuarants, coffee shops. There is practically something to do for everyone. Fuel up with caffeine and a bite to eat at any number of local cafes and coffeeshops. While some are best for a quick drop in on your way to a meet up, others offer comfortable seating, Wifi, and a great ambience for catching up with friends. Fairfax is known for having a large number—and great variety—of eateries. Prices vary and many are family-friendly. There’s something for even the pickiest of eaters. Fairfax’s ethnic restaurants, in particular, are not to be missed!
   </p>
-
-  <!-- <p>
-    Once you’ve filled up on food, check out a movie at one of theaters. The latest shows are offered on a number of screens. Many theaters have reclining seats, as well as cupholders for your popcorn. You are sure to be comfortable while you sit back and enjoy the latest blockbuster or artsy flick.
-  </p> -->
 </section>
 
 <p ng-show="shopcontroller.message" class="errorMsg">{{shopcontroller.message}}</p>
@@ -20,9 +16,9 @@
 <ul class="categoryList">
   <li ng-repeat="shop in shopcontroller.shopData" class="panel panel-info" role="alert">
     <h6 class="panel-heading">Shopping Center Name: {{shop.searchResults.SHOPPING_CENTERS.DESCRIPTIO.toLowerCase()}}</h6>
-      <section class="panel-body">
-        <button ng-click="shopcontroller.addToPlan(shop)" class="btn btn-info" type="button" name="button">Add to Plan</button>
-      </section>
+    <section class="panel-body">
+      <button ng-click="shopcontroller.addToPlan(shop)" class="btn btn-info" type="button" name="button">Add to Plan</button>
+    </section>
   </li>
 </ul>
 
@@ -33,9 +29,9 @@
   <p class="paraLinks">Other useful links to plan your trip to Fairfax County Shopping Centers.</p>
 </section>
 
-  <ul class="links">
-    <li><a href="https://www.tripadvisor.com/Restaurants-g57718-Fairfax_Virginia.html" target="_blank">Restaurants in Fairfax</a></li>
-    <li><a href="https://www.google.com/maps" target="_blank">Direction/Maps</a></li>
-    <li><a href="https://darksky.net" target="_blank">Weather</a></li>
+<ul class="links">
+  <li><a href="https://www.tripadvisor.com/Restaurants-g57718-Fairfax_Virginia.html" target="_blank">Restaurants in Fairfax</a></li>
+  <li><a href="https://www.google.com/maps" target="_blank">Direction/Maps</a></li>
+  <li><a href="https://darksky.net" target="_blank">Weather</a></li>
 
-  </ul>
+</ul>

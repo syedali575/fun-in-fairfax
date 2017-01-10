@@ -18,10 +18,10 @@
     };
 
     /**
-     * [This function retrieve list of libraries based on users geo position]
-     * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
-     * @return {Promise}             Promise object
-     */
+    * [This function retrieve list of libraries based on users geo position]
+    * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
+    * @return {Promise}             Promise object
+    */
     function libraryList(coordinates){
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
         return $q.reject(new Error("You must provide an object with latitude and longitude properties"));
@@ -36,7 +36,7 @@
         return $q.resolve(storedItems.list);
       }
 
-        console.log("Am I making ajax call?");
+      console.log("Am I making ajax call?");
 
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
@@ -65,10 +65,10 @@
     }
 
     /**
-     * This function makes an ajax call to get detail of each location
-     * @param  {URL} libraryUrl URL of each location
-     * @return {Promise}        Promise object
-     */
+    * This function makes an ajax call to get detail of each location
+    * @param  {URL} libraryUrl URL of each location
+    * @return {Promise}        Promise object
+    */
     function locationDetail(libraryUrl){
       return $http({
         url: libraryUrl,

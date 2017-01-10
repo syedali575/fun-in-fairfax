@@ -6,11 +6,11 @@
 <ul class="categoryList">
   <li ng-repeat="plan in plancontroller.yourPlan" class="panel panel-info" role="alert">
     <h4 class="panel-heading"> {{plan.name.toLowerCase()}}</h4>
-      <section class="panel-body">
-        <h5>Location Feature: {{plan.feature}}</h5>
-        <p>Street Address: {{plan.streetNumber}} {{plan.address.toLowerCase()}}</p>
-        <p>Zip: {{plan.zip}}</p>
-        <p>Phone number: {{plan.phone}}</p>
-      </section>
+    <section class="panel-body">
+      <h5>Location Feature: {{plan.feature}}</h5>
+      <p>Street Address: {{plan.streetNumber}} {{plan.address.toLowerCase()}}</p>
+      <p>Zip: {{plan.zip}}</p>
+      <p>Phone number: {{plan.phone}}</p>
+    </section>
   </li>
 </ul>

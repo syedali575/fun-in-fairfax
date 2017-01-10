@@ -11,15 +11,17 @@ REQUIREMENTS:
 This application requires a user to share their current location in order to search for Fairfax County resources.
 
 FAQ:
-Distance of location search can be modified based on how far user is willing to travel. Recommended search
-distance is 2000 meters, so that user can find locations fairly close to them.
+Distance of location search can be modified based on how far user is willing to travel. Recommended search distance is 2000 meters, so that user can find locations fairly close to them.
 
 
 FRAME WORK AND DEPENDENCIES:
 "angular": "^1.6.0",
 "angular-ui-router": "^0.3.2",
 "jquery": "^3.1.1"
+
+"devDependencies": {
 "angular-mocks": "^1.6.0",
+"angularjs-geolocation": "^0.1.3",
 "chai": "^3.5.0",
 "grunt": "^1.0.1",
 "grunt-contrib-clean": "^1.0.0",
@@ -32,9 +34,13 @@ FRAME WORK AND DEPENDENCIES:
 "grunt-karma": "^2.0.0",
 "karma": "^1.3.0",
 "karma-chai": "^0.1.0",
+"karma-chrome-launcher": "^2.0.0",
 "karma-coverage": "^1.1.1",
+"karma-firefox-launcher": "^1.0.0",
+"karma-ie-launcher": "^1.0.0",
 "karma-mocha": "^1.3.0",
 "karma-phantomjs-launcher": "^1.0.2",
+"karma-safari-launcher": "^1.0.0",
 "mocha": "^3.2.0",
 "phantomjs-prebuilt": "^2.1.14"
 

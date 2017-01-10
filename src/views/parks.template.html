@@ -3,11 +3,11 @@
 <img class="categoryImage parkImage" src="../img/park3.jpg" alt="Another Park Image">
 
 
-  <section>
-    <p>
-      Fairfax County has a number of parks—from big to small—that offer a range of opportunities for hours of fun. They include historic buildings, gorgeous lakes, scenic vegetation, and lots of opportunity to commune with nature  Come row or pedal a boat, engage in a friendly game of disc golf, let the kids run around a playground, take a ride on a carousel, hike or bike a nature trail, mini-golf, take a train ride, play basketball, kick around a soccer ball, barbecue some food, or just spread out a blanket and enjoy the beautiful scenery.
-    </p>
-  </section>
+<section>
+  <p>
+    Fairfax County has a number of parks—from big to small—that offer a range of opportunities for hours of fun. They include historic buildings, gorgeous lakes, scenic vegetation, and lots of opportunity to commune with nature  Come row or pedal a boat, engage in a friendly game of disc golf, let the kids run around a playground, take a ride on a carousel, hike or bike a nature trail, mini-golf, take a train ride, play basketball, kick around a soccer ball, barbecue some food, or just spread out a blanket and enjoy the beautiful scenery.
+  </p>
+</section>
 
 
 <p ng-show="parkcontroller.message" class="errorMsg">{{parkcontroller.message}}</p>
@@ -18,22 +18,22 @@
 <ul class="categoryList">
   <li ng-repeat="park in parkcontroller.parkData" class="panel panel-info" role="alert">
     <h6 class="panel-heading">Park Name: {{park.searchResults.PARKS_FCPA.PARK_NAME.toLowerCase()}}</h6>
-      <section class="panel-body">
-        <p>Street Address: {{park.searchResults.PARKS_FCPA.STREET.toLowerCase()}}</p>
-        <p name='zip'>Zip Code: {{park.searchResults.PARKS_FCPA.ZIP_CODE}}</p>
-        <button ng-click="parkcontroller.addToPlan(park)" class="btn btn-info" type="button" name="button">Add to Plan</button>
-      </section>
+    <section class="panel-body">
+      <p>Street Address: {{park.searchResults.PARKS_FCPA.STREET.toLowerCase()}}</p>
+      <p name='zip'>Zip Code: {{park.searchResults.PARKS_FCPA.ZIP_CODE}}</p>
+      <button ng-click="parkcontroller.addToPlan(park)" class="btn btn-info" type="button" name="button">Add to Plan</button>
+    </section>
   </li>
 </ul>
 
 <button type="button" ng-click="parkcontroller.getParks()" type="button" class="btn btn-primary">Find Parks</button>
 
-  <section class="paraSection">
-    <p class="paraLinks">Other useful links to plan your trip to Fairfax County Parks.</p>
-  </section>
+<section class="paraSection">
+  <p class="paraLinks">Other useful links to plan your trip to Fairfax County Parks.</p>
+</section>
 
-    <ul class="links">
-      <li><a href="https://darksky.net" target="_blank">Weather</a></li>
-      <li><a href="https://www.google.com/maps" target="_blank">Direction/Maps</a></li>
-      <li><a href="http://www.fairfaxcounty.gov/parks/" target="_blank">More about Parks</a></li>
-    </ul>
+<ul class="links">
+  <li><a href="https://darksky.net" target="_blank">Weather</a></li>
+  <li><a href="https://www.google.com/maps" target="_blank">Direction/Maps</a></li>
+  <li><a href="http://www.fairfaxcounty.gov/parks/" target="_blank">More about Parks</a></li>
+</ul>
