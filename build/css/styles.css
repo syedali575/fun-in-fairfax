@@ -563,8 +563,8 @@ footer {
 
 .links {
   list-style: none;
-  padding-left: 5%; }
+  padding-left: 2%; }
   .links li:last-child {
-    padding-bottom: 5%; }
+    padding-bottom: 2%; }
 
 /*# sourceMappingURL=styles.css.map */

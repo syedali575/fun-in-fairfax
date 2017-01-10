@@ -47,11 +47,11 @@ body{
     color: $themeColor3;
     font-weight: bold;
     text-align: left;
-    margin: 2%;
+    margin: $marginSetting3;
   }
 
   section.panel-body {
-    padding: 1%;
+    padding: $paddingSetting3;
 
     p {
       margin: $marginSetting2;
