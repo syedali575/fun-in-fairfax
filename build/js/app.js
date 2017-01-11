@@ -198,10 +198,11 @@
     }
 
     /**
-    * Stores list of search results and coordinates to localStorage
-    * @param  {Object} list [list of search results and coordinates ]
-    * @return {void}
-    */
+     * This function stores Rec-centers locations to local storage
+     * @param  {Object} list        [Object containing array of locations list]
+     * @param  {Object} coordinates [Coordinates of user's current location]
+     * @return {Void}
+     */
     function updateLocalStorage(list, coordinates){
 
       var data = {
@@ -354,10 +355,11 @@
     }
 
     /**
-    * Stores list of search results and coordinates to localStorage
-    * @param  {Object} list [list of search results and coordinates ]
-    * @return {void}
-    */
+     * This function stores libraries locations to local storage
+     * @param  {Object} list        [Object containing array of locations list]
+     * @param  {Object} coordinates [Coordinates of user's current location]
+     * @return {Void}
+     */
     function updateLocalStorage(list, coordinates){
 
       var data = {
@@ -517,10 +519,11 @@
 
 
     /**
-    * Stores list of search results and coordinates to localStorage
-    * @param  {Object} list [list of search results and coordinates ]
-    * @return {void}
-    */
+     * This function stores park locations to local storage
+     * @param  {Object} list        [Object containing array of locations list]
+     * @param  {Object} coordinates [Coordinates of user's current location]
+     * @return {Void}
+     */
     function updateLocalStorage(list, coordinates){
 
       var data = {
@@ -573,6 +576,11 @@
 
     };
 
+
+    /**
+     * [addToPlan description]
+     * @param {[type]} data [description]
+     */
     function addToPlan(data){
 
       var updatedObject = {
@@ -622,7 +630,7 @@
 
     /**
     * Stores choosen location to localStorage
-    * @param  {Object} list [Choosen location ]
+    * @param  {Object} list [location that user wants to visit]
     * @return {void}
     */
     function locationStorage(todaysPlan){
@@ -762,8 +770,8 @@
 
     /**
     * This function retrives detail of each location.
-    * @param  {[type]} parkUrl [description]
-    * @return {[type]}         [description]
+    * @param  {Object} parkUrl [url to make an ajax call]
+    * @return {Promise}         [It returns promise object]
     */
     function locationDetail(storeUrl){
       return $http({
@@ -779,6 +787,13 @@
       });
     }
 
+
+    /**
+     * This function stores shop locations to local storage
+     * @param  {Object} list        [Object containing array of locations list]
+     * @param  {Object} coordinates [Coordinates of user's current location]
+     * @return {Void}             
+     */
     function updateLocalStorage(list, coordinates){
 
       var data = {
