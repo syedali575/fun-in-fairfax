@@ -248,7 +248,7 @@
         longitude: -77.2829640
       };
 
-          LibraryService.libraryList(location.coords)
+          LibraryService.libraryList(coordinates)
           .then(function sucessHandeler(data){
             console.log("Getting Libraries", data);
             vm.libraryData = data;
