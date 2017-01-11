@@ -69,8 +69,8 @@
 
     /**
     * This function retrives detail of each location.
-    * @param  {[type]} parkUrl [description]
-    * @return {[type]}         [description]
+    * @param  {Object} parkUrl [url to make an ajax call]
+    * @return {Promise}         [It returns promise object]
     */
     function locationDetail(storeUrl){
       return $http({
@@ -86,6 +86,13 @@
       });
     }
 
+
+    /**
+     * This function stores shop locations to local storage
+     * @param  {Object} list        [Object containing array of locations list]
+     * @param  {Object} coordinates [Coordinates of user's current location]
+     * @return {Void}             
+     */
     function updateLocalStorage(list, coordinates){
 
       var data = {

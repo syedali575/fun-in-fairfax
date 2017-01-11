@@ -87,10 +87,11 @@
 
 
     /**
-    * Stores list of search results and coordinates to localStorage
-    * @param  {Object} list [list of search results and coordinates ]
-    * @return {void}
-    */
+     * This function stores park locations to local storage
+     * @param  {Object} list        [Object containing array of locations list]
+     * @param  {Object} coordinates [Coordinates of user's current location]
+     * @return {Void}
+     */
     function updateLocalStorage(list, coordinates){
 
       var data = {

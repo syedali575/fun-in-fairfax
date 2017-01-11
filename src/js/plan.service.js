@@ -18,6 +18,11 @@
 
     };
 
+
+    /**
+     * [addToPlan description]
+     * @param {[type]} data [description]
+     */
     function addToPlan(data){
 
       var updatedObject = {
@@ -67,7 +72,7 @@
 
     /**
     * Stores choosen location to localStorage
-    * @param  {Object} list [Choosen location ]
+    * @param  {Object} list [location that user wants to visit]
     * @return {void}
     */
     function locationStorage(todaysPlan){
