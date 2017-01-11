@@ -240,9 +240,13 @@
         done = function(){};
       }
 
-      navigator.geolocation.getCurrentPosition(
-        function locationHandeler(location){
-          console.log("location data",location);
+      // navigator.geolocation.getCurrentPosition(
+      //   function locationHandeler(location){
+      //     console.log("location data",location);
+      var coordinates = {
+        latitude: 38.7799510,
+        longitude: -77.2829640
+      };
 
           LibraryService.libraryList(location.coords)
           .then(function sucessHandeler(data){
@@ -255,12 +259,12 @@
             vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
             done();
           });
-        },
-        function errorHandeler() {
-          vm.message2 = "You must share your geolocation for this application to operate";
-          $scope.$apply();
-        }
-      );
+      //   },
+      //   function errorHandeler() {
+      //     vm.message2 = "You must share your geolocation for this application to operate";
+      //     $scope.$apply();
+      //   }
+      // );
     };
 
     this.addToPlan = function addToPlan(data){
