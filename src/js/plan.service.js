@@ -20,9 +20,10 @@
 
 
     /**
-     * [addToPlan description]
-     * @param {[type]} data [description]
-     */
+    * This function converts inconsistent location objects from Fairfax County to structured objects.
+    * This function also adds converted object to addToPlan array.
+    * @param {Object} data Object containing location information.
+    */
     function addToPlan(data){
 
       var updatedObject = {
@@ -66,7 +67,6 @@
 
       todaysPlan.push(updatedObject);
       locationStorage(todaysPlan);
-      console.log("Right after locationStorage",todaysPlan);
     }
 
 

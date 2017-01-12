@@ -17,9 +17,10 @@
     };
 
     /**
-    * [This function retrieve list of parks from a specific geolocation]
-    * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
-    * @return {Promise}             It returns promise object
+    * This function retrieve list of parks from a specific geolocation.
+    * This function also execute location detail function for each location in array.
+    * @param  {Object} coordinates Object coordinates with two properties: latitude and longitude
+    * @return {Promise}             It returns promise object.
     */
     function parkList(coordinates){
 
@@ -56,7 +57,6 @@
         return $q.all(allPromises);
       })
       .then(function allThingsDone(itemsDetails) {
-        console.log("itemsDetails & coordinates", itemsDetails, coordinates);
         updateLocalStorage(itemsDetails, coordinates);
         return itemsDetails;
       });

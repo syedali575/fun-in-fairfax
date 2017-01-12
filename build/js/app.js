@@ -398,7 +398,7 @@
     vm.parkData = [];
 
     /**
-    * [This function acquires location (latitude and longitude) of a user and execute parkList function]
+    * [This function provides static coordinates (latitude and longitude) of a user and execute parkList function]
     * @param {function} done this callback function get executed when the data is arrived
     * @return {Void}
     */
@@ -407,36 +407,30 @@
         done = function(){};
       }
 
-      // navigator.geolocation.getCurrentPosition(
-      //   function locationHandeler(location) {
-      //     console.log("location data", location);
       var coordinates = {
         latitude: 38.7799510,
         longitude: -77.2829640
       };
 
-          ParkService.parkList(coordinates)
-          .then(function sucessHandeler(data){
-            console.log("Getting Parks", data);
-            vm.parkData = data;
-            done();
-          })
-          .catch(function failHandeler(xhr){
-            console.log("Unable to communicate 575", xhr);
-            vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
-            done();
-          });
-        // },
-      //   function errorHandeler() {
-      //     vm.message2 = "You must share your geolocation for this application to operate";
-      //     $scope.$apply();
-      //   }
-      // );
+      ParkService.parkList(coordinates)
+      .then(function sucessHandeler(data){
+        console.log("Getting Parks", data);
+        vm.parkData = data;
+        done();
+      })
+      .catch(function failHandeler(xhr){
+        console.log("Unable to communicate 575", xhr);
+        vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
+        done();
+      });
     };
 
+    /**
+     * This function executes addToPlan function in PlanService
+     * @param {Object} data Object containing location information
+     */
     this.addToPlan = function addToPlan(data){
       PlanService.addToPlan(data);
-      console.log("Checking if I have todaysPlan",PlanService.todaysPlan);
     };
 
   }
@@ -461,9 +455,10 @@
     };
 
     /**
-    * [This function retrieve list of parks from a specific geolocation]
-    * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
-    * @return {Promise}             It returns promise object
+    * This function retrieve list of parks from a specific geolocation.
+    * This function also execute location detail function for each location in array.
+    * @param  {Object} coordinates Object coordinates with two properties: latitude and longitude
+    * @return {Promise}             It returns promise object.
     */
     function parkList(coordinates){
 
@@ -500,7 +495,6 @@
         return $q.all(allPromises);
       })
       .then(function allThingsDone(itemsDetails) {
-        console.log("itemsDetails & coordinates", itemsDetails, coordinates);
         updateLocalStorage(itemsDetails, coordinates);
         return itemsDetails;
       });
@@ -557,11 +551,17 @@
     var vm = this;
     vm.yourPlan = PlanService.todaysPlan;
 
+
+    /**
+    * This function clears out "plan" local storage, and make yourPlan empty.
+    * @return {Void}
+    */
     vm.clearTodaysPlan = function clearTodaysPlan(){
       localStorage.removeItem("plan");
       vm.yourPlan = [];
     };
   }
+
 }());
 
 (function() {
@@ -586,9 +586,10 @@
 
 
     /**
-     * [addToPlan description]
-     * @param {[type]} data [description]
-     */
+    * This function converts inconsistent location objects from Fairfax County to structured objects.
+    * This function also adds converted object to addToPlan array.
+    * @param {Object} data Object containing location information.
+    */
     function addToPlan(data){
 
       var updatedObject = {
@@ -632,7 +633,6 @@
 
       todaysPlan.push(updatedObject);
       locationStorage(todaysPlan);
-      console.log("Right after locationStorage",todaysPlan);
     }
 
 
