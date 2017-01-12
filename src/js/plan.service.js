@@ -23,9 +23,9 @@
     };
 
     /**
-     * This function returns todaysPlan
-     * @return {Array} todaysPlan contains selected location to visit.
-     */
+    * This function returns todaysPlan
+    * @return {Array} todaysPlan contains selected location to visit.
+    */
     function getTodaysPlan() {
       return todaysPlan;
     }
@@ -91,7 +91,7 @@
       locationStorage(todaysPlan);
     }
 
-
+    
     /**
     * Stores choosen location to localStorage
     * @param  {Object} list [location that user wants to visit]
@@ -103,9 +103,9 @@
     }
 
     /**
-     * This function clears out "plan" localStorage & creates and empty todaysPlan array.
-     * @return {Void}
-     */
+    * This function clears out "plan" localStorage & creates and empty todaysPlan array.
+    * @return {Void}
+    */
     function clear() {
       localStorage.removeItem("plan");
       todaysPlan = [];
