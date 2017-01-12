@@ -35,6 +35,9 @@
         web: null
       };
 
+
+      console.log(data.searchResults.PARKS_FCPA.PARK_NAME);
+
       if (data.searchResults.PARKS_FCPA) {
         updatedObject.name = data.searchResults.PARKS_FCPA.PARK_NAME || "No name provided";
         updatedObject.feature = "Fairfax County Park";
