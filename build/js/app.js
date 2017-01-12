@@ -81,8 +81,8 @@
     vm.centerData = [];
 
     /**
-    * [This function acquires location (latitude and longitude) of a user and execute centerList function]
-    * @param {function} done this callback function excuted when the data is arrived
+    * [This function provides static coordinates (latitude and longitude) of a user and execute centerList function]
+    * @param {function} done this callback function get executed when the data is arrived
     * @return {Void}
     */
     this.getCenter = function getCenter(done){
@@ -90,9 +90,6 @@
         done = function(){};
       }
 
-      // navigator.geolocation.getCurrentPosition(
-      //   function locationHandeler(location){
-      //     console.log("location data",location);
       var coordinates = {
         latitude: 38.7799510,
         longitude: -77.2829640
@@ -109,13 +106,12 @@
             vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
             done();
           });
-      //   },
-      //   function errorHandeler() {
-      //     vm.message2 = "You must share your geolocation for this application to operate";
-      //     $scope.$apply();
-      //   }
-      // );
     };
+
+    /**
+     * This function executes addToPlan function in PlanService
+     * @param {Object} data Object containing location information
+     */    
     this.addToPlan = function addToPlan(data){
       PlanService.addToPlan(data);
     };
@@ -141,9 +137,10 @@
     };
 
     /**
-    * [This function retrieve list of rec-centers based on users geo position]
-    * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
-    * @return {Promise}             [description]
+    * This function retrieve list of Rec-centers from a specific geolocation.
+    * This function also execute location detail function for each location in array.
+    * @param  {Object} coordinates Object coordinates with two properties: latitude and longitude
+    * @return {Promise}             It returns promise object.
     */
     function centerList(coordinates){
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
@@ -187,6 +184,11 @@
       });
     }
 
+    /**
+    * This function retrives detail of each location.
+    * @param  {Object} parkUrl [URL for each Rec-center location]
+    * @return {Object}         [It returns a promise object]
+    */
     function locationDetail(centerUrl){
       return $http({
         url: centerUrl,
@@ -203,8 +205,8 @@
 
     /**
      * This function stores Rec-centers locations to local storage
-     * @param  {Object} list        [Object containing array of locations list]
-     * @param  {Object} coordinates [Coordinates of user's current location]
+     * @param  {Object} list        Object containing array of locations list
+     * @param  {Object} coordinates Coordinates of user's current location
      * @return {Void}
      */
     function updateLocalStorage(list, coordinates){
@@ -235,8 +237,8 @@
     vm.libraryData = [];
 
     /**
-    * [This function acquires location (latitude and longitude) of a user and execute libraryList function]
-    * @param {function} done this callback function excuted when the data is arrived
+    * [This function provides static coordinates (latitude and longitude) of a user and execute libraryList function]
+    * @param {function} done this callback function get executed when the data is arrived
     * @return {Void}
     */
     this.getLibrary = function getLibrary(done){
@@ -244,33 +246,29 @@
         done = function(){};
       }
 
-      // navigator.geolocation.getCurrentPosition(
-      //   function locationHandeler(location){
-      //     console.log("location data",location);
+
       var coordinates = {
         latitude: 38.7799510,
         longitude: -77.2829640
       };
 
-          LibraryService.libraryList(coordinates)
-          .then(function sucessHandeler(data){
-            console.log("Getting Libraries", data);
-            vm.libraryData = data;
-            done();
-          })
-          .catch(function failHandeler(xhr){
-            console.log("Unable to communicate", xhr);
-            vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
-            done();
-          });
-      //   },
-      //   function errorHandeler() {
-      //     vm.message2 = "You must share your geolocation for this application to operate";
-      //     $scope.$apply();
-      //   }
-      // );
+      LibraryService.libraryList(coordinates)
+      .then(function sucessHandeler(data){
+        console.log("Getting Libraries", data);
+        vm.libraryData = data;
+        done();
+      })
+      .catch(function failHandeler(xhr){
+        console.log("Unable to communicate", xhr);
+        vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
+        done();
+      });
     };
 
+    /**
+    * This function executes addToPlan function in PlanService
+    * @param {Object} data Object containing location information
+    */
     this.addToPlan = function addToPlan(data){
       PlanService.addToPlan(data);
     };
@@ -426,9 +424,9 @@
     };
 
     /**
-     * This function executes addToPlan function in PlanService
-     * @param {Object} data Object containing location information
-     */
+    * This function executes addToPlan function in PlanService
+    * @param {Object} data Object containing location information
+    */
     this.addToPlan = function addToPlan(data){
       PlanService.addToPlan(data);
     };

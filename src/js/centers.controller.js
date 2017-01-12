@@ -14,8 +14,8 @@
     vm.centerData = [];
 
     /**
-    * [This function acquires location (latitude and longitude) of a user and execute centerList function]
-    * @param {function} done this callback function excuted when the data is arrived
+    * [This function provides static coordinates (latitude and longitude) of a user and execute centerList function]
+    * @param {function} done this callback function get executed when the data is arrived
     * @return {Void}
     */
     this.getCenter = function getCenter(done){
@@ -23,9 +23,6 @@
         done = function(){};
       }
 
-      // navigator.geolocation.getCurrentPosition(
-      //   function locationHandeler(location){
-      //     console.log("location data",location);
       var coordinates = {
         latitude: 38.7799510,
         longitude: -77.2829640
@@ -42,13 +39,12 @@
             vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
             done();
           });
-      //   },
-      //   function errorHandeler() {
-      //     vm.message2 = "You must share your geolocation for this application to operate";
-      //     $scope.$apply();
-      //   }
-      // );
     };
+
+    /**
+     * This function executes addToPlan function in PlanService
+     * @param {Object} data Object containing location information
+     */    
     this.addToPlan = function addToPlan(data){
       PlanService.addToPlan(data);
     };

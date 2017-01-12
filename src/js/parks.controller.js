@@ -42,9 +42,9 @@
     };
 
     /**
-     * This function executes addToPlan function in PlanService
-     * @param {Object} data Object containing location information
-     */
+    * This function executes addToPlan function in PlanService
+    * @param {Object} data Object containing location information
+    */
     this.addToPlan = function addToPlan(data){
       PlanService.addToPlan(data);
     };

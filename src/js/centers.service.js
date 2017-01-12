@@ -17,9 +17,10 @@
     };
 
     /**
-    * [This function retrieve list of rec-centers based on users geo position]
-    * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
-    * @return {Promise}             [description]
+    * This function retrieve list of Rec-centers from a specific geolocation.
+    * This function also execute location detail function for each location in array.
+    * @param  {Object} coordinates Object coordinates with two properties: latitude and longitude
+    * @return {Promise}             It returns promise object.
     */
     function centerList(coordinates){
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
@@ -63,6 +64,11 @@
       });
     }
 
+    /**
+    * This function retrives detail of each location.
+    * @param  {Object} parkUrl [URL for each Rec-center location]
+    * @return {Object}         [It returns a promise object]
+    */
     function locationDetail(centerUrl){
       return $http({
         url: centerUrl,
@@ -79,8 +85,8 @@
 
     /**
      * This function stores Rec-centers locations to local storage
-     * @param  {Object} list        [Object containing array of locations list]
-     * @param  {Object} coordinates [Coordinates of user's current location]
+     * @param  {Object} list        Object containing array of locations list
+     * @param  {Object} coordinates Coordinates of user's current location
      * @return {Void}
      */
     function updateLocalStorage(list, coordinates){
