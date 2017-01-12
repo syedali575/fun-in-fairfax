@@ -377,10 +377,9 @@
   ParksController.$inject = ["$scope", "ParkService", "PlanService"];
 
   function ParksController($scope, ParkService, PlanService){
-    
+
     var vm = this;
     vm.message = undefined;
-    vm.message2 = undefined;
     vm.parkData = [];
 
     /**
@@ -404,7 +403,7 @@
         vm.parkData = data;
         done();
       })
-      .catch(function failHandeler(xhr){
+      .catch(function failHandler(xhr){
         console.log("Unable to communicate 575", xhr);
         vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
         done();
@@ -444,7 +443,7 @@
     * This function retrieve list of parks from a specific geolocation.
     * This function also execute location detail function for each location in array.
     * @param  {Object} coordinates Object coordinates with two properties: latitude and longitude
-    * @return {Promise}             It returns promise object.
+    * @return {Promise}             Resolution of this promise is a list of park locations and details.
     */
     function parkList(coordinates){
 
@@ -489,7 +488,7 @@
     /**
     * This function retrives detail of each location.
     * @param  {Object} parkUrl [URL for each park location]
-    * @return {Object}         [It returns a promise object]
+    * @return {Object}         Resolves details of each specific park.
     */
     function locationDetail(parkUrl){
       return $http({

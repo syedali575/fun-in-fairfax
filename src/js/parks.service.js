@@ -20,7 +20,7 @@
     * This function retrieve list of parks from a specific geolocation.
     * This function also execute location detail function for each location in array.
     * @param  {Object} coordinates Object coordinates with two properties: latitude and longitude
-    * @return {Promise}             It returns promise object.
+    * @return {Promise}             Resolution of this promise is a list of park locations and details.
     */
     function parkList(coordinates){
 
@@ -65,7 +65,7 @@
     /**
     * This function retrives detail of each location.
     * @param  {Object} parkUrl [URL for each park location]
-    * @return {Object}         [It returns a promise object]
+    * @return {Object}         Resolves details of each specific park.
     */
     function locationDetail(parkUrl){
       return $http({

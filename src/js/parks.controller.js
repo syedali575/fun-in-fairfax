@@ -7,10 +7,9 @@
   ParksController.$inject = ["$scope", "ParkService", "PlanService"];
 
   function ParksController($scope, ParkService, PlanService){
-    
+
     var vm = this;
     vm.message = undefined;
-    vm.message2 = undefined;
     vm.parkData = [];
 
     /**
@@ -34,7 +33,7 @@
         vm.parkData = data;
         done();
       })
-      .catch(function failHandeler(xhr){
+      .catch(function failHandler(xhr){
         console.log("Unable to communicate 575", xhr);
         vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
         done();
