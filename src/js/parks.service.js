@@ -39,7 +39,7 @@
 
 
       return $http({
-        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/searc",
+        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
         method: "GET",
         params: {
           feature: "parks",

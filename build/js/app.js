@@ -157,7 +157,7 @@
 
 
       return $http({
-        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/searc",
+        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
         method: "GET",
         params: {
           feature: "communitycenters",
@@ -310,7 +310,7 @@
 
 
       return $http({
-        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/searc",
+        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
         method: "GET",
         params: {
           feature: "libraries",
@@ -462,7 +462,7 @@
 
 
       return $http({
-        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/searc",
+        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
         method: "GET",
         params: {
           feature: "parks",
@@ -729,7 +729,7 @@
 
 
       return $http({
-        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/searc",
+        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
         method: "GET",
         params:{
           feature: "shoppingcenters",
