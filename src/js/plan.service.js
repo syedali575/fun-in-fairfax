@@ -36,10 +36,10 @@
       };
 
       if (data.searchResults.PARKS_FCPA) {
-        updatedObject.name = data.searchResults.PARKS_FCPA.PARK_NAME;
+        updatedObject.name = data.searchResults.PARKS_FCPA.PARK_NAME || "No name provided";
         updatedObject.feature = "Fairfax County Park";
-        updatedObject.address = data.searchResults.PARKS_FCPA.STREET;
-        updatedObject.zip = data.searchResults.PARKS_FCPA.ZIP_CODE;
+        updatedObject.address = data.searchResults.PARKS_FCPA.STREET || "No address provided";
+        updatedObject.zip = data.searchResults.PARKS_FCPA.ZIP_CODE || "No zip provided";
       }
       else if (data.searchResults.Libraries) {
         updatedObject.name = data.searchResults.Libraries.DESCRIPTION;
