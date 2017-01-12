@@ -22,6 +22,10 @@
       clear: clear
     };
 
+    /**
+     * This function returns todaysPlan
+     * @return {Array} todaysPlan contains selected location to visit.
+     */
     function getTodaysPlan() {
       return todaysPlan;
     }
@@ -33,13 +37,6 @@
     * @param {Object} data Object containing location information.
     */
     function addToPlan(data){
-
-      // if (data.searchResults){
-      //   return;
-      // }
-
-// console.log("Whats in here1",data.searchResults.PARKS_FCPA.PARK_NAME);
-console.log("Whats in here2",data.searchResults);
 
       var updatedObject = {
         name: null,
@@ -105,6 +102,10 @@ console.log("Whats in here2",data.searchResults);
       localStorage.setItem("plan", angular.toJson(planToSave));
     }
 
+    /**
+     * This function clears out "plan" localStorage & creates and empty todaysPlan array.
+     * @return {Void}
+     */
     function clear() {
       localStorage.removeItem("plan");
       todaysPlan = [];
