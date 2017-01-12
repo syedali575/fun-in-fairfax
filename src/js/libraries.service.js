@@ -20,7 +20,7 @@
     /**
     * [This function retrieve list of libraries based on users geo position]
     * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
-    * @return {Promise}             Promise object
+    * @return {Promise}             Resolution of this promise is a list of library locations and details.
     */
     function libraryList(coordinates){
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
@@ -77,7 +77,7 @@
         console.log("Unable to communicate in location details", xhr);
       });
     }
-    
+
     /**
     * This function stores libraries locations to local storage
     * @param  {Object} list        [Object containing array of locations list]

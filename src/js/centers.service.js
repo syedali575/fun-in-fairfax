@@ -19,7 +19,7 @@
     * This function retrieve list of Rec-centers from a specific geolocation.
     * This function also execute location detail function for each location in array.
     * @param  {Object} coordinates Object coordinates with two properties: latitude and longitude
-    * @return {Promise}             It returns promise object.
+    * @return {Promise}             Resolution of this promise is a list of Rec-centers locations and details.
     */
     function centerList(coordinates){
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {

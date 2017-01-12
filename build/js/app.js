@@ -139,7 +139,7 @@
     * This function retrieve list of Rec-centers from a specific geolocation.
     * This function also execute location detail function for each location in array.
     * @param  {Object} coordinates Object coordinates with two properties: latitude and longitude
-    * @return {Promise}             It returns promise object.
+    * @return {Promise}             Resolution of this promise is a list of Rec-centers locations and details.
     */
     function centerList(coordinates){
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
@@ -292,7 +292,7 @@
     /**
     * [This function retrieve list of libraries based on users geo position]
     * @param  {Object} coordinates object coordinates with two properties: latitude and longitude
-    * @return {Promise}             Promise object
+    * @return {Promise}             Resolution of this promise is a list of library locations and details.
     */
     function libraryList(coordinates){
       if (!coordinates ||  !coordinates.latitude || !coordinates.longitude) {
@@ -349,7 +349,7 @@
         console.log("Unable to communicate in location details", xhr);
       });
     }
-    
+
     /**
     * This function stores libraries locations to local storage
     * @param  {Object} list        [Object containing array of locations list]
@@ -462,7 +462,7 @@
 
 
       return $http({
-        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
+        url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/searc",
         method: "GET",
         params: {
           feature: "parks",
@@ -710,7 +710,7 @@
     * This function retrieve list of shops from a specific geolocation.
     * This function also execute location detail function for each location in array.
     * @param  {Object} coordinates Object coordinates with two properties: latitude and longitude
-    * @return {Promise}             It returns promise object.
+    * @return {Promise}             Resolution of this promise is a list of shopping centers locations and details.
     */
     function shopList(coordinates){
       if (!coordinates  || !coordinates.latitude || !coordinates.longitude){
