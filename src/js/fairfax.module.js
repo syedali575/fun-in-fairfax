@@ -13,7 +13,7 @@
     $locationProvider.hashPrefix("");
 
     $stateProvider
-
+    
     .state({
       name: "home",
       url: "/",

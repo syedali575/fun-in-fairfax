@@ -20,9 +20,10 @@
 
 
     /**
-    * [This function retrieves list of shopping centers in Fairfax County by location of user]
-    * @param  {Object} coordinates [object coordinates with two properties: latitude and longitude]
-    * @return {Promise}             [It returns promise object]
+    * This function retrieve list of shops from a specific geolocation.
+    * This function also execute location detail function for each location in array.
+    * @param  {Object} coordinates Object coordinates with two properties: latitude and longitude
+    * @return {Promise}             It returns promise object.
     */
     function shopList(coordinates){
       if (!coordinates  || !coordinates.latitude || !coordinates.longitude){
@@ -39,7 +40,6 @@
         return $q.resolve(storedItems.list);
       }
 
-      console.log("Am I making ajax call?");
 
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
@@ -52,10 +52,8 @@
         }
       })
       .then(function successHandeler(response){
-        console.log("Getting Shopping data via ajax",response.data);
 
         var allPromises = response.data.searchResults.results.map(function shopDetail(each){
-          console.log("Each location URL", each.url);
           return locationDetail(each.url);
         });
         return $q.all(allPromises);
@@ -78,7 +76,6 @@
         method: "GET"
       })
       .then(function parkSuccessHandeler(response){
-        console.log("Log me please",response.data);
         return response.data;
       })
       .catch(function parkFailureHandeler(xhr){
@@ -91,7 +88,7 @@
      * This function stores shop locations to local storage
      * @param  {Object} list        [Object containing array of locations list]
      * @param  {Object} coordinates [Coordinates of user's current location]
-     * @return {Void}             
+     * @return {Void}
      */
     function updateLocalStorage(list, coordinates){
 
@@ -99,7 +96,6 @@
         list: list,
         coordinates: {latitude: coordinates.latitude, longitude: coordinates.longitude}
       };
-      console.log("Saving list of shopping centers to localStorage", data);
       localStorage.setItem("shop", angular.toJson(data));
     }
   }

@@ -7,7 +7,7 @@
   ParksController.$inject = ["$scope", "ParkService", "PlanService"];
 
   function ParksController($scope, ParkService, PlanService){
-
+    
     var vm = this;
     vm.message = undefined;
     vm.message2 = undefined;

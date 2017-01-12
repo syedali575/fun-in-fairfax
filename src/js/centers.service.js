@@ -6,7 +6,6 @@
 
   var storedItems = JSON.parse(localStorage.getItem("center"));
   storedItems = storedItems || {coordinates:{}};
-  console.log(storedItems);
 
   CenterService.$inject = ["$http", "$q"];
 
@@ -36,7 +35,6 @@
         return $q.resolve(storedItems.list);
       }
 
-      console.log("Making ajax call next");
 
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
@@ -49,7 +47,6 @@
         }
       })
       .then(function successHandeler(response){
-        console.log("Getting Rec-Center Data via ajax",response.data);
 
         var allPromises = response.data.searchResults.results.map(function parkDetail(each){
           console.log(each.url);
@@ -58,7 +55,6 @@
         return $q.all(allPromises);
       })
       .then(function allThingsDone(itemsDetails) {
-        console.log("itemsDetails & coordinates", itemsDetails, coordinates);
         updateLocalStorage(itemsDetails, coordinates);
         return itemsDetails;
       });
@@ -84,18 +80,18 @@
     }
 
     /**
-     * This function stores Rec-centers locations to local storage
-     * @param  {Object} list        Object containing array of locations list
-     * @param  {Object} coordinates Coordinates of user's current location
-     * @return {Void}
-     */
+    * This function stores Rec-centers locations to local storage
+    * @param  {Object} list        Object containing array of locations list
+    * @param  {Object} coordinates Coordinates of user's current location
+    * @return {Void}
+    */
     function updateLocalStorage(list, coordinates){
 
       var data = {
         list: list,
         coordinates: {latitude: coordinates.latitude, longitude: coordinates.longitude}
       };
-      console.log("Saving list of Rec-Centers to localStorage", data);
+
       localStorage.setItem("center", angular.toJson(data));
     }
   }

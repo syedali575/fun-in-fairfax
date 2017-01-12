@@ -15,7 +15,6 @@
       addToPlan: addToPlan,
       todaysPlan: todaysPlan,
       locationStorage: locationStorage
-
     };
 
 
@@ -77,9 +76,7 @@
     */
     function locationStorage(todaysPlan){
       localStorage.setItem("plan", angular.toJson(todaysPlan));
-      console.log("Saving location to localStorage", todaysPlan);
     }
-
   }
 
 }());

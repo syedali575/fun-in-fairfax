@@ -31,7 +31,6 @@
 
       LibraryService.libraryList(coordinates)
       .then(function sucessHandeler(data){
-        console.log("Getting Libraries", data);
         vm.libraryData = data;
         done();
       })

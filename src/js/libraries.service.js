@@ -36,7 +36,6 @@
         return $q.resolve(storedItems.list);
       }
 
-      console.log("Am I making ajax call?");
 
       return $http({
         url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
@@ -49,16 +48,13 @@
         }
       })
       .then(function successHandeler(response){
-        console.log("Getting Libraries Data via ajax",response.data);
 
         var allPromises = response.data.searchResults.results.map(function libraryDetail(each){
-          console.log("Each URL",each.url);
           return locationDetail(each.url);
         });
         return $q.all(allPromises);
       })
       .then(function allThingDone(itemsDetails){
-        console.log("itemsDetails & coordinates", itemsDetails, coordinates);
         updateLocalStorage(itemsDetails, coordinates);
         return itemsDetails;
       });
@@ -75,30 +71,27 @@
         method: "GET",
       })
       .then(function librarySuccessHandeler(response){
-        console.log("Log me please",response.data);
         return response.data;
       })
       .catch(function parkFailureHandeler(xhr){
         console.log("Unable to communicate in location details", xhr);
       });
     }
-
+    
     /**
-     * This function stores libraries locations to local storage
-     * @param  {Object} list        [Object containing array of locations list]
-     * @param  {Object} coordinates [Coordinates of user's current location]
-     * @return {Void}
-     */
+    * This function stores libraries locations to local storage
+    * @param  {Object} list        [Object containing array of locations list]
+    * @param  {Object} coordinates [Coordinates of user's current location]
+    * @return {Void}
+    */
     function updateLocalStorage(list, coordinates){
 
       var data = {
         list: list,
         coordinates: {latitude: coordinates.latitude, longitude: coordinates.longitude}
       };
-      console.log("Saving list of libraries to localStorage", data);
+
       localStorage.setItem("libraries", angular.toJson(data));
     }
-
-
   }
 }());

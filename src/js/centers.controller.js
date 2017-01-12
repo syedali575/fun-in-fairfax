@@ -28,23 +28,23 @@
         longitude: -77.2829640
       };
 
-          CenterService.centerList(coordinates)
-          .then(function sucessHandeler(data){
-            console.log("Getting Centers", data);
-            vm.centerData = data;
-            done();
-          })
-          .catch(function failHandeler(xhr){
-            console.log("Unable to communicate", xhr);
-            vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
-            done();
-          });
+      CenterService.centerList(coordinates)
+      .then(function sucessHandeler(data){
+        console.log("Getting Centers", data);
+        vm.centerData = data;
+        done();
+      })
+      .catch(function failHandeler(xhr){
+        console.log("Unable to communicate", xhr);
+        vm.message = "We are unable to communicate due to network outage, please contact your Network Administrator";
+        done();
+      });
     };
 
     /**
-     * This function executes addToPlan function in PlanService
-     * @param {Object} data Object containing location information
-     */    
+    * This function executes addToPlan function in PlanService
+    * @param {Object} data Object containing location information
+    */
     this.addToPlan = function addToPlan(data){
       PlanService.addToPlan(data);
     };

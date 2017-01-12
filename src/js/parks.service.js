@@ -49,7 +49,6 @@
         }
       })
       .then(function successHandeler(response){
-        console.log("Getting Park Data via ajax",response.data);
 
         var allPromises = response.data.searchResults.results.map(function parkDetail(each){
           return locationDetail(each.url);
@@ -80,7 +79,6 @@
         console.log("Unable to communicate", xhr);
       });
     }
-
 
 
     /**
