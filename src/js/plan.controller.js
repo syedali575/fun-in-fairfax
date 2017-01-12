@@ -9,7 +9,7 @@
 
   function PlanController(PlanService){
     var vm = this;
-    vm.yourPlan = PlanService.todaysPlan;
+    vm.yourPlan = PlanService.getTodaysPlan();
 
 
     /**

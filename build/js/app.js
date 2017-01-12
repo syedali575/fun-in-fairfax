@@ -532,7 +532,7 @@
 
   function PlanController(PlanService){
     var vm = this;
-    vm.yourPlan = PlanService.todaysPlan;
+    vm.yourPlan = PlanService.getTodaysPlan();
 
 
     /**
@@ -553,19 +553,27 @@
   angular.module("fairfax")
   .factory("PlanService", PlanService);
 
-  var todaysPlan = [];
-  var storedLocations = JSON.parse(localStorage.getItem("plan"));
-  console.log("Stored Locations",storedLocations);
-  todaysPlan = storedLocations || todaysPlan;
+
 
 
   function PlanService(){
+
+    var todaysPlan = [];
+    var storedLocations = JSON.parse(localStorage.getItem("plan"));
+    console.log("Stored Locations",storedLocations);
+    todaysPlan = storedLocations || todaysPlan;
+
+
     return {
       addToPlan: addToPlan,
-      todaysPlan: todaysPlan,
+      getTodaysPlan: getTodaysPlan,
       locationStorage: locationStorage,
       clear: clear
     };
+
+    function getTodaysPlan() {
+      return todaysPlan;
+    }
 
 
     /**
