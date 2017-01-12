@@ -17,7 +17,7 @@
     * @return {Void}
     */
     vm.clearTodaysPlan = function clearTodaysPlan(){
-      localStorage.removeItem("plan");
+      PlanService.clear();
       vm.yourPlan = [];
     };
   }

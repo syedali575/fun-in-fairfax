@@ -14,7 +14,8 @@
     return {
       addToPlan: addToPlan,
       todaysPlan: todaysPlan,
-      locationStorage: locationStorage
+      locationStorage: locationStorage,
+      clear: clear
     };
 
 
@@ -24,6 +25,13 @@
     * @param {Object} data Object containing location information.
     */
     function addToPlan(data){
+
+      // if (data.searchResults){
+      //   return;
+      // }
+
+// console.log("Whats in here1",data.searchResults.PARKS_FCPA.PARK_NAME);
+console.log("Whats in here2",data.searchResults);
 
       var updatedObject = {
         name: null,
@@ -36,13 +44,20 @@
       };
 
 
-      console.log(data.searchResults.PARKS_FCPA.PARK_NAME);
+
 
       if (data.searchResults.PARKS_FCPA) {
-        updatedObject.name = data.searchResults.PARKS_FCPA.PARK_NAME || "No name provided";
+        updatedObject.name = data.searchResults.PARKS_FCPA.PARK_NAME;
         updatedObject.feature = "Fairfax County Park";
-        updatedObject.address = data.searchResults.PARKS_FCPA.STREET || "No address provided";
-        updatedObject.zip = data.searchResults.PARKS_FCPA.ZIP_CODE || "No zip provided";
+        updatedObject.address = data.searchResults.PARKS_FCPA.STREET;
+        updatedObject.zip = data.searchResults.PARKS_FCPA.ZIP_CODE;
+      }
+      else if(data.searchResults.PARKS_NON_FCPA){
+        updatedObject.name = data.searchResults.PARKS_NON_FCPA.NAME;
+        updatedObject.feature = "Not Provided";
+        updatedObject.address = "Not Provided";
+        updatedObject.zip = "Not Provided";
+
       }
       else if (data.searchResults.Libraries) {
         updatedObject.name = data.searchResults.Libraries.DESCRIPTION;
@@ -77,8 +92,14 @@
     * @param  {Object} list [location that user wants to visit]
     * @return {void}
     */
-    function locationStorage(todaysPlan){
-      localStorage.setItem("plan", angular.toJson(todaysPlan));
+    function locationStorage(planToSave){
+      console.log(planToSave);
+      localStorage.setItem("plan", angular.toJson(planToSave));
+    }
+
+    function clear() {
+      localStorage.removeItem("plan");
+      todaysPlan = [];
     }
   }
 
