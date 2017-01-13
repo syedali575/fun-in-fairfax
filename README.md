@@ -1,30 +1,48 @@
 # FuninFairfax
 
-INTRODUCTION:
-This web application is designed to access entertainment resources available in Fairfax County; such as parks, libraries, recreational centers, and shopping centers. Currently this web application  is utilizing a static coordinate (latitude & longitude) to search entertainment location and provide closest results by distance.
+# INTRODUCTION:
+Families, friends, and other social groups can use this site to look up outdoor and indoor entertainment locations in Fairfax County to plan a day of fun activities. This websites also provides other external useful links such as: weather conditions, maps, directions, and other resources in Fairfax County.
 
-Users can choose Fairfax County resources category from navigation bar and search for locations in Fairfax County.  User can add location of choice in each category to today's plan view by clicking add to today's plan button. User can switch to today's plan view to see the list of their choices to visit for the day.
+This application is designed to access the following resources in Fairfax County:
+Parks, Libraries, Recreational centers, and shopping centers.
 
-Families, friends, and other social groups can use this site to look up outdoor and indoor entertaining location in Fairfax County to plan a day of fun activities. This websites also provides other external useful links such as: weather conditions, maps, , volunteering, and other resources available in Fairfax County.
-
-In next phase of development of this web application I would like to add a feature that allows user to find entertainment location based on user's current geolocation (latitude and longitude) and provide closest results by distance in order. I would like to also add capability to rearrange today's plan item if user wish to changes the order of visit.
+Currently this application is utilizing a static coordinate (latitude & longitude) to search for entertainment locations and provide closest results by distance. In the next phase of development of this web application I would like to add a feature that allows user to find entertainment location based on user's current geolocation and provide closest results by distance in order. I would also like to add capability to rearrange today's plan items; if user wishes to change the order of visit.
 
 
-REQUIREMENTS:
-This application requires a static coordinates in order to search for Fairfax County resources.
+# FUNCTIONALITY:
+- User can choose Fairfax County resources from navigation bar and search for locations in Fairfax County.
 
-Currently I am using following coordinate object:
+- User can add locations of choice to today's plan view by clicking on add to today's plan button.
 
-var coordinates = {
+ - User can switch to today's plan view from navigation bar to see the list of their choices to visit for the day.
+
+- User can delete exiting today's plan list, by clicking clear today's plan button in today's     plan view.
+
+# DATA:
+This web application utilizes following Fairfax County API: http://www.fairfaxcounty.gov/FFXGISAPI
+
+
+# BROWSER & RESPONSIVE TESTING:
+This web application is designed to responsive and has been tested on: Chrome, Safari, Firefox and IE 11. This is also fully functional on mobile devices.
+
+
+# TESTING:
+Testing suite has been implemented in the web application by utilizing: GRUNT, KARMA, MOCHA, & Chai.
+
+
+# REQUIREMENTS:
+This application requires a static coordinates in order to search for Fairfax County resources in vicinity. Currently this application is using following coordinates:
+
+```var coordinates = {
   latitude: 38.7799510,
   longitude: -77.2829640
 };
+```
 
+# FAQ:
+Distance of location search (in ajax call) can be modified based on how far user is willing to travel. Recommended search distance is 2000 meters, so that user can find locations fairly close to them. following is example of Ajax call and parameters.
 
-
-FAQ:
-Distance of location search (in ajax call) can be modified based on how far user is willing to travel. Recommended search distance is 2000 meters, so that user can find locations fairly close to them. following is example for Ajax call and parameters.
-
+```
 return $http({
   url: "http://www.fairfaxcounty.gov/FFXGISAPI/v1/search",
   method: "GET",
@@ -35,11 +53,9 @@ return $http({
     distance: "10000"
   }
 })
+```
 
-
-
-
-FRAME WORK AND DEPENDENCIES FOR THIS PROJECT:
+# FRAME WORK AND DEPENDENCIES FOR THIS PROJECT:
 "angular": "^1.6.0",
 "angular-ui-router": "^0.3.2",
 "jquery": "^3.1.1"
@@ -70,5 +86,5 @@ FRAME WORK AND DEPENDENCIES FOR THIS PROJECT:
 "phantomjs-prebuilt": "^2.1.14"
 
 
-MAINTAINER:
+# MAINTAINER:
 This web application is created (December 2016) and maintained by Syed Ali who can be reached at sali3@cox.net. This application is my final project for The Iron Yard Front Engineering Program.

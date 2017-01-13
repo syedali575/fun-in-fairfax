@@ -91,7 +91,7 @@
       locationStorage(todaysPlan);
     }
 
-    
+
     /**
     * Stores choosen location to localStorage
     * @param  {Object} list [location that user wants to visit]
@@ -103,7 +103,7 @@
     }
 
     /**
-    * This function clears out "plan" localStorage & creates and empty todaysPlan array.
+    * This function clears out "plan" localStorage & creates and empties todaysPlan array.
     * @return {Void}
     */
     function clear() {
